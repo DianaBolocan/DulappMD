@@ -1,5 +1,4 @@
 <?php
-
 	require_once(__DIR__."/../Models/User.php");
 	require_once(__DIR__."/../Models/UserMapper.php");
 
@@ -11,7 +10,6 @@
 
 	public function main(){
 			if($_POST){
-                $this->view('Login');
     			if(isset($_POST['Register'])){
         			echo "User tries to register ". $_POST['username'] . ' ' . $_POST['password'] . "<br>";
         		}
@@ -21,21 +19,15 @@
         		$loginUser ->setAdmin(0);
         		$userMapper = new UserMapper();
         		if(!($userMapper ->usernameExists($loginUser))){
-                    $userSaved = $userMapper->save($loginUser);
-                    echo $userSaved;
-        			if (!$userSaved) {
+        			if(!($userMapper ->save($loginUser))){
         				echo "Probleme la insert";
         			}
         			else
-        				echo "am intrat!";
-        				$this->view('Login');
-
-
-
-
+        				echo "User inregistrat cu succes!";
+        				//header("Location: Login.php");
         		}
         		else
-        			//echo "Userul deja exista";
+        			echo"Userul deja exista";
    	 		}			
 	}
 	}

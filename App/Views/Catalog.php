@@ -13,13 +13,13 @@
 				<meta name="description" content="Web Technologies project for 2nd year students, Faculty of Computer Science, Alexandru Ioan Cuza University of Iasi" />
 			    <title>DulApp MD</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1">
-				<link href="CSS/catalog.css" rel="stylesheet" type="text/css">
+				<link href="CSS Files/catalog.css" rel="stylesheet" type="text/css">
 				<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 			</head>
 			 <body>
 			 <header class="header">
 			  
-				<a href="DulappList"><img id="logo" src="CSS/logo.png" alt="Logo" ></a>
+				<a href="DulappList"><img id="logo" src="CSS Files/logo.png" alt="Logo" ></a>
 				<span><h1 class="hcomp"> Facts </h1></span>
 					<div class="description"> DULAPP MD is your personal virtual wardrobe that is ready to organize your style and life. Join
 					DULAPP MD to start a new improved lifestyle.
@@ -36,7 +36,7 @@
 				<a href="HomePage">
 					<h1 class="hcomp"> Log Out </h1> 
 				</a>
-				<img src="CSS/more.png" id="more">
+				<img src="CSS Files/more.png" id="more">
 				<form  class="searchBar" action="#" role="search">
 								<input type="text" name="" placeholder="Enter your search">
 								<input type="submit" name value="">
@@ -81,27 +81,27 @@
 				</div>
 				<div id="centerSection">
 				<div class="item">
-						<img src="CSS/greenTShirt.png" alt="greenTShirt" class="tShirt">
+						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="tShirt">
 						<p class="name"> Tricou1 Verde </p>
 						<a href="Form" class="linkForm">Modify/Delete</a>	
 					</div>
 					<div class="item">
-						<img src="CSS/greenTShirt.png" alt="greenTShirt" class="tShirt">
+						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="tShirt">
 						<p class="name"> Tricou2 Verde </p>
 						<a href="Form" class="linkForm">Modify/Delete</a>	
 					</div>
 					<div class="item">
-						<img src="CSS/greenTShirt.png" alt="greenTShirt" class="tShirt">
+						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="tShirt">
 						<p class="name"> Tricou3 Verde </p>
 						<a href="Form" class="linkForm">Modify/Delete</a>	
 					</div>
 					<div class="item">
-						<img src="CSS/blackPants.png" alt="blackPants" class="BlackPants">
+						<img src="CSS Files/blackPants.png" alt="blackPants" class="BlackPants">
 						<p class="name"> Pantaloni1 Negri </p>
 						<a href="Form" class="linkForm">Modify/Delete</a>	
 					</div>
 					<div class="item">
-						<img src="CSS/blackPants.png" alt="blackPants" class="BlackPants">
+						<img src="CSS Files/blackPants.png" alt="blackPants" class="BlackPants">
 						<p class="name"> Pantaloni2 Negri </p>
 						<a href="Form" class="linkForm">Modify/Delete</a>	
 					</div>

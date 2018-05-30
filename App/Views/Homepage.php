@@ -11,7 +11,7 @@
 			<meta name="description" content="Web Technologies project for 2nd year students, Faculty of Computer Science, Alexandru Ioan Cuza University of Iasi" />
 			<title>DulApp MD</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<link href="CSS/HomePage.css" rel="stylesheet" type="text/css">
+			<link href="CSS Files/HomePage.css" rel="stylesheet" type="text/css">
 			<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 		</head>
 		<body>
@@ -19,7 +19,7 @@
 		<header class="header">
 			  
 		<h1 class="hcomp"> 
-			<a href="#"><img id="logo" src="CSS/logo.png" alt="Logo" ></a>
+			<a href="#"><img id="logo" src="CSS Files/logo.png" alt="Logo" ></a>
 		</h1>
 		<span><h1 class="hcomp"> Facts </h1></span>
 			<div class="desc"> DULAPP MD is your personal virtual wardrobe that is ready to organize your style and life. Join

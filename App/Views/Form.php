@@ -16,14 +16,14 @@
 				<meta name="description" content="Web Technologies project for 2nd year students, Faculty of Computer Science, Alexandru Ioan Cuza University of Iasi" />
 			    <title>DulApp MD</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1">
-				<link href="CSS/form.css" rel="stylesheet" type="text/css">
+				<link href="CSS Files/form.css" rel="stylesheet" type="text/css">
 				<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 			</head>
 			 <body>
 			 <header class="header">
 			  
 				
-					<a href="DulappList"><img id="logo" src="CSS/logo.png" alt="Logo" ></a>
+					<a href="DulappList"><img id="logo" src="CSS Files/logo.png" alt="Logo" ></a>
 				
 				<span><h1 class="hcomp"> Facts </h1></span>
 							<div class="description"> Fiecare utilizator autentificat isi poate configura un numar de dulapuri proprii, etichetate.
@@ -43,7 +43,7 @@
 				<a href="HomePage">
 					<h1 class="hcomp"> Log Out </h1> 
 				</a>
-					<img src="CSS/more.png"id="more" alt="More"></a>
+					<img src="CSS Files/more.png"id="more" alt="More"></a>
 				</header >
 				<br>
 				

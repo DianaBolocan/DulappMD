@@ -15,13 +15,13 @@
 					<meta name="description" content="Web Technologies project for 2nd year students, Faculty of Computer Science, Alexandru Ioan Cuza University of Iasi" />
 					<title> Get Started | Dulapp MD </title>
 					<meta name="viewport" content="width=device-width, initial-scale=1">
-					<link href="CSS/GetStarted.css" rel="stylesheet" type="text/css">
+					<link href="CSS Files/GetStarted.css" rel="stylesheet" type="text/css">
 					<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 				</head>
 				<body>
 					<header class="header">
 						<h1 class="option">
-							<a href="HomePage"><img id="logo" src="CSS/Logo.png"></a> 
+							<a href="HomePage"><img id="logo" src="CSS Files/Logo.png"></a> 
 						</h1>
 						<span><h1 class="hcomp"> Facts </h1></span>
 							<div> Fiecare utilizator autentificat isi poate configura un numar de dulapuri proprii, etichetate.
@@ -46,7 +46,7 @@
 						</div>
 					</header>
 					<section class="getstartedbox">
-					<img src="CSS/loginPic.png" class="avatar">
+					<img src="CSS Files/loginPic.png" class="avatar">
 							<h1> Get started! </h1>
 								<form action="GetStarted/main" method="post">
 									<p> Username </p>

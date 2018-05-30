@@ -14,12 +14,12 @@
 				<meta name="description" content="Web Technologies project for 2nd year students, Faculty of Computer Science, Alexandru Ioan Cuza University of Iasi" />
 				<title>Style | Dulapp</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1">
-				<link href="CSS/dulapSelected.css" rel="stylesheet" type="text/css">
+				<link href="CSS Files/dulapSelected.css" rel="stylesheet" type="text/css">
 				<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 			</head>
 			<body>
 				<header class="header">
-					<a href="DulappList"><img id="logo" src="CSS/logo.png" alt="Logo" ></a>
+					<a href="DulappList"><img id="logo" src="CSS Files/logo.png" alt="Logo" ></a>
 					<span><h1 class="hcomp"> Facts </h1></span>
 						<div class="description"> Fiecare utilizator autentificat isi poate configura un numar de dulapuri proprii, etichetate.
 						Fiecare dulap e compus din sertare si/sau compartimente (eventual, incuiate). 
@@ -40,7 +40,7 @@
 						dulap cu ajutorul umerasului.</div>
 					<a href="HomePage">
 					<h1 class="hcomp"> Log Out </h1> 
-					<img src="CSS/more.png" id="more">
+					<img src="CSS Files/more.png" id="more">
 					</a>
 					
 					<form  class="searchBar" action="Catalog" role="search">
@@ -50,23 +50,23 @@
 				<br>
 				<div class="dulap">
 					<div class="firstRow">
-						<a href="Catalog"><img src="CSS/Drawer2_1.png" alt="Drawer" class="drawer1"></a>
-						<a href="Catalog"><img src="CSS/Drawer2_2.png" alt="Drawer" class="drawer2"></a>
-						<a href="Catalog"><img src="CSS/Drawer2_3.png" alt="Drawer" class="drawer3"></a>
+						<a href="Catalog"><img src="CSS Files/Drawer2_1.png" alt="Drawer" class="drawer1"></a>
+						<a href="Catalog"><img src="CSS Files/Drawer2_2.png" alt="Drawer" class="drawer2"></a>
+						<a href="Catalog"><img src="CSS Files/Drawer2_3.png" alt="Drawer" class="drawer3"></a>
 					</div>
 					<div class="secondRow">
-						<a href="Catalog"><img src="CSS/Drawer2_4.png" alt="Drawer" class="drawer1"></a>
-						<a href="Catalog"><img src="CSS/Drawer2_5.png" alt="Drawer" class="drawer2"></a>
-						<a href="Catalog"><img src="CSS/Drawer2_6.png" alt="Drawer" class="drawer3"></a>
+						<a href="Catalog"><img src="CSS Files/Drawer2_4.png" alt="Drawer" class="drawer1"></a>
+						<a href="Catalog"><img src="CSS Files/Drawer2_5.png" alt="Drawer" class="drawer2"></a>
+						<a href="Catalog"><img src="CSS Files/Drawer2_6.png" alt="Drawer" class="drawer3"></a>
 					</div>
-					<img src="CSS/Dulap2.png" alt="Dulap" id="dulap">
+					<img src="CSS Files/Dulap2.png" alt="Dulap" id="dulap">
 				</div>
 				<br>
 				<div class="buttons">	
-					<a href="Form"><img src="CSS/umeras.png" alt="addItem" id="addItem"></a>
-					<a href="addDrawer"><img src="CSS/plus(new).png" alt="addDrawer" id="addDrawer"></a>
-					<a href="addLockedDrawer"><img src="CSS/plusLock.png" alt="addLockedDrawer" id="addLockedDrawer"></a>
-					<a href="deleteDrawer"><img src="CSS/minus(new).png" alt="deleteDrawer" id="deleteDrawer"></a>
+					<a href="Form"><img src="CSS Files/umeras.png" alt="addItem" id="addItem"></a>
+					<a href="addDrawer"><img src="CSS Files/plus(new).png" alt="addDrawer" id="addDrawer"></a>
+					<a href="addLockedDrawer"><img src="CSS Files/plusLock.png" alt="addLockedDrawer" id="addLockedDrawer"></a>
+					<a href="deleteDrawer"><img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer"></a>
 				</div>
 			</body>
 		</html>';
