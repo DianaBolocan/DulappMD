@@ -1,0 +1,376 @@
+body{
+	background-image: url("emptyRoom1.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;	
+	background-attachment: fixed;
+	background-size: cover;
+	padding:0;
+	margin:0;
+	font-family: 'Pacifico', cursive;
+	z-index:-2;
+}
+p{
+	font-size:15px;
+	margin-left:8%;
+	color:blue;
+	position:absolute;
+	margin-top:0%;
+	z-index:-2;
+	
+}
+.header{
+	position: relative;
+	background-color:white;
+	width:100%;
+	opacity:0.9;
+}
+.hcomp{
+	font-size: 150%;
+	color: pink;
+	display: inline-block;
+	padding:5px;
+	margin:0.5%;
+	z-index:-1;
+	
+}
+#logo{
+	height:30px;
+	margin-top:10px;
+	margin-left:10px;
+}
+
+.description{
+    background-color: white;
+    padding: 20px;
+    display: none;
+}
+    
+span:hover + .description {
+    display: block;
+	position: absolute;
+	z-index: 1;
+}
+
+#dulap{
+	width: 60%;
+	height: 70%;
+	position: absolute;
+	left: 20%;
+	bottom:3%;
+	padding: 0;
+	min-width: 250px;
+	min-height: 250px;
+	
+}
+
+.buttons{
+	left: 32%;
+	top:20%;
+	position:absolute;
+	z-index:-2;
+}
+
+.buttons #addDrawer{
+	min-width: 60px;
+	width:10%;
+	
+		
+}
+
+.buttons #deleteDrawer{
+	min-width: 60px;
+	width:10%;
+	margin-left: 24%;
+	
+		
+}
+
+#leftArrow{
+	position: absolute;
+	width: 8%;
+	height: 10%;
+	left: 1%;
+	top: 45%;
+	min-width: 50px;
+	min-height: 50px;
+}
+
+#rightArrow{
+	position: absolute;
+	width: 8%;
+	height: 10%;
+	right: 1%;
+	top: 45%;
+	min-width: 50px;
+	min-height: 50px;
+}
+
+.loginbox input[type=text]{
+	font-size:13px;
+	padding:6px;
+	vertical-align:middle;
+	/*width:100%;
+	margin-bottom:20px;
+	display: inline-block;*/
+	width:300px;
+	z-index:-2;
+	
+}
+
+.loginbox input[type=submit]{
+	background-color:transparent;
+	background-image: url("smallLupa.png");
+	background-repeat: no-repeat;
+	background-size:25px 25px;
+	background-position: 0 0;
+	border:none;
+	margin:0;
+	height: 25px;
+	width: 25px;
+	vertical-align:middle;
+	cursor: pointer;
+}
+
+.loginbox{
+	display: inline;
+	margin-right:1%;
+	margin-top:1%;
+	float:right;
+}
+#more{
+	height:30px;
+	margin:10px;
+}
+@media (max-height: 1440px) and (min-height: 1001px) {
+	p{
+	font-size:50px;
+	}
+	#logo{
+		height: 55px;
+	}
+	.hcomp{
+		font-size:40px;
+	}
+	.buttons #deleteDrawer, .buttons #addDrawer{
+		width:15%;
+	}
+	.loginbox input[type=submit] {
+	    background-size: 30px 30px;
+		height: 30px;
+		width: 30px;
+		margin-top: 15px;
+	}
+	
+	@media (min-width: 990px){
+		.loginbox input[type=text] {
+			margin-top:15px;
+			height:40px;
+		}
+		#more{
+			display:none;
+		}
+	}
+	@media (min-width: 660px) and (max-width:989px){
+		.loginbox input[type=text] {
+			display:none;
+		}
+		.loginbox input[type=submit] {
+			margin-top: 25px;
+		}
+		#more{
+			display:none;
+		}
+	}
+	@media (max-width: 659px){
+		.hcomp, .loginbox{
+			display:none;
+		}
+		#more{
+			margin-top: 25px;
+			float:right;
+		}
+		#logo{
+			margin:10px;
+		}
+		
+	}
+}
+@media (max-height: 1000px) and (min-height: 813px) {
+	p{
+	font-size:40px;
+	}
+	#logo{
+		height: 40px;
+	}
+	.hcomp{
+		font-size:28px;
+	}
+	.loginbox{
+		margin-top:2%;
+	}
+	
+	@media(min-width: 805px){
+			#more{
+			display:none;
+		}
+		/*#dulap{
+			height:470px;
+			width:570px;
+			top:30%;
+		}*/
+	}
+	@media(max-width:804px)and (min-width: 484px){
+		.loginbox input[type=text]{
+			display:none;
+		}
+		.loginbox input[type=submit]{
+			margin-top:15px;
+		}
+		#more{
+			display:none;
+		}
+	}
+	@media(max-width: 483px){
+		.hcomp, .loginbox{
+			display:none;
+		}
+		#more{
+			float:right;
+			margin-top:15px;
+		}
+		#logo{
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+	}
+}
+
+
+@media (max-height: 812px)
+{
+	
+	.loginbox{
+	margin-top:1.5%;
+	}
+	
+	@media (min-width: 744px)
+	{
+		#more{
+			display: none;
+		}
+		p{
+		font-size:25px;
+		}
+	}
+	@media (max-width: 743px) and (min-width: 423px){
+		.loginbox input[type="text"]{
+			display: none;
+		}
+		.loginbox input[type="submit"] {
+			margin-top: 8px;
+		}
+		#more {
+			display: none;
+		}
+	}
+	@media (max-width: 422px) {
+		.hcomp{
+			display: none;
+		}
+		.loginbox { 
+			display: none;
+		}
+		#dulap{
+			height:300px;
+			width:291px;
+			margin-bottom:3%;
+			left: 10%;
+		}
+		#more {
+			margin-top: 15px;
+			float: right;
+			margin-right: 10px;
+			height: 25px;
+		}
+		#logo {
+			margin-bottom: 10px;
+			
+		}
+		
+		
+	}
+
+		
+		
+}
+
+
+@media (max-height: 400px)
+{
+	p{
+	font-size:15px;
+	}
+	.buttons{
+		margin-top:0%;
+		/*width: 0px;
+		position:absolute;
+		float:right;
+		margin-left:5%;
+		*/
+	}
+	
+}
+
+@media (min-height: 1441px){
+	#logo{
+		height: 55px;
+	}
+	
+	.hcomp{
+		font-size:40px;
+	}
+	.loginbox input[type=text]{
+		height: 50px;
+		width: 400px;
+		font-size:25px;
+		
+	}
+	.loginbox{
+		margin-top:2%;
+	}
+	.loginbox input[type=submit]{
+		background-size: 35px 35px;
+		height:35px;
+		width:35px;
+	}
+	@media (min-width: 1084px){
+		#more{
+			display: none;
+		}
+	}
+	@media (max-width: 1083px) and (min-width: 658px){
+		.loginbox input[type=text]{
+			display:none;
+		}
+		.loginbox input[type=submit]{
+			margin-top:15px;
+		}
+		#more{
+			display: none;
+		}
+	}
+	
+	@media (max-width: 657px){
+		.loginbox, .hcomp{
+			display:none;
+		}
+		#more{
+			float:right;
+			margin-top:25px;
+			margin-right:10px;
+		}
+		#logo{
+			margin-bottom:10px;
+		}
+	}
+}

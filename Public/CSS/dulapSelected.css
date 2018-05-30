@@ -1,0 +1,392 @@
+body{
+	background-image: url("emptyRoom1.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;	
+	background-attachment: fixed;
+	background-size: cover;
+	padding:0;
+	margin:0;
+	font-family: 'Pacifico', cursive;
+}
+
+.header{
+	position: relative;
+	background-color:white;
+	width:100%;
+	opacity:0.9;
+	z-index: 10;
+}
+
+.hcomp{
+	font-size: 150%;
+	color: pink;
+	display: inline-block;
+	padding:5px;
+	margin:0.5%;
+	
+}
+
+#logo{
+	height:30px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#more {
+	height: 30px;
+	margin-top: 20px;
+}
+
+.description{
+    background-color: white;
+    padding: 20px;
+    display: none;
+}
+    
+span:hover + .description {
+    display: block;
+	position: absolute;
+	z-index: -1;
+}
+
+.dulap{
+	position: absolute;
+	bottom: 3%;
+	left: 20%;
+	
+}
+
+.dulap #dulap{
+	width: 75%;
+	height: 70%;
+	z-index: -1;
+
+}
+
+.firstRow{
+	position: absolute;
+	top: 52%;
+	left: 3%;
+}
+
+.secondRow{
+	position: absolute;
+	top: 75%;
+	left: 3%;
+}
+
+.drawer1,.drawer2,.drawer3{
+	display: inline-block;
+	width: 22.8%;
+	height: 15%;
+}
+
+.drawer2,.drawer3{
+	margin-left: 1.2%;
+}
+
+.buttons{
+	position: absolute;
+	top: 20%;
+	left: 22%;
+	/*z-index: -3;*/
+}
+
+.buttons #addItem{
+	min-width: 50px;
+	width: 10%;
+}
+
+.buttons #addDrawer,#addLockedDrawer, #deleteDrawer{
+	min-width: 50px;
+	width: 10%;
+	margin-left: 10%;
+}
+
+.searchBar input[type=text]{
+	font-size:13px;
+	padding:6px;
+	vertical-align:middle;
+	width:300px;
+}
+
+.searchBar input[type=submit]{
+	background-color:transparent;
+	background-image: url("smallLupa.png");
+	background-repeat: no-repeat;
+	background-size:25px 25px;
+	background-position: 0 0;
+	border:none;
+	margin:0;
+	height: 25px;
+	width: 25px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+.searchBar{
+	display: inline;
+	margin-right:1%;
+	margin-top:1%;
+	float:right;
+}
+
+@media (max-height: 812px) {
+	.searchBar {
+		margin-top: 1.5%;
+	}
+	
+	@media (min-width: 744px) {
+		#more {
+			display: none;
+		}
+	}
+	
+	@media (max-width: 743px) and (min-width: 423px){
+		.searchBar input[type="text"]{
+			display: none;
+		}
+		.searchBar input[type="submit"] {
+			margin-top: 8px;
+		}
+		#more {
+			display: none;
+		}
+	}
+
+	
+	@media (max-width: 422px) {
+		.hcomp{
+			display: none;
+		}
+		.searchBar { 
+			display: none;
+		}
+		#more {
+			margin-top: 15px;
+			float: right;
+			margin-right: 10px;
+			height: 25px;
+		}
+		#logo {
+			margin-bottom: 10px;
+		}
+		.buttons {
+			left: 15%;
+		}
+		.dulap #dulap{
+			height: 300px;
+			width: 291px;
+			
+			z-index : -2;
+		}
+		
+		.dulap{
+			transform: translate(-10%);
+		}
+		.drawer1, .drawer2, .drawer3{
+			height: 65px;
+			width: 87px;
+		}
+		
+		.firstRow, .secondRow{
+			z-index: 1;
+			
+			width: 277px;
+			
+		}
+		.dulap, .firstRow, .secondRow{
+			margin-bottom: 15%;
+		}
+	}
+	
+	@media (max-height: 414px) {
+		.buttons {
+			z-index: 1;
+			position: absolute;
+			float: left;
+		}
+		.dulap #dulap{
+			height: 300px;
+			width: 291px;
+			
+			z-index : -2;
+		}
+		
+		.dulap{
+			position: absolute;
+			bottom: 2.5%;
+			left: 30%;
+		}
+		
+		.drawer1, .drawer2, .drawer3{
+			height: 65px;
+			width: 87px;
+		}
+		
+		.firstRow, .secondRow{
+			z-index: 1;
+			
+			width: 277px;
+			
+		}
+		.dulap, .firstRow, .secondRow{
+			margin-bottom: 2.5%;
+		}
+	}
+}
+
+@media (max-height: 1000px) and (min-height: 813px) {
+	#logo{
+		height: 40px;
+	}
+	.hcomp{
+		font-size:28px;
+	}
+	.searchBar {
+		margin-top: 2%;
+	}
+
+	@media (min-width: 805px) {
+		#more{
+			display: none;
+		}
+	}
+	@media (max-width: 804px) and (min-width: 484px){
+		.searchBar input[type="text"] {
+			display: none;
+		}
+		
+		.searchBar input[type="submit"] {
+			margin-top: 15px;
+		}
+		#more {
+			display: none;
+		}
+	}
+	@media (max-width: 483px){
+		.hcomp, .searchBar {
+			display: none;
+		}
+		#logo {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		#more {
+			float: right;
+			margin-top: 15px;
+			margin-right: 10px;
+		}
+		
+	}
+}
+
+@media (max-height: 1440px) and (min-height: 1001px){
+	#logo{
+		height: 55px;
+	}
+	.hcomp{
+		font-size:40px;
+	}
+	
+	.searchBar input[type="submit"] {
+			background-size: 30px 30px;
+			height: 30px;
+			width: 30px;
+			margin-top: 15px;
+	}
+	
+	@media (min-width: 990px)
+	{
+		.searchBar input[type="text"] {
+			margin-top: 15px;
+			height: 40px;
+		}
+		#more {
+			display: none;
+		}
+	}
+	
+	@media (min-width: 660px) and (max-width: 989px)
+	{
+		.searchBar input[type="text"] {
+			display: none;
+		}
+		
+		.searchBar input[type="submit"] {
+			margin-top: 25px;
+		}
+		
+		#more {
+			display: none;
+		}
+	}
+	@media (max-width: 659px){
+		.hcomp, .searchBar {
+			display: none;
+		}
+		#logo {
+			margin: 10px;
+		}
+		#more {
+			margin-top: 25px;
+			margin-right: 10px;
+			float: right;
+		}
+		
+	}
+}
+
+@media (min-height: 1441px){
+	#logo{
+		height: 55px;
+	}
+	.hcomp{
+		font-size:40px;
+	}
+	.searchBar {
+		margin-top : 2%;
+	}
+	.searchBar input[type="text"] {
+		height: 50px;
+		width: 400px;
+		font-size: 25px;
+	}
+	.searchBar input[type="submit"] {
+		background-size: 35px 35px;
+		height: 35px;
+		width: 35px;
+	}
+	
+	@media (min-width: 1084px){
+		#more {
+			display: none;
+		}
+	}
+	
+	@media (max-width: 1083px) and (min-width: 658px) {
+		.searchBar input[type="text"] {
+			display: none;
+		}
+		.searchBar input[type="submit"] {
+			margin-top: 15px;
+		}
+		#more {
+			display: none;
+		}
+	}
+	
+	@media (max-width: 657px) {
+		.searchBar , .hcomp {
+			display: none;
+		}
+		#more {
+			float: right;
+			margin-right: 10px;
+			margin-top: 25px;
+		}
+		#logo {
+			margin-bottom: 10px;
+		}
+	}
+}

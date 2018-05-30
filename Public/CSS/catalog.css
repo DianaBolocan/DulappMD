@@ -1,0 +1,375 @@
+body{
+	background-image: url("vintageClothes.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;	
+	background-attachment: fixed;
+	background-size: cover;
+	padding:0;
+	margin:0;
+	font-family: 'Pacifico', cursive;
+}
+
+.header{
+	background-color:white;
+	width:100%;
+	opacity:0.9;
+}
+
+.hcomp{
+	font-size: 20px;
+	color: pink;
+	display: inline-block;
+	padding:5px;
+	margin:0.5%;
+	
+}
+
+#logo{
+	height:30px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.description {
+    background-color: white;
+    padding: 20px;
+    display: none;
+	font-size: 100%;
+}
+    
+span:hover + .description {
+    display: block;
+	position: absolute;
+	z-index: 1;
+}
+
+.searchBar input[type=text]{
+	font-size:13px;
+	padding:6px;
+	vertical-align:middle;
+	width:300px;
+	
+}
+
+.searchBar input[type=submit]{
+	background-color:transparent;
+	background-image: url("smallLupa.png");
+	background-repeat: no-repeat;
+	background-size:25px 25px;
+	background-position: 0 0;
+	border:none;
+	margin:0;
+	height: 25px;
+	width: 25px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+.searchBar{
+	display: inline;
+	margin-right:1%;
+	margin-top:1%;
+	float:right;
+	
+}
+
+#leftSection {
+	position: absolute;
+	background-color: white;
+	left: 1%;
+	width: 20%;
+	min-width: 100px;
+	z-index: -2;
+}
+
+#searchedAfter{
+	text-align: center;
+}
+
+.subtitle{
+	text-align: center;
+	color: #ff3c00;
+	font-size: 150%;
+}
+
+#centerSection{
+	position: absolute;
+	left: 30%;
+	z-index: -2;
+}
+
+.item{
+	display: inline-block;
+	background-color: white;
+	width: 25%;
+	height: 40%;
+	margin-right: 5%;
+	margin-bottom: 5%;
+	min-width: 200px;
+}
+
+.tShirt{
+	width: 100%;
+	margin-left: 1%;
+	margin-top: 5%;
+}
+
+.linkForm{
+	font-size: 100%;
+	float: right;
+	margin-right: 2%;
+	color: grey;
+}
+
+.name{
+	text-align: center;
+	font-size: 125%;
+}
+
+.BlackPants{
+	width: 100%;
+	margin-top: 5%;
+	margin-left: 1%;
+}
+
+.subitem a:hover{
+	color: #ff3c00;
+	transition: color .2s 0s ease-in-out;
+}
+
+a {
+	text-decoration: none;
+}
+
+.navigation{
+	display: block;
+	margin-top: 10%;
+	margin-left: 10%;
+}
+
+
+nav ul{
+	list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+
+#allItems{
+	color: #ff3c00;
+	font-size: 125%;
+}
+
+.subitem{
+	padding: 0 10%;
+    border-left: 1px solid rgba(36,38,40,.15);
+}
+
+.subitem a{
+	display: block;
+    padding: 6px 0;
+    color: #242628;
+}
+
+#more {
+	height: 30px;
+	margin-top: 20px;
+}
+
+@media (max-height: 812px) {
+	.searchBar {
+		margin-top: 1.5%;
+	}
+	
+	@media (min-width: 744px) {
+		#more {
+			display: none;
+		}
+	}
+	
+	@media (max-width: 743px) and (min-width: 423px){
+		.searchBar input[type="text"]{
+			display: none;
+		}
+		.searchBar input[type="submit"] {
+			margin-top: 8px;
+		}
+		#more {
+			display: none;
+		}
+	}
+	
+	@media (max-width: 422px) {
+		.hcomp{
+			display: none;
+		}
+		.searchBar { 
+			display: none;
+		}
+		#more {
+			margin-top: 15px;
+			float: right;
+			margin-right: 10px;
+			height: 25px;
+		}
+		#logo {
+			margin-bottom: 10px;
+		}
+		.buttons {
+			left: 15%;
+		}
+	}
+}
+
+@media (max-height: 1000px) and (min-height: 813px) {
+	#logo{
+		height: 40px;
+	}
+	.hcomp{
+		font-size:28px;
+	}
+	.searchBar {
+		margin-top: 2%;
+	}
+
+	@media (min-width: 805px) {
+		#more{
+			display: none;
+		}
+	}
+	@media (max-width: 804px) and (min-width: 484px){
+		.searchBar input[type="text"] {
+			display: none;
+		}
+		
+		.searchBar input[type="submit"] {
+			margin-top: 15px;
+		}
+		#more {
+			display: none;
+		}
+	}
+	@media (max-width: 483px){
+		.hcomp, .searchBar {
+			display: none;
+		}
+		#logo {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		#more {
+			float: right;
+			margin-top: 15px;
+			margin-right: 10px;
+		}
+	}
+}
+
+@media (max-height: 1440px) and (min-height: 1001px){
+	#logo{
+		height: 55px;
+	}
+	.hcomp{
+		font-size:40px;
+	}
+	
+	.searchBar input[type="submit"] {
+			background-size: 30px 30px;
+			height: 30px;
+			width: 30px;
+			margin-top: 15px;
+	}
+	
+	@media (min-width: 990px)
+	{
+		.searchBar input[type="text"] {
+			margin-top: 15px;
+			height: 40px;
+		}
+		#more {
+			display: none;
+		}
+	}
+	
+	@media (min-width: 660px) and (max-width: 989px)
+	{
+		.searchBar input[type="text"] {
+			display: none;
+		}
+		
+		.searchBar input[type="submit"] {
+			margin-top: 25px;
+		}
+		
+		#more {
+			display: none;
+		}
+	}
+	@media (max-width: 659px){
+		.hcomp, .searchBar {
+			display: none;
+		}
+		#logo {
+			margin: 10px;
+		}
+		#more {
+			margin-top: 25px;
+			margin-right: 10px;
+			float: right;
+		}
+	}
+}
+
+@media (min-height: 1441px){
+	#logo{
+		height: 55px;
+	}
+	.hcomp{
+		font-size:40px;
+	}
+	.searchBar {
+		margin-top : 2%;
+	}
+	.searchBar input[type="text"] {
+		height: 50px;
+		width: 400px;
+		font-size: 25px;
+	}
+	.searchBar input[type="submit"] {
+		background-size: 35px 35px;
+		height: 35px;
+		width: 35px;
+	}
+	
+	@media (min-width: 1084px){
+		#more {
+			display: none;
+		}
+	}
+	
+	@media (max-width: 1083px) and (min-width: 658px) {
+		.searchBar input[type="text"] {
+			display: none;
+		}
+		.searchBar input[type="submit"] {
+			margin-top: 15px;
+		}
+		#more {
+			display: none;
+		}
+	}
+	
+	@media (max-width: 657px) {
+		.searchBar , .hcomp {
+			display: none;
+		}
+		#more {
+			float: right;
+			margin-right: 10px;
+			margin-top: 25px;
+		}
+		#logo {
+			margin-bottom: 10px;
+		}
+	}
+}

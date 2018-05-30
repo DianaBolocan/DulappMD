@@ -1,0 +1,272 @@
+body{
+	background-image: url("login.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;	
+	background-attachment: fixed;
+	background-size: cover;
+	padding:0;
+	margin:0;
+	font-family: 'Pacifico', cursive;
+
+	
+}
+
+
+
+.header{
+	background-color:white;
+	width:100%;
+	opacity:0.9;
+}
+
+.hcomp{
+	font-size: 20px;
+	color: pink;
+	display: inline-block;
+	padding:5px;
+	margin:0.5%;
+	
+}
+#logo{
+	height:30px;
+}
+
+div {
+    background-color: white;
+    padding: 20px;
+    display: none;
+}
+    
+span:hover + div {
+    display: block;
+	position: absolute;
+	z-index: -1;
+}
+.loginbox{
+	min-width:350px;
+	min-height:500px;
+	height:65%;
+	width:30%;
+	
+	background: aliceblue;
+	color: black;
+	top:55%;
+	left:50%;
+	position:absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+	z-index: -2;
+	font-size: 20px;
+}
+
+.avatar{
+	width:100px;
+	
+	border-radius:50%;
+	position:absolute;
+	top: -50px;
+	left: calc(50% - 50px);
+	
+}
+h1{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-size: 30px;
+}
+.loginbox p{
+	margin:0;
+	padding:0;
+	
+}
+.loginbox input{
+	width:100%;
+	margin-bottom:20px;
+}
+.loginbox input[type="text"],input[type="password"]
+{
+	border:none;
+	border-bottom: 1px solid black;
+	background: transparent;
+	outline:none;
+	height:40px;
+	color:black;
+	font-size:16px;
+}
+.loginbox input[type="submit"]
+{
+	border:none;
+	outline:none;
+	height:40px;
+	background: pink;
+	color:#fff;
+	font-size:17px;
+	border-radius: 20px;
+}
+.loginbox input[type="submit"]:hover{
+	cursor: pointer;
+	background: #a57fc1;
+	color:white;
+}
+.loginbox a{
+	text-decoration: none;
+	font-size: 20px;
+	line-height: 20px;
+	color: pink;
+	
+}
+.loginbox a:hover{
+	color: #a57fc1;
+}
+@media (max-height: 1000px) and (min-height: 701px){
+	 p{
+		font-size:24px;
+	}
+}
+@media (max-height: 1000px) and (min-height: 701px) and (min-width: 700px){
+	p {
+		font-size: 24px;
+	}
+	.loginbox a{
+		font-size: 22px;
+	}
+	.loginbox input[type="submit"] {
+		font-size:21px;
+	}
+	.loginbox input[type="text"], input[type="password"]{
+		font-size:18px;
+	}
+	
+	
+}
+@media (max-height: 1365px) and (min-height: 1001px) {
+	p {
+		font-size: 30px;
+	}
+	.loginbox a{
+		font-size: 28px;
+		margin-top: 20px;
+	}
+	.loginbox input[type="submit"] {
+		font-size:27px;
+		height:50px;
+	}
+	.loginbox input[type="text"], input[type="password"]{
+		font-size:20px;
+	}
+	form{
+		margin-top:30px;
+	}
+	h1{
+		font-size:40px;
+	}
+	@media (min-width: 1401px) {
+	 h1{
+		font-size:44px;
+	}
+	}
+	
+}
+@media (min-height: 1366px){
+	.loginbox input[type="submit"] {
+		font-size:30px;
+		height:60px;
+	}
+	p {
+		font-size: 32px;
+	}
+	.loginbox input[type="text"], input[type="password"]{
+		font-size:24px;
+	}
+	
+	h1{
+		font-size:43px;
+	}
+	.loginbox a{
+		font-size: 32px;
+		margin-top: 60px;
+	}
+	
+}
+@media (max-height: 1000px) and (min-height: 701px) {
+	#logo{
+		height: 40px;
+	}
+	.hcomp{
+		font-size:28px;
+	}
+}
+
+@media (max-height: 1440px) and (min-height: 1001px) {
+	#logo{
+		height: 60px;
+	}
+	.hcomp{
+		font-size:40px;
+	}
+}
+
+@media (max-width: 1400px) and (min-width:900px){
+	h1{
+		font-size:42px;
+	}
+	p{
+		font-size:34px;
+	}
+	.loginbox a{
+		font-size:28px;
+	}
+	@media (max-height: 800px){
+		h1{
+			font-size:36px;
+		}
+	}
+}
+
+@media (min-height: 1000px){
+	.loginbox{
+		height:55%;
+	}
+}
+@media (min-width: 1000px){
+	.avatar{
+			width:120px;
+	}
+
+}
+
+@media (max-height:650px){
+	.loginbox{
+	min-width: 300px;
+    min-height:220px;
+    height:30%;
+    width: 65%;
+	top: 60%;
+	padding-top:20px;
+	}
+	h1{
+		font-size:22px;
+		text-align:left;
+		padding-bottom:0px;
+	}
+	p{
+		font-size:18px;
+		display:none;
+	}
+	.loginbox input{
+		margin-bottom: 0px;
+	}
+	.loginbox input[type="submit"] {
+		height:30px;
+	}
+}
+
+@media (min-height: 1441px){
+	#logo{
+		height: 55px;
+	}
+	.hcomp{
+		font-size:40px;
+	}
+}

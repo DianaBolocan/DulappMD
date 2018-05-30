@@ -1,0 +1,303 @@
+body{
+	background-image: url("clo.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;	
+	background-attachment: fixed;
+	background-size: cover;
+	padding:0;
+	margin:0;
+	font-family: 'Pacifico', cursive;
+
+	
+}
+
+.description{
+    background-color: white;
+    padding: 20px;
+    display: none;
+}
+.header{
+	background-color:white;
+	width:100%;
+	opacity:0.9;
+}
+
+.hcomp{
+	font-size: 20px;
+	color: pink;
+	display: inline-block;
+	padding:5px;
+	margin:0.5%;
+	
+}
+#logo{
+	height:30px;
+	margin-top:10px;
+	margin-left:10px;
+}
+
+    
+span:hover + .description {
+    display: block;
+	position: absolute;
+	z-index: -1;
+}
+.question{
+	border-style:double;
+	border-width: 5px 5px 5px 5px;
+	margin: 5px 5% 10px 5%;
+	border-radius:30px;
+	padding-bottom:10px;
+	color:#e76a6d;
+	width:20%;
+	display:inline-block;
+	background-color: #d9d9d9;
+	font-size: 14px;
+}
+
+input[type="text" i] {
+	font-size:13px;
+	padding:6px;
+	vertical-align:middle;
+	width:200px;
+	margin-left:6%;
+	margin-right:30px;
+	margin-bottom:10px;
+	border-radius:25px;
+}
+#subm{
+	color:#e76a6d;
+	border-radius:20px;
+	margin-left:10px;
+}
+
+#more{
+	height:30px;
+	margin:10px;
+}
+@media (max-height: 1440px) and (min-height: 1001px) {
+	#logo{
+		height: 55px;
+	}
+	.hcomp{
+		font-size:40px;
+	}
+	
+	.loginbox input[type=submit] {
+	    background-size: 30px 30px;
+		height: 30px;
+		width: 30px;
+		margin-top: 15px;
+	}
+	@media (min-width: 990px){
+		.loginbox input[type=text] {
+			margin-top:15px;
+			height:40px;
+		}
+		#more{
+			display:none;
+		}
+	}
+	@media (min-width: 660px) and (max-width:989px){
+		.loginbox input[type=text] {
+			display:none;
+		}
+		.loginbox input[type=submit] {
+			margin-top: 25px;
+		}
+		#more{
+			display:none;
+		}
+	}
+	@media (max-width: 659px){
+		.hcomp, .loginbox{
+			display:none;
+		}
+		#more{
+			margin-top: 25px;
+			float:right;
+		}
+		#logo{
+			margin:10px;
+		}
+		
+	}
+}
+@media (max-height: 1000px) and (min-height: 813px) {
+	#logo{
+		height: 40px;
+	}
+	.hcomp{
+		font-size:28px;
+	}
+	.loginbox{
+		margin-top:2%;
+	}
+	
+	@media(min-width: 805px){
+			#more{
+			display:none;
+		}
+	}
+	@media(max-width:804px)and (min-width: 484px){
+		.loginbox input[type=text]{
+			display:none;
+		}
+		.loginbox input[type=submit]{
+			margin-top:15px;
+		}
+		#more{
+			display:none;
+		}
+	}
+	@media(max-width: 483px){
+		.hcomp, .loginbox{
+			display:none;
+		}
+		#more{
+			float:right;
+			margin-top:15px;
+		}
+		#logo{
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+	}
+}
+
+
+@media (max-height: 812px)
+{
+	.loginbox{
+	margin-top:1.5%;
+	}
+	
+	@media (min-width: 744px)
+	{
+		#more{
+			display: none;
+		}
+	}
+	@media (max-width: 743px) and (min-width: 423px){
+		.loginbox input[type="text"]{
+			display: none;
+		}
+		.loginbox input[type="submit"] {
+			margin-top: 8px;
+		}
+		#more {
+			display: none;
+		}
+	}
+	@media (max-width: 422px) {
+		.hcomp{
+			display: none;
+		}
+		.loginbox { 
+			display: none;
+		}
+		#more {
+			margin-top: 15px;
+			float: right;
+			margin-right: 10px;
+			height: 25px;
+		}
+		#logo {
+			margin-bottom: 10px;
+			
+		}
+	}
+
+		
+		
+}
+
+
+
+
+@media (min-height: 1441px){
+	#logo{
+		height: 55px;
+	}
+	
+	.hcomp{
+		font-size:40px;
+	}
+	.loginbox input[type=text]{
+		height: 50px;
+		width: 400px;
+		font-size:25px;
+		
+	}
+	.loginbox{
+		margin-top:2%;
+	}
+	.loginbox input[type=submit]{
+		background-size: 35px 35px;
+		height:35px;
+		width:35px;
+	}
+	@media (min-width: 1084px){
+		#more{
+			display: none;
+		}
+	}
+	@media (max-width: 1083px) and (min-width: 658px){
+		.loginbox input[type=text]{
+			display:none;
+		}
+		.loginbox input[type=submit]{
+			margin-top:15px;
+		}
+		#more{
+			display: none;
+		}
+	}
+	
+	@media (max-width: 657px){
+		.loginbox, .hcomp{
+			display:none;
+		}
+		#more{
+			float:right;
+			margin-top:25px;
+			margin-right:10px;
+		}
+		#logo{
+			margin-bottom:10px;
+		}
+	}
+}
+/*                Headerul se termina aici   */
+@media (max-width: 1000px) and (min-width: 650px) {
+	.question{
+		font-size: 20px;
+	}
+	
+}
+
+@media (min-height: 1000px)  {
+	.question{
+		margin-top:50px;
+		padding-left: 8%;
+	}
+	#subm{
+	border-radius:20px;
+	height:30px;
+	font-size:20px;
+	float:right;
+	margin-right:30px;
+	}
+	
+}
+@media (max-width: 450px) and (min-width: 350px){
+	.question{
+		font-size:10px;
+	}
+}
+@media (max-width: 349px) {
+	.question{
+		font-size:8px;
+	}
+}
+
