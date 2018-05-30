@@ -1,7 +1,7 @@
 <?php
 	// This php only prints the Login
 	// Should be linked with the Controller
-	session_start();
+	//session_start();
 
 	echo '<!DOCTYPE html>
 			<html>

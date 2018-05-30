@@ -8,8 +8,7 @@ class Wardrobe{
 	private $createdAt;
 }
 
-	public function __construct($wardrobeID=NULL, $name=NULL, $tag=NULL, $createdAt=NULL) {
-		$this->wardrobeID = $wardrobeID;
+	public function __construct( $name, $tag, $createdAt) {
 		$this->name = $name;
 		$this->tag = $tag;
 		$this->createdAt = $createdAt;

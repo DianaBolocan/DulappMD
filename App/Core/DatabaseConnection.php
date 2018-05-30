@@ -12,7 +12,7 @@ class DatabaseConnection {
 		if(self::$conn->connect_errno){
 			echo "failed to connect to MySql: " . $conn->connect_error . "<br>";
 		} 
-		echo "Connected successfully. <br>";
+		//echo "Connected successfully. <br>";
 		return self::$conn;
 	}
 }

@@ -3,9 +3,9 @@
 	// Theoretically it should connect to the database and select all the wardrobes associated with the userId from the login method
 	// For each row fetched from the database it will print a html line for the wardrobe to be displayed in the page, meaning that the whole php file will be multiple lines of echo with method calls
 	// Should be linked with the Controller
-	session_start();
+	//session_start();
 	//$userId = $_SESSION['userId'];
-	$userId = 1;
+	//$userId = 1;
 
 	echo '<html>
 			<head>

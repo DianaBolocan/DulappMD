@@ -3,5 +3,9 @@
 		public function print(){
 			$this->view('DulapSelected');
 		}
+
+		public function main(){
+			
+		}
 	}
 ?>

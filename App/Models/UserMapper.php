@@ -16,8 +16,9 @@ class UserMapper {
 		$stmt = $this->db->prepare("INSERT INTO user (username,password,admin) values (?,?,?)");
 		$username=$user->getUsername();
 		$password=$user->getPassword();
+		$phash=sha1(sha1($password . "salt") . "salt");
 		$admin=$user->getAdmin();
-		if($stmt->bind_param("ssi", $username,$password,$admin))
+		if($stmt->bind_param("ssi", $username,$phash,$admin))
 			{
 				if($stmt->execute()){
 					$result = $stmt->get_result();
@@ -41,7 +42,7 @@ class UserMapper {
 			{
 				if($stmt->execute()){
 					$result = $stmt->get_result();
-					echo "Nr of records: ".mysqli_num_rows($result) . "<br>";
+					//echo "Nr of records: ".mysqli_num_rows($result) . "<br>";
 					if(mysqli_num_rows($result) == 1){
 						return true;
 					}
@@ -52,25 +53,45 @@ class UserMapper {
 		return false;
 	}
 
-	// Checks if a given pair of username/password exists in the database
+	// Checks if a given pair of username/password exists in the database(Login)
 	public function isValidUser($user) {
 		$stmt = $this->db->prepare("SELECT * FROM user where username=? and password=?");
 		echo "username: ".$user->getUsername();
 		echo "password: ". $user->getPassword();
 		$username= $user->getUsername();
 		$password =  $user->getPassword();
-		if($stmt->bind_param("ss", $username,$password))
-			{
-				if($stmt->execute()){
+		$phash=sha1(sha1($password . "salt") . "salt");
+		//echo "Phash:" . $phash . "<br>";
+		$encyptedPass= substr($phash, 0, 20);
+		if($stmt->bind_param("ss", $username,$encyptedPass))
+		{
+			if($stmt->execute())
+				{
 					$result = $stmt->get_result();
+					if($rowId = $result->fetch_row())
+						{
+							$userID = (int)$rowId[0];
+							echo "userID: " . $userID . "<br>";
+						}
+					else 
+						{
+							echo "No rows to fetch. <br>";
+						}
 					echo "Nr of records: ".mysqli_num_rows($result) . "<br>";
 					if(mysqli_num_rows($result) == 1){
-						return "exists";
+						return $userID;
 					}
 				}
 				else
-					echo "couldn't execute" . $mysqli->error;
+				{
+					echo "Couldn't execute stmt: " . $stmt->error . "<br>";
+				}
+		}
+		else
+			{
+				echo "Couldn't bind param for stmt: " . $stmt->error . "<br>";
 			}
-		return "doesn't exists";
+		//userName or password is wrong
+		return "wrong";
 	}
 }
