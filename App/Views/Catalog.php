@@ -83,27 +83,27 @@
 				<div class="item">
 						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="tShirt">
 						<p class="name"> Tricou1 Verde </p>
-						<a href="Form" class="linkForm">Modify</a><a href="Catalog/deleteItem" class="linkForm">Delete/</a>	
+						<a href="Form" class="linkForm">Modify</a><a href="Catalog/delete" class="linkForm">Delete/</a>	
 					</div>
 					<div class="item">
 						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="tShirt">
 						<p class="name"> Tricou2 Verde </p>
-						<a href="Form" class="linkForm">Modify</a><a href="Catalog/deleteItem" class="linkForm">Delete/</a>	
+						<a href="Form" class="linkForm">Modify</a><a href="Catalog/delete" class="linkForm">Delete/</a>	
 					</div>
 					<div class="item">
 						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="tShirt">
 						<p class="name"> Tricou3 Verde </p>
-						<a href="Form" class="linkForm">Modify</a><a href="Catalog/deleteItem" class="linkForm">Delete/</a>	
+						<a href="Form" class="linkForm">Modify</a><a href="Catalog/delete" class="linkForm">Delete/</a>	
 					</div>
 					<div class="item">
 						<img src="CSS Files/blackPants.png" alt="blackPants" class="BlackPants">
 						<p class="name"> Pantaloni1 Negri </p>
-						<a href="Form" class="linkForm">Modify</a><a href="Catalog/deleteItem" class="linkForm">Delete/</a>	
+						<a href="Form" class="linkForm">Modify</a><a href="Catalog/delete" class="linkForm">Delete/</a>	
 					</div>
 					<div class="item">
 						<img src="CSS Files/blackPants.png" alt="blackPants" class="BlackPants">
 						<p class="name"> Pantaloni2 Negri </p>
-						<a href="Form" class="linkForm">Modify</a><a href="Catalog/deleteItem" class="linkForm">Delete/</a>	
+						<a href="Form" class="linkForm">Modify</a><a href="Catalog/delete" class="linkForm">Delete/</a>	
 					</div>
 				</div>
 			  </body>

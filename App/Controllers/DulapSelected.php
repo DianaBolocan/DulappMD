@@ -8,7 +8,14 @@
 			$drawer = $this->model('Drawer');
 			$drawerMapper = $this->mapper('DrawerMapper');
 			$drawerMapper->save($drawer,2);
-			//header("Location: http://localhost/DulappMD/Public/DulapSelected");
+			//header('Location: http://localhost/DulappMD/Public/DulapSelected');
+		}
+
+		public function delete(){
+			$drawer = $this->model('Drawer');
+			$drawerMapper = $this->mapper('DrawerMapper');
+			//$drawerMapper->delete($drawer);
+			//header('Location: http://localhost/DulappMD/Public/DulapSelected');
 		}
 	}
 ?>

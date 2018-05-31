@@ -8,10 +8,10 @@
 			$this->db = DatabaseConnection::getInstance();
 		}
 
-		public function save($drawer,$wardrobeId){
+		public function save($drawer,$wardrobeID){
 			if($stmt = $this->db->prepare("SELECT COUNT(drawerId) FROM wd WHERE wardrobeId = ?"))
 			{
-				if($stmt->bind_param("i",$wardrobeId))
+				if($stmt->bind_param("i",$wardrobeID))
 				{
 					if($stmt->execute())
 					{
@@ -32,7 +32,7 @@
 												echo "DrawerId fetched: " . $drawer->getDrawerID() . "<br>";
 												if ($stmtLink = $this->db->prepare("INSERT INTO wd (wardrobeId,drawerId) VALUES (?,?)"))
 												{
-													if($stmtLink->bind_param("ii",$wardrobeId,$drawer->getDrawerID()))
+													if($stmtLink->bind_param("ii",$wardrobeID,$drawer->getDrawerID()))
 													{
 														if($stmtLink->execute()) {
 															echo "Successfully added new drawer. <br>";
