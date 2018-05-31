@@ -92,6 +92,6 @@ class UserMapper {
 				echo "Couldn't bind param for stmt: " . $stmt->error . "<br>";
 			}
 		//userName or password is wrong
-		return "wrong";
+		return 'false';
 	}
 }

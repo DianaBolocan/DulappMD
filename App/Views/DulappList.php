@@ -45,6 +45,7 @@
 					<form  class="loginbox" action="Catalog" role="search">
 							<input type="text" name="" placeholder="Enter your search">
 							<input type="submit" name value="">
+					</form>
 				</header>
 				<br>
 				<p> Dulap Name</p>

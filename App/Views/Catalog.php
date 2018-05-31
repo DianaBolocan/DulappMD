@@ -3,7 +3,7 @@
 	// Theoretically it should connect to the database and select all the clothes associated with the search/drawerId of the userID
 	// For each row fetched from the database it will print a html line for the clothes to be displayed in the page, meaning that the whole php file will be multiple lines of echo with method calls
 	// Should be linked with the Controller
-	session_start();
+	//session_start();
 
 	echo '<!DOCTYPE html>
 			<html>
@@ -40,6 +40,7 @@
 				<form  class="searchBar" action="#" role="search">
 								<input type="text" name="" placeholder="Enter your search">
 								<input type="submit" name value="">
+				</form>
 				</header >
 				<br>
 				<div id="leftSection">

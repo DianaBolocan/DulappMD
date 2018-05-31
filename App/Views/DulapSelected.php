@@ -3,9 +3,9 @@
 	// Theoretically it should connect to the database and select all the drawers associated with the wardrobeId
 	// For each row fetched from the database it will print a html line for the drawer to be displayed in the page, meaning that the whole php file will be multiple lines of echo with method calls
 	// Should be linked with the Controller
-	session_start();
+	//session_start();
 	//$wardrobeId = $_SESSION['wardrobeId'];
-	$wardrobeId = 1;
+	//$wardrobeId = 1;
 	echo '<html>
 			<head>
 				<meta charset="utf-8">
@@ -46,6 +46,7 @@
 					<form  class="searchBar" action="Catalog" role="search">
 							<input type="text" name="" placeholder="Enter your search">
 							<input type="submit" name value="">
+					</form>
 				</header>
 				<br>
 				<div class="dulap">
@@ -61,6 +62,10 @@
 					</div>
 					<img src="CSS Files/Dulap2.png" alt="Dulap" id="dulap">
 				</div>
+				<form action="DulapSelected/main" method="post">
+						New name: <input type="text" name="newName"><br />
+						<input type="submit" name="Update" value="Update wardrobe name">
+				</form> 
 				<br>
 				<div class="buttons">	
 					<a href="Form"><img src="CSS Files/umeras.png" alt="addItem" id="addItem"></a>

@@ -8,6 +8,45 @@
 			$this->db = DatabaseConnection::getInstance();
 		}
 
+		public function selectFromWardrobe($wardrobeID){
+		$sessionKey=0;
+		$stmt = $this->db->prepare("select * from drawer d join wd on d.drawerID=wd.drawerID where wd.wardrobeID=?");
+		if($stmt->bind_param("i", $wardrobeID))
+			{
+				if($stmt->execute()){
+					$result = $stmt->get_result();
+					$ids= array();
+					while($row = $result->fetch_row())
+					{
+						$drawerId = (int)$row[0];
+						array_push($ids, $drawerId);
+						echo " DrawerId: " . $drawerId . ",";
+
+						$drawerKey = (string)$row[1];
+						echo " DrawerKey: " . $drawerKey . ",";
+						
+						$createdAt = (string)$row[2];
+						echo " DrawerCreatedAt: " . $createdAt . "<br>";	
+
+						echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
+						$sessionKey=$sessionKey+1;
+						
+					}
+					$_SESSION["drawerIDs"]=$ids;
+					
+				}
+				else
+					echo "couldn't execute" . $mysqli->error;
+			}
+		else
+			{
+				echo "Couldn't bind params for stmt: " . $stmt->error . "<br>";
+			}
+		if($sessionKey>=1)
+			return true;
+		return false;
+	}
+	
 		public function save($drawer,$wardrobeID){
 			if($stmt = $this->db->prepare("SELECT COUNT(drawerId) FROM wd WHERE wardrobeId = ?"))
 			{
