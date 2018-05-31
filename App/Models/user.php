@@ -35,6 +35,13 @@
 			$this->admin = $admin;
 		}
 
+		public function getUserID(){
+			return $this->userID;
+		}
+
+		public function setUserID($userID){
+			$this->userID = $userID;
+		}
 
 		//	public function checkUser(){
 		//		echo 'A mers: ' . $this->username . ' ' . $this->password;

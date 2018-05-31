@@ -125,5 +125,13 @@
 		public function setValue($value){
 			$this->value = $value;
 		}
+
+		public function getItemID(){
+			return $this->itemID;
+		}
+
+		public function setItemID($itemID){
+			$this->itemID = $itemID;
+		}
 	}
 ?>

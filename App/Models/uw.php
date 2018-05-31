@@ -4,9 +4,9 @@
 		private $userID;
 		private $wardrobeID;
 
-		public function __construct($userID, $wardrobeID) {
-			$this->userID = $userID;
-			$this->wardrobeID = $wardrobeID;	
+		public function __construct() {
+			$this->userID = NULL;
+			$this->wardrobeID = NULL;	
 		}
 	}
 ?>

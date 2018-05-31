@@ -35,5 +35,13 @@
 		public function setCreatedAt($createdAt){
 			$this->createdAt = $createdAt;
 		}
+
+		public function getWardrobeID(){
+			return $this->wardrobeID;
+		}
+
+		public function setWardrobeID($wardrobeID){
+			$this->wardrobeID = $wardrobeID;
+		}
 	}
 ?>
