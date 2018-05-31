@@ -14,20 +14,20 @@
 		private $updatedAt;
 		private $value;
 
-		public function __construnct($brand, $color, $createdAt, $extras, $itemID, $itemKey, $material, $season, $size, $state, $type, $updatedAt, $value){
-			$this->brand = $brand;
-			$this->color = $color;
-			$this->createdAt = $createdAt;
-			$this->extras = $extras;
-			$this->itemID = $itemID;
-			$this->itemKey = $itemKey;
-			$this->material = $material;
-			$this->season = $season;
-			$this->size = $size;
-			$this->state = $state;
-			$this->type = $type;
-			$this->updatedAt = $updatedAt;
-			$this->value = $value;
+		public function __construct(){
+			$this->brand = NULL;
+			$this->color = NULL;
+			$this->createdAt = NULL;
+			$this->extras = NULL;
+			$this->itemID = NULL;
+			$this->itemKey = NULL;
+			$this->material = NULL;
+			$this->season = NULL;
+			$this->size = NULL;
+			$this->state = NULL;
+			$this->type = NULL;
+			$this->updatedAt = NULL;
+			$this->value = NULL;
 		}
 
 		public function getBrand(){

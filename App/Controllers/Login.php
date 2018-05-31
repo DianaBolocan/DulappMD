@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-require_once(__DIR__."/../Models/User.php");
-require_once(__DIR__."/../Models/UserMapper.php");
-
 	class Login extends Controller{
 		public function print(){
 			$this->view('Login');
@@ -15,10 +12,10 @@ require_once(__DIR__."/../Models/UserMapper.php");
     			if(isset($_POST['Login'])){
         			echo "User tries to login ". $_POST['username'] . ' ' . $_POST['password'] . "<br>";
         		}
-        		$loginUser = new User();
+        		$loginUser = $this->model('User');
         		$loginUser ->setUsername($_POST['username']);
         		$loginUser ->setPassword($_POST['password']);
-        		$userMapper = new UserMapper();
+        		$userMapper = $this->mapper('UserMapper');
 
         		$loginResult=$userMapper ->isValidUser($loginUser);
         		if($loginResult=="false")

@@ -6,10 +6,10 @@
 		private $tag;
 		private $createdAt;
 
-		public function __construct( $name, $tag, $createdAt) {
-			$this->name = $name;
-			$this->tag = $tag;
-			$this->createdAt = $createdAt;
+		public function __construct() {
+			$this->name = NULL;
+			$this->tag = NULL;
+			$this->createdAt = NULL;
 		}
 
 		public function getName(){

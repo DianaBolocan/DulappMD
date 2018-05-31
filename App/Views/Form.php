@@ -48,7 +48,7 @@
 				<br>
 				
 				
-			<form name="quiz" action="addItem" method="POST">
+			<form name="quiz" action="Form/addItem" method="POST">
 					<div class="question">
 						<h2>Color:</h2>
 							<input type="checkbox" name="r-c" value="Red">Red<br>

@@ -5,10 +5,10 @@
 		private $password;
 		private $admin;
 
-		public function __construnct($username, $password, $admin){
-			$this->username = $username;
-			$this->password = $password;
-			$this->admin = $admin;
+		public function __construct(){
+			$this->username = NULL;
+			$this->password = NULL;
+			$this->admin = NULL;
 		}
 
 		public function getUsername() {

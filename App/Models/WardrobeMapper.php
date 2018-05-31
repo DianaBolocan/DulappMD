@@ -65,5 +65,13 @@ class WardrobeMapper {
 		return false;
 
 	}
+
+	public function save($wardrobe){
+		return false;
+	}
+
+	public function delete($wardrobe){
+		return false;
+	}
 }
 ?>

@@ -5,10 +5,10 @@
 		private $drawerKey;
 		private $createdAt;
 
-		public function __construct($drawerID, $drawerKey, $createdAt) {
-			$this->drawerID = $drawerID;
-			$this->drawerKey = $drawerKey;
-			$this->createdAt = $createdAt;
+		public function __construct() {
+			$this->drawerID = NULL;
+			$this->drawerKey = NULL;
+			$this->createdAt = NULL;
 		}
 
 		public function getDrawerKey(){
@@ -25,6 +25,14 @@
 
 		public function setCreatedAt($createdAt){
 			$this->createdAt = $createdAt;
+		}
+
+		public function getDrawerID(){
+			return $this->drawerID;
+		}
+
+		public function setDrawerID($drawerID){
+			$this->drawerID = $drawerID;
 		}
 	}
 ?>

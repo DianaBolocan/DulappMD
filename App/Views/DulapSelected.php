@@ -64,9 +64,9 @@
 				<br>
 				<div class="buttons">	
 					<a href="Form"><img src="CSS Files/umeras.png" alt="addItem" id="addItem"></a>
-					<a href="addDrawer"><img src="CSS Files/plus(new).png" alt="addDrawer" id="addDrawer"></a>
-					<a href="addLockedDrawer"><img src="CSS Files/plusLock.png" alt="addLockedDrawer" id="addLockedDrawer"></a>
-					<a href="deleteDrawer"><img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer"></a>
+					<a href="DulapSelected/save"><img src="CSS Files/plus(new).png" alt="addDrawer" id="addDrawer"></a>
+					<a href="DulapSelected/addLockedDrawer"><img src="CSS Files/plusLock.png" alt="addLockedDrawer" id="addLockedDrawer"></a>
+					<a href="DulapSelected/deleteDrawer"><img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer"></a>
 				</div>
 			</body>
 		</html>';
