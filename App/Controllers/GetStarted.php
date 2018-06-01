@@ -1,6 +1,4 @@
 <?php
-	require_once(__DIR__."/../Models/User.php");
-	require_once(__DIR__."/../Models/UserMapper.php");
 
 	class GetStarted extends Controller{
 
@@ -12,7 +10,7 @@
     			if($_POST){
         			if(isset($_POST['Register'])){
             			//echo "User tries to register ". $_POST['username'] . ' ' . $_POST['password'] . "<br>";
-                		$loginUser = new User();
+                        $loginUser = $this->model('user');
                 		$loginUser ->setUsername($_POST['username']);
                 		$loginUser ->setPassword($_POST['password']);
                 		$loginUser ->setAdmin(0);
