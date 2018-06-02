@@ -43,62 +43,32 @@
 				<a href="HomePage">
 					<h1 class="hcomp"> Log Out </h1> 
 				</a>
-					<img src="CSS Files/more.png"id="more" alt="More"></a>
+					<img src="CSS Files/more.png" id="more" alt="More"></a>
 				</header >
 				<br>
 				
 				
-			<form name="quiz" action="Form/addItem" method="POST">
-					<div class="question">
-						<h2>Color:</h2>
-							<input type="checkbox" name="r-c" value="Red">Red<br>
-							<input type="checkbox" name="r-c" value="Green">Green <br>
-							<input type="checkbox" name="r-c" value="Pink">Pink<br>
-							<input type="checkbox" name="r-c" value="Black">Black <br>
-					</div>	
-					<div class="question">
-						<h2>Size:</h2>
-							<input type="checkbox" name="r-s" value="XS">XS<br>
-							<input type="checkbox" name="r-s" value="S">S<br>
-							<input type="checkbox" name="r-s" value="M">M<br>
-							<input type="checkbox" name="r-s" value="L">L <br>
-						
-					</div>	
-					<div class="question">
-						<h2>Brand:</h2>
-							<input type="radio" name="r-b" value="H&M">H&M<br>
-							<input type="radio" name="r-b" value="Zara">Zara<br>
-							<input type="radio" name="r-b" value="Pull&Bear">Pull&Bear<br>
-							<input type="radio" name="r-b" value="Bershka">Bershka <br>
-							
-					</div>	
-					<div class="question">
-						<h2>State:</h2>
-							<input type="checkbox" name="r-ls" value="New">New<br>
-							<input type="checkbox" name="r-ls" value="Second hand">Second hand<br>
-							<input type="checkbox" name="r-ls" value="Third hand">Third hand<br>
-							<input type="checkbox" name="r-ls" value="Borrowed">Borrowed <br>
-							
-					</div>	
-					<div class="question">
-						<h2>Material:</h2>
-							<input type="checkbox" name="r-f" value="Cotton">Cotton<br>
-							<input type="checkbox" name="r-f" value="Silk">Silk<br>
-							<input type="checkbox" name="r-f" value="Polyester">Polyester<br>
-							<input type="checkbox" name="r-f" value="Wool">Wool <br>
-							
-					</div>	
-					<div class="question">
-						<h2>Season:</h2>
-							<input type="checkbox" name="r-ss" value="Spring">Spring<br>
-							<input type="checkbox" name="r-ss" value="Summer">Summer<br>
-							<input type="checkbox" name="r-ss" value="Autumn">Autumn<br>
-							<input type="checkbox" name="r-ss" value="Winter">Winter <br>		
-					</div>
-					<div class="others">	
-					<input type="text" name="extras" placeholder="Other characteristics">
-					</div>
-					<button type="submit" id="subm">Done</button>						
+				<form class="question" name="quiz" action="Form/save" method="POST">
+					Type:
+					<select name="type">
+						<option value="Outdoor"> Outdoor </option>
+						<option value="Dress"> Dress </option>
+						<option value="Top"> Top </option>
+						<option value="Pants"> Pants </option>
+						<option value="Shoes"> Shoes </option>
+						<option value="Skirt"> Skirt </option>
+						<option value="Accessory"> Accessory </option>
+					</select> <br>
+					Color: <input type="text" name="color" placeholder="Color"> <br>
+					Size: <input type="text" name="size" placeholder="Size"> <br>				
+					Brand: <input type="text" name="brand" placeholder="Brand"> <br>
+					State: <input type="text" name="state" placeholder="State">	<br>
+					Material: <input type="text" name="material" placeholder="Material"> <br>			
+					Season: <input type="text" name="season" placeholder="Season"> <br>
+					Value: <input type="text" name="value" placeholder="Value"> <br>
+					Key: <input type="text" name="key" placeholder="Key"> <br>
+					Extras: <input type="text" name="extras" placeholder="Other characteristics"> <br>
+					<button type="submit" name="AddItem" id="subm">Done</button>						
 				</form>
 				</body>
 			</html>';

@@ -48,7 +48,63 @@
 	}
 	
 		public function save($item,$drawerID){
+			if($stmt = $this->db->prepare("INSERT INTO item (type,color,size,material,value,itemKey,brand,state,season,extras,createdAt,updatedAt) VALUES (?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)"))
+			{
+				if($stmt->bind_param("ssssssssss",$item->getType(),$item->getColor(),$item->getSize(),$item->getMaterial(),$item->getValue(),$item->getItemKey(),$item->getBrand(),$item->getState(),$item->getSeason(),$item->getExtras()))
+				{
+					if($stmt->execute())
+					{
+						echo "New item inserted. <br>";
+						if($result = $this->db->query("SELECT itemID from item ORDER BY createdAt DESC"))
+						{
+							if($rowId = $result->fetch_row())
+							{
+								$item->setItemID((int)$rowId[0]);
+								echo "Item id: " . $item->getItemID() . "<br>";
+								if($stmtLink = $this->db->prepare("INSERT INTO di (drawerID,itemID) VALUES (?,?)"))
+								{
+									if($stmtLink->bind_param("ii",$drawerID,$item->getItemID()))
+									{
+										if($stmtLink->execute())
+										{
+											echo "Successfully added new item. <br>";
+											$stmtLink->close();
+											return true;
+										} else
+										{
+											error_log("Couldn't execute stmtLink: " . $stmtLink->eror,3,"errors.txt");
+										}
+									} else 
+									{
+										error_log("Couldn't bind param for link: " . $stmtLink->error,3,"errors.txt");
+									}
+								} else
+								{
+									error_log("Could't prepare stmtLink: " . $this->db->error,3,"errors.txt");
+								}
+							} else
+							{
+								error_log("No rows to be fetch for id.",3,"errors.txt");
+							}
+						} else
+						{
+							error_log("Couldn't execute query: " . $this->db->error,3,"errors.txt");
+						}
+					} else
+					{
+						error_log("Couldn't execute statement: " . $stmt->error,3,"errors.txt");
+					}
+				} else 
+				{
+					error_log("Couldn't prepare param: " . $stmt->error,3,"errors.txt");
+				}
+			} else
+			{
+				error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
+			}
 
+			$stmt->close();
+			return false;
 		}
 
 		public function delete($item){
@@ -61,15 +117,15 @@
 						return true;
 					} else
 					{
-						error_log("Couldn't execute the stmt: " . $stmt->error);
+						error_log("Couldn't execute the stmt: " . $stmt->error,3,"errors.txt");
 					}
 				} else
 				{
-					error_log("Couldn't bind params for stmt: " . $stmt->error);
+					error_log("Couldn't bind params for stmt: " . $stmt->error,3,"errors.txt");
 				}
 			} else
 			{
-				error_log("Couldn't prepare stmt: " . $this->db->error);
+				error_log("Couldn't prepare stmt: " . $this->db->error,3,"errors.txt");
 			}
 
 			$stmt->close();
