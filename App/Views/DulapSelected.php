@@ -43,9 +43,9 @@
 					<img src="CSS Files/more.png" id="more">
 					</a>
 					
-					<form  class="searchBar" action="Catalog" role="search">
-							<input type="text" name="" placeholder="Enter your search">
-							<input type="submit" name value="">
+					<form  class="searchBar" action="DulapSelected/main" method="post" role="search">
+							<input type="text" name="searchParams" placeholder="Enter your search">
+							<input type="submit" name="searchAfter" value="">
 					</form>
 				</header>
 				<br>
