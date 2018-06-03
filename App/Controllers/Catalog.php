@@ -24,7 +24,7 @@
 			$itemMapper = $this->model('ItemMapper');
 			$item->setItemID(7); //itemID
 			$itemMapper->delete($item);
-			header('Location: http://localhost/DulappMD/Public/Catalog')
+			header('Location: http://localhost/DulappMD/Public/Catalog');
 		}
 	}
 ?>
