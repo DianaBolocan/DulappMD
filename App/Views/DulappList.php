@@ -3,7 +3,10 @@
 	// Theoretically it should connect to the database and select all the wardrobes associated with the userId from the login method
 	// For each row fetched from the database it will print a html line for the wardrobe to be displayed in the page, meaning that the whole php file will be multiple lines of echo with method calls
 	// Should be linked with the Controller
-	//session_start();
+	if(!isset($_SESSION)) 
+    { 
+		session_start();
+	}
 	//$userId = $_SESSION['userId'];
 	//$userId = 1;
 
@@ -52,8 +55,21 @@
 				<br>
 				<p> Dulap Name</p>
 				<img src="CSS Files/leftArrow.png" alt="switchWardrobeLeft" id="leftArrow" class="arrow">
-				<img src="CSS Files/rightArrow.png" alt="switchWardrobeRight" id="rightArrow" class="arrow">
-				<a href="DulapSelected"><img src="CSS Files/Dulap2.png" alt="Dulap" id="dulap"></a>
+				<img src="CSS Files/rightArrow.png" alt="switchWardrobeRight" id="rightArrow" class="arrow">';
+				if(sizeof($_SESSION["wardrobeIDs"])==0)
+					echo 'The current user has no wardrobe';
+				else{
+					for($i=0;$i<sizeof($_SESSION["wardrobeIDs"]);$i++)
+					{
+						//echo $_SESSION["wardrobeIDs"][$i];
+						//$imgSrc="<img src='CSS Files/Dulap2.png' alt='Dulap' id='dulap'></a>";
+						$imgSrc="<img src='CSS Files/Dulap2.png' alt='Dulap' id='dulap'></a>";
+						echo "<a href='" . "http://localhost/DulappMD/Public/DulapSelected?wardrobeID=" .
+						 $_SESSION["wardrobeIDs"][$i] . "'>" . $imgSrc . "<br>";
+						//<a href="DulapSelected"><img src="CSS Files/Dulap2.png" alt="Dulap" id="dulap"></a>
+					}
+				}
+	echo '
 				<div class="buttons">
 					<a href="addWardrobe"><img src="CSS Files/plus(new).png" alt="addDrawer" id="addDrawer"></a>
 					<a href="deleteDrawer"><img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer"></a>

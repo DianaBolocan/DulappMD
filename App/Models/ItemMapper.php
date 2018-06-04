@@ -29,7 +29,7 @@
 							$createdAt = (string)$row[9];
 							echo " CreatedAt: " . $createdAt . "<br>";	
 
-							//echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
+							echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
 							$sessionKey=$sessionKey+1;
 							
 						}

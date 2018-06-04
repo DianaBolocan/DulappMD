@@ -26,7 +26,7 @@ class WardrobeMapper {
 						$wardrobeId = (int)$row[0];
 						
 						array_push($ids, $wardrobeId);
-						echo " WardrobeId: " . $wardrobeId . ",";
+						/*echo " WardrobeId: " . $wardrobeId . ",";
 
 						$name = (string)$row[1];
 						echo " WardrobeName: " . $name . ",";
@@ -35,6 +35,7 @@ class WardrobeMapper {
 						echo " WardrobeTag: " . $tag . ",";	
 
 						echo "<a href='".'http://localhost/DulappMD/Public/DulapSelected?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
+						*/
 						$sessionKey=$sessionKey+1;
 						
 					}

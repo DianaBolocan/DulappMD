@@ -52,14 +52,16 @@ span:hover + .description {
 }
 
 #dulap{
-	width: 60%;
-	height: 70%;
-	position: absolute;
-	left: 20%;
-	bottom:3%;
-	padding: 0;
-	min-width: 250px;
-	min-height: 250px;
+	/*width: 60%;
+	height: 70%;*/
+	width: 200px;
+	height: 200px;
+	position: static;
+	/*left: 200px;
+	/*bottom:3%;*/
+	padding: 5%;
+	/*min-width: 250px;
+	min-height: 250px;*/
 	
 }
 
