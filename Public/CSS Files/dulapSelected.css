@@ -103,6 +103,10 @@ span:hover + .description {
 	margin-left: 10%;
 }
 
+.update input[type=text]{
+	font-size:13px;
+	font-color: blue;
+}
 .searchBar input[type=text]{
 	font-size:13px;
 	padding:6px;

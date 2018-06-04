@@ -62,7 +62,7 @@
 					</div>
 					<img src="CSS Files/Dulap2.png" alt="Dulap" id="dulap">
 				</div>
-				<form action="DulapSelected/main" method="post">
+				<form class="update" action="DulapSelected/main" method="post">
 						New name: <input type="text" name="newName"><br />
 						<input type="submit" name="Update" value="Update wardrobe name">
 				</form> 
