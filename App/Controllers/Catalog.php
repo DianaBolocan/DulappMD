@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	if(!(isset($_SESSION["userID"]))){
+		echo 'You are not logged in!';
+	}
+
 	class Catalog extends Controller{
 		public function print(){
 			$this->view('Catalog');
@@ -22,7 +26,7 @@
 		public function delete(){
 			$item = $this->model('Item');
 			$itemMapper = $this->model('ItemMapper');
-			$item->setItemID(7); //itemID
+			$item->setItemID(7); //$_SESSION["itemID"]
 			$itemMapper->delete($item);
 			header('Location: http://localhost/DulappMD/Public/Catalog');
 		}

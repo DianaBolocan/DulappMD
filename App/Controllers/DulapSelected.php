@@ -27,10 +27,14 @@
 		}
 
 		public function save(){
-			$drawer = $this->model('Drawer');
-			$drawerMapper = $this->mapper('DrawerMapper');
-			$drawerMapper->save($drawer,2);
-			header('Location: http://localhost/DulappMD/Public/DulapSelected');
+			if(isset($_SESSION['userID'])){
+				$drawer = $this->model('Drawer');
+				$drawerMapper = $this->mapper('DrawerMapper');
+				$drawerMapper->save($drawer,$_SESSION['userID']);
+				header('Location: http://localhost/DulappMD/Public/DulapSelected');
+			} else {
+				error_log("There was no userID.",3,'errors.txt');
+			}
 		}
 
 		public function delete(){
