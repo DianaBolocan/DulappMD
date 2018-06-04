@@ -72,7 +72,7 @@
 											return true;
 										} else
 										{
-											error_log("Couldn't execute stmtLink: " . $stmtLink->eror,3,"errors.txt");
+											error_log("Couldn't execute stmtLink: " . $stmtLink->error,3,"errors.txt");
 										}
 									} else 
 									{

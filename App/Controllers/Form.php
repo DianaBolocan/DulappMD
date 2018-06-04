@@ -1,12 +1,9 @@
 <?php
-	session_start();
+	/*session_start();
 	if(!(isset($_SESSION["userID"]))){
 		header('Location: http://localhost/DulappMD/Public/HomePage');
 		echo 'You are not logged in!';
-	}
-	if(!isset($_SESSION['drawerID'])){
-		echo "There is no drawerID";
-	}
+	}*/
 
 	class Form extends Controller{
 		public function print(){
@@ -28,11 +25,15 @@
 					$item->setType($_POST['type']);
 					$item->setValue($_POST['value']);
 					$itemMapper = $this->mapper('ItemMapper');
-					if($itemMapper->save($item,19)) //drawerID
+					$drawerID = (int)$_POST['drawerID'];
+					echo $drawerID;
+					if($itemMapper->save($item,$drawerID))
 					{
+						echo "true";
 						header("Location: http://localhost/DulappMD/Public/DulapSelected");
 					}
 					else {
+						echo "false";
 						header("Location: http://localhost/DulappMD/Public/Form");
 					}
 				}
