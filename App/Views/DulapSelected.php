@@ -45,7 +45,7 @@
 					
 					<form  class="searchBar" action="DulapSelected/main" method="post" role="search">
 							<input type="text" name="searchParams" placeholder="Enter your search">
-							<input type="submit" name="searchAfter" value="">
+							<input type="submit" name="searchAfterW" value="">
 					</form>
 				</header>
 				<br>

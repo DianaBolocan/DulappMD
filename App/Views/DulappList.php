@@ -42,10 +42,12 @@
 						pe el. Cauta in search bar obiectul pe care il doresti in toate dulapurile tale.</div>
 					<a href="Logout"><h1 class="hcomp"> Log Out </h1></a>
 					<img id="more" src="CSS Files/more.png">
-					<form  class="loginbox" action="Catalog" role="search">
-							<input type="text" name="" placeholder="Enter your search">
-							<input type="submit" name value="">
+					
+					<form  class="loginbox" action="DulappList/main" method="post" role="search">
+							<input type="text" name="searchParams" placeholder="Enter your search">
+							<input type="submit" name="searchAfterU" value="">
 					</form>
+
 				</header>
 				<br>
 				<p> Dulap Name</p>

@@ -132,7 +132,8 @@
 			return false;
 		}
 
-		public function searchAfter($wardrobeID){
+		//search in the specified wardrobe
+		public function searchAfterW($wardrobeID){
 			if($stmt = $this->db->prepare("SELECT i.itemID,type, color, size, material, value, brand, extras, season, state
 																FROM item i join di on i.itemID=di.itemID
 																join drawer d on di.drawerID=d.drawerID
@@ -141,6 +142,55 @@
 																 WHERE w.wardrobeID = ?"))
 			{
 				if($stmt->bind_param("i",$wardrobeID))
+				{
+					if($stmt->execute()){
+						$result = $stmt->get_result();
+						$resultStringArray=array();
+						while($row = $result->fetch_row())
+						{ 
+							$stringRow="";
+							//echo ("THIS OBJECT:") . "<br>";
+							for($i=0;$i<sizeof($row);$i++)
+								if($row[$i]!=NULL)
+									{
+										$row[$i] = strtolower($row[$i]);
+										//echo $row[$i] . "<br>";
+										$stringRow=$stringRow . '!' . $row[$i]. '!';
+									}
+							//echo $stringRow . "<br>";
+							array_push($resultStringArray,$stringRow);
+							
+						}
+						return $resultStringArray;
+					}
+					else
+					{
+						error_log("Couldn't execute the stmt: " . $stmt->error,3,"errors.txt");
+					}
+				} else
+				{
+					error_log("Couldn't bind params for stmt: " . $stmt->error,3,"errors.txt");
+				}
+			} else
+			{
+				error_log("Couldn't prepare stmt: " . $this->db->error,3,"errors.txt");
+			}
+
+			return false;	
+		}
+
+		//search in all wardrobes for the specified user
+		public function searchAfterU($userID){
+			if($stmt = $this->db->prepare("SELECT i.itemID,type, color, size, material, value, brand, extras, season, state
+																FROM item i join di on i.itemID=di.itemID
+																join drawer d on di.drawerID=d.drawerID
+																join wd on d.drawerID=wd.drawerID
+																join wardrobe w on wd.wardrobeID=w.wardrobeID
+																join uw on uw.wardrobeID=w.wardrobeID
+																join user u on u.userID= uw.userID
+																 WHERE u.userID = ?"))
+			{
+				if($stmt->bind_param("i",$userID))
 				{
 					if($stmt->execute()){
 						$result = $stmt->get_result();

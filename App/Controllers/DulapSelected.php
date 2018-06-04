@@ -50,9 +50,9 @@
 					$selectResult=$wardrobeMapper->updateWardrobeName($wardrobeID,$newName);
     				//header('Location: '.' http://localhost/DulappMD/Public/DulapSelected');
     			}
-    			if(isset($_POST['searchAfter'])){
+    			if(isset($_POST['searchAfterW'])){
     				$itemMapper = $this->mapper('ItemMapper');
-    				$allItems=$itemMapper->searchAfter($wardrobeID);
+    				$allItems=$itemMapper->searchAfterW($wardrobeID);
     				$searchParams=($_POST['searchParams']);
     				$searchParams = strtolower($searchParams);
     				$params = explode(" ", $searchParams); //parsing received params through post method
