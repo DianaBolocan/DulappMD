@@ -1,4 +1,13 @@
 <?php
+	session_start();
+	if(!(isset($_SESSION["userID"]))){
+		header('Location: http://localhost/DulappMD/Public/HomePage');
+		echo 'You are not logged in!';
+	}
+	if(!isset($_SESSION['drawerID'])){
+		echo "There is no drawerID";
+	}
+
 	class Form extends Controller{
 		public function print(){
 			$this->view('Form');

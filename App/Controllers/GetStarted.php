@@ -1,5 +1,4 @@
 <?php
-
 	class GetStarted extends Controller{
 
 		public function print(){
