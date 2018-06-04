@@ -10,38 +10,44 @@
 
 		public function selectFromDrawer($drawerID){
 		$sessionKey=0;
-		$stmt = $this->db->prepare("select * from item i join di on di.itemID=i.itemID where di.drawerID=?");
-		if($stmt->bind_param("i", $drawerID))
-			{
-				if($stmt->execute()){
-					$result = $stmt->get_result();
-					$ids= array();
-					while($row = $result->fetch_row())
-					{
-						$itemId = (int)$row[0];
-						array_push($ids, $itemId);
-						echo " itemId: " . $itemId . ",";
+		if($stmt = $this->db->prepare("select * from item i join di on di.itemID=i.itemID where di.drawerID=?"))
+		{
+			if($stmt->bind_param("i", $drawerID))
+				{
+					if($stmt->execute()){
+						$result = $stmt->get_result();
+						$ids= array();
+						while($row = $result->fetch_row())
+						{
+							$itemId = (int)$row[0];
+							array_push($ids, $itemId);
+							echo " itemId: " . $itemId . ",";
 
-						$color = (string)$row[2];
-						echo " ItemColor: " . $color . ",";
-						
-						$createdAt = (string)$row[9];
-						echo " CreatedAt: " . $createdAt . "<br>";	
+							$color = (string)$row[2];
+							echo " ItemColor: " . $color . ",";
+							
+							$createdAt = (string)$row[9];
+							echo " CreatedAt: " . $createdAt . "<br>";	
 
-						//echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
-						$sessionKey=$sessionKey+1;
+							//echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
+							$sessionKey=$sessionKey+1;
+							
+						}
+						$_SESSION["itemIDs"]=$ids;
 						
 					}
-					$_SESSION["itemIDs"]=$ids;
-					
+					else
+						error_log("Couldn't execute statement: " . $stmt->error,3,"errors.txt");
 				}
-				else
-					echo "couldn't execute" . $mysqli->error;
-			}
+			else
+				{
+					error_log("Couldn't bind params for stmt: " . $stmt->error,3,"errors.txt");
+				}
+		}
 		else
 			{
-				echo "Couldn't bind params for stmt: " . $stmt->error . "<br>";
-			}
+				error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
+			}	
 		if($sessionKey>=1)
 			return true;
 		return false;

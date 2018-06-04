@@ -10,37 +10,43 @@
 
 		public function selectFromWardrobe($wardrobeID){
 		$sessionKey=0;
-		$stmt = $this->db->prepare("select * from drawer d join wd on d.drawerID=wd.drawerID where wd.wardrobeID=?");
-		if($stmt->bind_param("i", $wardrobeID))
-			{
-				if($stmt->execute()){
-					$result = $stmt->get_result();
-					$ids= array();
-					while($row = $result->fetch_row())
-					{
-						$drawerId = (int)$row[0];
-						array_push($ids, $drawerId);
-						echo " DrawerId: " . $drawerId . ",";
+		if($stmt = $this->db->prepare("select * from drawer d join wd on d.drawerID=wd.drawerID where wd.wardrobeID=?"))
+		{
+			if($stmt->bind_param("i", $wardrobeID))
+				{
+					if($stmt->execute()){
+						$result = $stmt->get_result();
+						$ids= array();
+						while($row = $result->fetch_row())
+						{
+							$drawerId = (int)$row[0];
+							array_push($ids, $drawerId);
+							echo " DrawerId: " . $drawerId . ",";
 
-						$drawerKey = (string)$row[1];
-						echo " DrawerKey: " . $drawerKey . ",";
-						
-						$createdAt = (string)$row[2];
-						echo " DrawerCreatedAt: " . $createdAt . "<br>";	
+							$drawerKey = (string)$row[1];
+							echo " DrawerKey: " . $drawerKey . ",";
+							
+							$createdAt = (string)$row[2];
+							echo " DrawerCreatedAt: " . $createdAt . "<br>";	
 
-						echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
-						$sessionKey=$sessionKey+1;
+							echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
+							$sessionKey=$sessionKey+1;
+							
+						}
+						$_SESSION["drawerIDs"]=$ids;
 						
 					}
-					$_SESSION["drawerIDs"]=$ids;
-					
+					else
+						error_log("Couldn't execute stmt: " .  $stmt->error,3,"errors.txt");
 				}
-				else
-					echo "couldn't execute" . $mysqli->error;
-			}
+			else
+				{
+					error_log("Couldn't bind params for stmt: " . $stmt->error ,3,"errors.txt");
+				}
+		}
 		else
 			{
-				echo "Couldn't bind params for stmt: " . $stmt->error . "<br>";
+				error_log("Failed to prepare statement: " . $this->db->error); 
 			}
 		if($sessionKey>=1)
 			return true;

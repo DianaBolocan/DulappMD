@@ -8,7 +8,7 @@
 
 		private function getCountDrawers($wardrobeID){
 			//$count = select count($drawerID) from UW where wardrobeID = $this->wardrobeID;
-			if($stms = $this->db->prepare("SELECT COUNT(drawerID) FROM UW WHERE wardrobeID = ?")){
+			if($stmt = $this->db->prepare("SELECT COUNT(drawerID) FROM UW WHERE wardrobeID = ?")){
 
 			} else {
 				error_log("Couldn't prepare stmt:" . $stmt->error,3,'errors.txt');

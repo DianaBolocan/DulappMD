@@ -14,8 +14,9 @@ class WardrobeMapper {
 	public function selectAllWardrobes($userID)
 	{
 		$sessionKey=0;
-		$stmt = $this->db->prepare("select * from wardrobe w join uw on w.wardrobeID=uw.wardrobeID where uw.userID=?");
-		if($stmt->bind_param("i", $userID))
+		if($stmt = $this->db->prepare("select * from wardrobe w join uw on w.wardrobeID=uw.wardrobeID where uw.userID=?"))
+		{
+			if($stmt->bind_param("i", $userID))
 			{
 				if($stmt->execute()){
 					$result = $stmt->get_result();
@@ -45,12 +46,13 @@ class WardrobeMapper {
 					//return 'true';
 				}
 				else
-					echo "couldn't execute" . $mysqli->error;
+					error_log("Couldn't execute the stmt: " . $stmt->error,3,"errors.txt");
 			}
-		else
+			else
 			{
-				echo "Couldn't bind params for stmt: " . $stmt->error . "<br>";
+				error_log("Couldn't bind params for stmt: " . $stmt->error,3,"errors.txt");
 			}
+		}
 			//daca are un singur dulap returneaza false?
 		if($sessionKey>=1)
 			return true;
@@ -59,21 +61,19 @@ class WardrobeMapper {
 
 	public function updateWardrobeName($wardrobeID,$wardrobeName)
 	{
-		if(!($stmt = $this->db->prepare("UPDATE wardrobe SET name=? WHERE wardrobeID = ?"))){
-			echo "Prepare failed: (" . $mysqli->errno . ")" . $mysqli->error;
-		}
-		
-		if($stmt->bind_param("si",$wardrobeName,$wardrobeID)){
-			if($stmt->execute())
-				  echo "Successfully updated wardrobe name!" . "<br>";
-					
+		if($stmt = $this->db->prepare("UPDATE wardrobe SET name=? WHERE wardrobeID = ?")){
+			if($stmt->bind_param("si",$wardrobeName,$wardrobeID)){
+				if($stmt->execute())
+					  echo "Successfully updated wardrobe name!" . "<br>";
+						
+				else
+						error_log("Couldn't execute the stmt: " . $stmt->error,3,"errors.txt");
+			}
 			else
-					 echo "Couldn't execute stmt: " . $stmt->error . "<br>";
+				error_log("Couldn't bind params for stmt: " . $stmt->error,3,"errors.txt");
 		}
 		else
-        {
-            echo "Couldn't bind params for stmt: " . $stmt->error . "<br>";
-        }
+			error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
 	}
 	
 }
