@@ -49,6 +49,11 @@
 				
 				
 				<form class="question" name="quiz" action="Form/save" method="POST">
+					DrawerID:
+					<select name="drawerID">
+						<option value="19"> 19 </option>
+						<option value="20"> 20 </option>
+					</select><br>
 					Type:
 					<select name="type">
 						<option value="Outdoor"> Outdoor </option>
@@ -59,12 +64,12 @@
 						<option value="Skirt"> Skirt </option>
 						<option value="Accessory"> Accessory </option>
 					</select> <br>
-					Color: <input type="text" name="color" placeholder="Color"> <br>
-					Size: <input type="text" name="size" placeholder="Size"> <br>				
+					Color: <input type="text" name="color" placeholder="Color" required pattern="(?=.*[a-zA-Z]).{1,}"> <br>
+					Size: <input type="text" name="size" placeholder="Size" required pattern="(?=.*[a-zA-Z]).{1,}"> <br>				
 					Brand: <input type="text" name="brand" placeholder="Brand"> <br>
 					State: <input type="text" name="state" placeholder="State">	<br>
-					Material: <input type="text" name="material" placeholder="Material"> <br>			
-					Season: <input type="text" name="season" placeholder="Season"> <br>
+					Material: <input type="text" name="material" placeholder="Material" required pattern="(?=.*[a-zA-Z]).{1,}"> <br>			
+					Season: <input type="text" name="season" placeholder="Season" > <br>
 					Value: <input type="text" name="value" placeholder="Value"> <br>
 					Key: <input type="text" name="key" placeholder="Key"> <br>
 					Extras: <input type="text" name="extras" placeholder="Other characteristics"> <br>
