@@ -26,6 +26,7 @@ body{
 	
 }
 
+
 #logo{
 	height:30px;
 	margin-top: 10px;
@@ -103,9 +104,10 @@ span:hover + .description {
 	margin-left: 10%;
 }
 
-.update input[type=text]{
-	font-size:13px;
-	font-color: blue;
+#newName{
+	size:11px;
+	color: blue;
+	padding: 1%;
 }
 .searchBar input[type=text]{
 	font-size:13px;

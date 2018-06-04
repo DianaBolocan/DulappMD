@@ -16,15 +16,18 @@
                 		$loginUser ->setAdmin(0);
                 		$userMapper = $this->model('UserMapper');
                 		if(!($userMapper ->usernameExists($loginUser))){
-                			if(!($userMapper ->save($loginUser))){
+                            //returns userID who registered or false
+                            $userID=$userMapper ->save($loginUser);
+                			if(!($userID)){
                 				echo "Probleme la insert";
                 			}
                 			else{
+                                echo 'aici intru';
                 				//$this->view('Login');
-                                 if (!file_exists('CSS Files/Uploads/New')) {
-                                    mkdir('CSS Files/Uploads/New', 0777, true);
+                                 if (!file_exists('CSS Files/Uploads/' . $userID)) {
+                                    mkdir('CSS Files/Uploads/'. $userID, 0777, true);
                                 }
-                                 header('Location: '.' http://localhost/DulappMD/Public/Login');
+                                 //header('Location: '.' http://localhost/DulappMD/Public/Login');
                                  //die();
                              }
                 		}

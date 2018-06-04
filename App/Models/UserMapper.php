@@ -11,7 +11,7 @@ class UserMapper {
 		$this->db = DatabaseConnection::getInstance();
 	}
 
-	//Saves a User into the database
+	//Saves a User into the database and returns his ID
 	public function save($user) {
 		if($stmt = $this->db->prepare("INSERT INTO user (username,password,admin) values (?,?,?)"))
 		{
@@ -23,7 +23,33 @@ class UserMapper {
 				{
 					if($stmt->execute()){
 						$result = $stmt->get_result();
-						return true;
+						//trying to return userID
+						if($stmtSelect = $this->db->prepare("Select userID from user where username=?"))
+						{
+							echo $username;
+							if($stmtSelect->bind_param("s", $username))
+							{
+								if($stmtSelect->execute()){
+									$resultSelect = $stmtSelect->get_result();
+									$row = $resultSelect->fetch_row();
+									$userID = (int)$row[0];
+									//echo $userID;
+									return $userID;
+								}
+								else
+									error_log("Couldn't execute the stmt: " . $stmtSelect->error,3,"errors.txt");
+							}
+							else
+							{
+								echo 'am intrat in else';
+								error_log("Couldn't bind params for stmt: " . $stmtSelect->error,3,"errors.txt");
+							}
+
+						}
+						else
+						{
+							error_log("Couldn't prepare stmt: " . $this->db->error,3,"errors.txt");
+						}	
 					}
 					else
 						error_log("Couldn't execute the stmt: " . $stmt->error,3,"errors.txt");
