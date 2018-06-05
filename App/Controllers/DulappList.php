@@ -39,12 +39,20 @@
 						{
 							$currentSearchExistence=1;
 							for($j=0;$j<sizeof($params);$j++)
-							if(strstr($allItems[$i],$params[$j])==false)
-								$currentSearchExistence=0;
+							{
+								if(strstr($allItems[$i],$params[$j])==false)
+								{
+									$currentSearchExistence=0;
+									break;
+								}
+							}
 							if($currentSearchExistence==1)
 							{
 								//trebuie sa retin lista de id-uri!
 								$searchExistence=1;
+								//echo $allItems[$i] . "<br>";
+								$paramsItem = explode("!", $allItems[$i]);
+								echo $paramsItem[1] . "<br>"; 			
 							}
 						}
 					if($searchExistence==0)
