@@ -38,8 +38,9 @@
 						sertarul pentru a avea ce contine. Adauga sertare cu si fara lacat folosindu-te de + si sterge un sortar cu - (odata ce un
 						sertar este sters, sunt sterse si articolele vestimentare pe care le contine asa ca ai grija ce stergi). Adauga obiecte in
 						dulap cu ajutorul umerasului.</div>
-					<a href="HomePage">
-					<h1 class="hcomp"> Log Out </h1> 
+					<a href="Logout">
+						<h1 class="hcomp"> Log Out </h1>
+					</a>
 					<img src="CSS Files/more.png" id="more">
 					</a>
 					

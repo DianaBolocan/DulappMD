@@ -33,7 +33,7 @@
 						Something. Something. Something. Something. Something. Something. Something. Something. Something. Something. 
 						Something. Something. Something. Something. Something. Something. Something. Something. Something. Something. 
 					</div>
-				<a href="HomePage">
+				<a href="Logout">
 					<h1 class="hcomp"> Log Out </h1> 
 				</a>
 				<img src="CSS Files/more.png" id="more">

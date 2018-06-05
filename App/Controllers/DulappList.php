@@ -8,19 +8,18 @@
 	class DulappList extends Controller{
 		public function print(){
 			if(isset($_SESSION["userID"])){
-				$this->view('DulappList');
-				//echo 'nu ma deloghez!';
 				$userID=$_SESSION["userID"] ;
 				$wardrobeMapper = $this->mapper('WardrobeMapper');
 				$selectResult=$wardrobeMapper->selectAllWardrobes($userID);
 		        if($selectResult==false)
 		        {
-		        	echo 'Userul curent nu are vreun dulap';			
+		        	$_SESSION["messages"]='Userul curent nu are vreun dulap';		
 		        }
 		        else
 		        {
-		        	echo 'Userul curent are dulapurile mentionate anterior';
+		        	$_SESSION["messages"]='Userul curent are dulapurile mentionate anterior';
 		        }	
+		        $this->view('DulappList');
 			}
 		}
 

@@ -9,7 +9,7 @@
             
             if($_POST){
                 if(isset($_POST['Login'])){
-                    echo "User tries to login ". $_POST['username'] . ' ' . $_POST['password'] . "<br>";
+  //                  echo "User tries to login ". $_POST['username'] . ' ' . $_POST['password'] . "<br>";
                 }
                 $loginUser = $this->model('user');
                 $loginUser ->setUsername($_POST['username']);

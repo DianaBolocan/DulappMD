@@ -43,7 +43,9 @@
 						<div class="description">Apasa + ca sa adaugi un dulap. Apasa - ca sa stergi dulapul pe care il vizualizezi.
 						Foloseste-te de sageti ca sa navighezi prin lista ta de dulapuri. Uita-te sa vezi ce ai in dulap apasand
 						pe el. Cauta in search bar obiectul pe care il doresti in toate dulapurile tale.</div>
-					<a href="Logout"><h1 class="hcomp"> Log Out </h1></a>
+					<a href="Logout">
+						<h1 class="hcomp"> Log Out </h1>
+					</a>
 					<img id="more" src="CSS Files/more.png">
 					
 					<form  class="loginbox" action="DulappList/main" method="post" role="search">
