@@ -20,6 +20,14 @@
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 				<link href="CSS Files/DulappList.css" rel="stylesheet" type="text/css">
 				<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+				<script src="jquery-3.3.1.js"></script>
+				<script>
+					$(function() {
+						$("#deleteWardrobe").click(function() {
+				    		$("#mc-embedded-wardrobeForm").show();
+						});
+					});
+				</script>
 			</head>
 			<body>
 				<header class="header">
@@ -73,8 +81,15 @@
 				}
 	echo '
 				<div class="buttons">
-					<a href="addWardrobe"><img src="CSS Files/plus(new).png" alt="addDrawer" id="addDrawer"></a>
-					<a href="deleteDrawer"><img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer"></a>
+					<a href="save"><img src="CSS Files/plus(new).png" alt="addWardrobe" id="addWardrobe"></a>
+					    <img src="CSS Files/minus(new).png" alt="deleteWardrobe" id="deleteWardrobe">
+					    <form class="wardrobeForm" action="DulappList/delete" method="post" id="mc-embedded-wardrobeForm" name="mc-embedded-wardrobeForm">
+					        <fieldset>
+					            <input type="text" name="wardrobeID" placeholder="WardrobeID to delete" required pattern="(?=.*\d).{1,}" title="Must be only digits."/> 
+					            <input type="submit" value="Submit" />
+					        </fieldset>
+					    </form>
+
 				</div>
 			</body>
 		</html>';
