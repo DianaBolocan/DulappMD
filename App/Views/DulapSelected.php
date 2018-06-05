@@ -3,7 +3,10 @@
 	// Theoretically it should connect to the database and select all the drawers associated with the wardrobeId
 	// For each row fetched from the database it will print a html line for the drawer to be displayed in the page, meaning that the whole php file will be multiple lines of echo with method calls
 	// Should be linked with the Controller
-	//session_start();
+	if(!isset($_SESSION)) 
+    { 
+		session_start();
+	}
 	//$wardrobeId = $_SESSION['wardrobeId'];
 	//$wardrobeId = 1;
 	echo '<html>
@@ -61,24 +64,64 @@
 							<input type="submit" name="searchAfterW" value="">
 					</form>
 				</header>
-				<br>
-				<div class="dulap">
-					<div class="firstRow">
-						<a href="Catalog"><img src="CSS Files/Drawer2_1.png" alt="Drawer" class="drawer1"></a>
-						<a href="Catalog"><img src="CSS Files/Drawer2_2.png" alt="Drawer" class="drawer2"></a>
-						<a href="Catalog"><img src="CSS Files/Drawer2_3.png" alt="Drawer" class="drawer3"></a>
-					</div>
-					<div class="secondRow">
-						<a href="Catalog"><img src="CSS Files/Drawer2_4.png" alt="Drawer" class="drawer1"></a>
-						<a href="Catalog"><img src="CSS Files/Drawer2_5.png" alt="Drawer" class="drawer2"></a>
-						<a href="Catalog"><img src="CSS Files/Drawer2_6.png" alt="Drawer" class="drawer3"></a>
-					</div>
-					<img src="CSS Files/Dulap2.png" alt="Dulap" id="dulap">
-				</div>
+				<br>';
+				$count=0;
+				if(sizeof($_SESSION["drawerIDs"])==0)
+					echo 'The current wardrobe has no drawers';
+				else{
+					for($i=0;$i<sizeof($_SESSION["drawerIDs"]);$i++)
+					{
+						$count++;
+						if($count<4)
+						{
+							if($count==1)
+							{	
+								echo '<div class="dulap">';
+								echo '<div class="firstRow">';
+							}
+							$img="'CSS Files/Drawer2_" . $count . ".png' ";
+							//echo $img;
+							$class="drawer" . $count;
+							//echo $class;	
+						}
+						else 
+						{
+							if($count==4)
+							{
+								echo '</div>';
+								echo '<div class="secondRow">';
+							}
+							$img="'CSS Files/Drawer2_" . $count . ".png' ";
+							$classCount=$count-3;
+							$class="drawer" . $classCount;
+						}
+						$imgSrc="<img src=". $img .  " alt='Drawer' class='". $class . "'></a>";
+						echo "<a href='" . "http://localhost/DulappMD/Public/Catalog?drawerID=" .
+						 	$_SESSION["drawerIDs"][$i] . "'>" . $imgSrc ;
+						//<div class="dulap">
+							//<div class="firstRow">';
+								//<a href="Catalog"><img src="CSS Files/Drawer2_1.png" alt="Drawer" class="drawer1"></a>
+								//<a href="Catalog"><img src="CSS Files/Drawer2_2.png" alt="Drawer" class="drawer2"></a>
+								//<a href="Catalog"><img src="CSS Files/Drawer2_3.png" alt="Drawer" class="drawer3"></a>
+							//</div> //div first row
+							//<div class="secondRow">
+							//	<a href="Catalog"><img src="CSS Files/Drawer2_4.png" alt="Drawer" class="drawer1"></a>
+							//	<a href="Catalog"><img src="CSS Files/Drawer2_5.png" alt="Drawer" class="drawer2"></a>
+							//	<a href="Catalog"><img src="CSS Files/Drawer2_6.png" alt="Drawer" class="drawer3"></a>
+							//</div> //div second row
+							//poza dulap
+						//</div> //div dulap
+					}
+						echo'
+						</div> 
+						<img src="CSS Files/Dulap2.png" alt="Dulap" id="dulap">
+					 	</div>';
+					
+				}
+			echo '
 				<form class="update" action="DulapSelected/main" method="post">
-						<p id="newName"> New name: </p>
-						 <input type="text" name="newName"><br />
-						<input type="submit" name="Update" value="Update wardrobe name">
+					<input type="text"  name="newName" placeholder="New name" required pattern=".{3,20}" title="Must contain beetwen 3 and 20 characters."><br />
+					<input type="submit" id="updateButton" name="Update" value="Update wardrobe name">
 				</form> 
 				<br>
 				<div class="buttons">	

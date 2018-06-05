@@ -101,7 +101,7 @@ span:hover + .description {
 }
 
 .drawer2,.drawer3{
-	margin-left: 1.2%;
+	margin-left: 1.7%;
 }
 
 .buttons{
@@ -122,10 +122,17 @@ span:hover + .description {
 	margin-left: 10%;
 }
 
-#newName{
-	size:11px;
-	color: blue;
-	padding: 1%;
+
+.update{
+	margin-top:5%;
+	margin-left:5%;
+}
+
+#updateButton{
+	margin-top:0.5%;
+	color: #1aa3ff;
+	font-size: 14.5px;
+	border-radius: 25px;
 }
 .searchBar input[type=text]{
 	font-size:13px;

@@ -21,7 +21,7 @@
 						{
 							$drawerId = (int)$row[0];
 							array_push($ids, $drawerId);
-							echo " DrawerId: " . $drawerId . ",";
+							/*echo " DrawerId: " . $drawerId . ",";
 
 							$drawerKey = (string)$row[1];
 							echo " DrawerKey: " . $drawerKey . ",";
@@ -30,6 +30,7 @@
 							echo " DrawerCreatedAt: " . $createdAt . "<br>";	
 
 							echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
+							*/
 							$sessionKey=$sessionKey+1;
 							
 						}

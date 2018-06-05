@@ -7,22 +7,25 @@
 	class DulapSelected extends Controller{
 		public function print(){
 			if(isset($_SESSION["userID"])){
-				$this->view('DulapSelected');
 				//myKey=sessionKey-ul primit in URL si la cheia respectiva va fi value=wardrobeID
-				$myKey = $_GET['sessionKey'];
-				$wardrobeID=$_SESSION['wardrobeIDs'][$myKey];
-				echo 'Current wardrobe(received through session): ' . $wardrobeID . "<br>";
+				//$myKey = $_GET['sessionKey'];
+				//$wardrobeID=$_SESSION['wardrobeIDs'][$myKey];
+				//echo 'Current wardrobe(received through session): ' . $wardrobeID . "<br>";
+				//wardrobeID is received through URL
+				$wardrobeID = $_GET['wardrobeID'];
 				$_SESSION['wardrobeID']=$wardrobeID;
 				$drawerMapper=$this->mapper('DrawerMapper');
 				$selectResult=$drawerMapper->selectFromWardrobe($wardrobeID);
 				if($selectResult==false)
 		        {
-		        	echo 'Dulap gol';			
+		        	//echo 'Dulap gol';			
 		        }
 		        else
 		        {
-		      	 	echo 'Continut dulap curent:';
+		      	 	//echo 'Continut dulap curent:';
 		        }
+		        $this->view('DulapSelected');
+		        
 		    }
 		}
 
