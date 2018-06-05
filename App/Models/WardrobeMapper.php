@@ -21,11 +21,13 @@ class WardrobeMapper {
 				if($stmt->execute()){
 					$result = $stmt->get_result();
 					$ids= array();
+					$names= array();
 					while($row = $result->fetch_row())
 					{
 						$wardrobeId = (int)$row[0];
-						
+						$wardrobeName = (string)$row[1];
 						array_push($ids, $wardrobeId);
+						array_push($names, $wardrobeName);
 						/*echo " WardrobeId: " . $wardrobeId . ",";
 
 						$name = (string)$row[1];
@@ -40,6 +42,7 @@ class WardrobeMapper {
 						
 					}
 					$_SESSION["wardrobeIDs"]=$ids;
+					$_SESSION["wardrobeNames"]=$names;
 					//else 
 					//{
 					//		echo "No rows to fetch. <br>";

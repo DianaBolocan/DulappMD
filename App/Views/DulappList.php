@@ -63,16 +63,29 @@
 
 				</header>
 				<br>
-				<p> Dulap Name</p>
+				
 				<img src="CSS Files/leftArrow.png" alt="switchWardrobeLeft" id="leftArrow" class="arrow">
-				<img src="CSS Files/rightArrow.png" alt="switchWardrobeRight" id="rightArrow" class="arrow">';
+				<img src="CSS Files/rightArrow.png" alt="switchWardrobeRight" id="rightArrow" class="arrow">
+				<div class="buttons">
+					<a href="save"><img src="CSS Files/plus(new).png" alt="addWardrobe" id="addWardrobe"></a>
+					    <img src="CSS Files/minus(new).png" alt="deleteWardrobe" id="deleteWardrobe">
+					    <form class="wardrobeForm" action="DulappList/delete" method="post" id="mc-embedded-wardrobeForm" name="mc-embedded-wardrobeForm">
+					        <fieldset>
+					            <input type="text" name="wardrobeID" placeholder="WardrobeName to delete" required pattern=".{3,20}" title="Must contain beetwen 3 and 20 characters."/> 
+					            <input type="submit" value="Submit" />
+					        </fieldset>
+					    </form>
+
+				</div>';
 				if(sizeof($_SESSION["wardrobeIDs"])==0)
 					echo 'The current user has no wardrobe';
 				else{
 					for($i=0;$i<sizeof($_SESSION["wardrobeIDs"]);$i++)
 					{
-						//echo $_SESSION["wardrobeIDs"][$i];
-						//$imgSrc="<img src='CSS Files/Dulap2.png' alt='Dulap' id='dulap'></a>";
+						//prints the name of wardrobe received through session
+						$wardrobeName= $_SESSION["wardrobeNames"][$i];
+						echo "<p> $wardrobeName </p>";
+						//prints the image of wardrobe whose id was received through session
 						$imgSrc="<img src='CSS Files/Dulap2.png' alt='Dulap' id='dulap'></a>";
 						echo "<a href='" . "http://localhost/DulappMD/Public/DulapSelected?wardrobeID=" .
 						 $_SESSION["wardrobeIDs"][$i] . "'>" . $imgSrc . "<br>";
@@ -80,17 +93,7 @@
 					}
 				}
 	echo '
-				<div class="buttons">
-					<a href="save"><img src="CSS Files/plus(new).png" alt="addWardrobe" id="addWardrobe"></a>
-					    <img src="CSS Files/minus(new).png" alt="deleteWardrobe" id="deleteWardrobe">
-					    <form class="wardrobeForm" action="DulappList/delete" method="post" id="mc-embedded-wardrobeForm" name="mc-embedded-wardrobeForm">
-					        <fieldset>
-					            <input type="text" name="wardrobeID" placeholder="WardrobeID to delete" required pattern="(?=.*\d).{1,}" title="Must be only digits."/> 
-					            <input type="submit" value="Submit" />
-					        </fieldset>
-					    </form>
-
-				</div>
+				
 			</body>
 		</html>';
 ?>
