@@ -40,7 +40,7 @@
 				<a href="mailto: dianabolocan.db@gmail.com; anurim_elena@yahoo.com"><h1 class="hcomp"> Contact </h1></a>
 				<span><h1 class="hcomp"> Help </h1></span>
 							<div class="description">Complete our formular in order to properly describe your new added cloth. The main characteristics are mentioned below ( color, size, brand, material, season, state ). Then click the button Done and submit your options.</div>
-				<a href="HomePage">
+				<a href="Logout">
 					<h1 class="hcomp"> Log Out </h1> 
 				</a>
 					<img src="CSS Files/more.png" id="more" alt="More"></a>

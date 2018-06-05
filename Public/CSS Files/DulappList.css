@@ -17,15 +17,7 @@ body{
     right: 0;
 }
 
-p{
-	font-size:15px;
-	margin-left:8%;
-	color:blue;
-	position:absolute;
-	margin-top:0%;
-	z-index:-2;
-	
-}
+
 .header{
 	position: relative;
 	background-color:white;
@@ -60,17 +52,23 @@ span:hover + .description {
 }
 
 #dulap{
-	/*width: 60%;
-	height: 70%;*/
-	width: 200px;
-	height: 200px;
-	position: static;
-	/*left: 200px;
-	/*bottom:3%;*/
-	padding: 5%;
-	/*min-width: 250px;
-	min-height: 250px;*/
-	
+	width: 40%;
+	height: 40%;
+	position: relative;
+	top: 100px;
+	left: 20%;
+	padding: 10%;
+	min-width: 250px;
+	min-height: 250px;	
+}
+
+p{
+	font-size:15px;
+	margin-left:30%;
+	color:blue;
+	position:relative;
+	margin-top:0%;
+	z-index:-2;	
 }
 
 .buttons{
@@ -82,17 +80,13 @@ span:hover + .description {
 
 .buttons #addWardrobe{
 	min-width: 60px;
-	width:10%;
-	
-		
+	width:10%;		
 }
 
 .buttons #deleteWardrobe{
 	min-width: 60px;
 	width:10%;
-	margin-left: 24%;
-	
-		
+	margin-left: 24%;	
 }
 
 #leftArrow{

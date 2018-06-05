@@ -82,14 +82,14 @@
 				else{
 					for($i=0;$i<sizeof($_SESSION["wardrobeIDs"]);$i++)
 					{
-						//prints the name of wardrobe received through session
-						$wardrobeName= $_SESSION["wardrobeNames"][$i];
-						echo "<p> $wardrobeName </p>";
 						//prints the image of wardrobe whose id was received through session
-						$imgSrc="<img src='CSS Files/Dulap2.png' alt='Dulap' id='dulap'></a>";
+						$imgSrc="<img src='CSS Files/Dulap2copy.png' alt='Dulap' id='dulap'></a>";
 						echo "<a href='" . "http://localhost/DulappMD/Public/DulapSelected?wardrobeID=" .
 						 $_SESSION["wardrobeIDs"][$i] . "'>" . $imgSrc . "<br>";
 						//<a href="DulapSelected"><img src="CSS Files/Dulap2.png" alt="Dulap" id="dulap"></a>
+						//prints the name of wardrobe received through session
+						$wardrobeName= $_SESSION["wardrobeNames"][$i];
+						echo "<p class='wardrobeName'> $wardrobeName </p>";
 					}
 				}
 	echo '
