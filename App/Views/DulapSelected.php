@@ -16,6 +16,18 @@
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 				<link href="CSS Files/dulapSelected.css" rel="stylesheet" type="text/css">
 				<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+				<script src="jquery-3.3.1.js"></script>
+				<script>
+					$(function() {
+						$("#deleteDrawer").click(function() {
+				    		$("#mc-embedded-drawerForm").show();
+						});
+
+						$("#addLockedDrawer").click(function() {
+				    		$("#mc-embedded-drawerLockForm").show();
+						});
+					});
+				</script>
 			</head>
 			<body>
 				<header class="header">
@@ -73,7 +85,19 @@
 					<a href="Form"><img src="CSS Files/umeras.png" alt="addItem" id="addItem"></a>
 					<a href="DulapSelected/save"><img src="CSS Files/plus(new).png" alt="addDrawer" id="addDrawer"></a>
 					<img src="CSS Files/plusLock.png" alt="addLockedDrawer" id="addLockedDrawer">
-					<a href="DulapSelected/deleteDrawer"><img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer"></a>
+					<form class="drawerLockForm" action="DulapSelected/save" method="post" id="mc-embedded-drawerLockForm" name="mc-embedded-drawerLockForm">
+					    <fieldset>
+					        <input type="text" name="drawerLock" placeholder="Set password for drawer" required pattern="(?=.*\d)(?=.*[a-zA-Z]).{1,}" title="Must be filled up."/> 
+					        <input type="lockSubmit" value="Submit" id="submit"/>
+					    </fieldset>
+					</form>
+					<img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer">
+					<form class="drawerForm" action="DulapSelected/delete" method="post" id="mc-embedded-drawerForm" name="mc-embedded-drawerForm">
+					    <fieldset>
+					        <input type="text" name="drawerID" placeholder="DrawerID to delete" required pattern="(?=.*\d).{1,}" title="Must be only digits."/> 
+					        <input type="deleteSubmit" value="Submit" id="submit"/>
+					    </fieldset>
+					</form>
 				</div>
 			</body>
 		</html>';
