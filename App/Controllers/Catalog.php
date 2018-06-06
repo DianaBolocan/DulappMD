@@ -6,21 +6,12 @@
 
 	class Catalog extends Controller{
 		public function print(){
-			//$myKey = $_GET['sessionKey'];
-			//$drawerID=$_SESSION['drawerIDs'][$myKey];
-			$drawerID = $_GET['drawerID'];
+			$drawerID = $_GET["drawerID"];
 			$_SESSION['drawerID']=$drawerID;
-			//echo 'Current drawer(received through session): ' . $drawerID . "<br>";
+			//echo 'Current drawer(received through URL): ' . $drawerID . "<br>";
+			//echo 'Current wardrobe(received through session):' . $_SESSION['wardrobeID'];
 			$itemMapper = $this->mapper('ItemMapper');
 			$selectResult=$itemMapper->selectFromDrawer($drawerID);
-			if($selectResult==false)
-	        {
-	        	//echo 'Sertar gol';			
-	        }
-	        else
-	        {
-	      	 	//echo 'Continutul sertarului curent a fost printat anterior';
-	        }
 	        $this->view('Catalog');
 		}
 

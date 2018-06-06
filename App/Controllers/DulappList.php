@@ -35,6 +35,7 @@
 					for($j=0;$j<sizeof($params);$j++)
 						$params[$j]='!'. $params[$j] . '!';
 					$searchExistence=0;
+					$itemIDs=array();
 					for($i=0;$i<sizeof($allItems);$i++)
 						{
 							$currentSearchExistence=1;
@@ -48,18 +49,17 @@
 							}
 							if($currentSearchExistence==1)
 							{
-								//trebuie sa retin lista de id-uri!
+								//add the current item to the matching ones
 								$searchExistence=1;
 								//echo $allItems[$i] . "<br>";
 								$paramsItem = explode("!", $allItems[$i]);
-								echo $paramsItem[1] . "<br>"; 			
+								//echo $paramsItem[1] . "<br>"; 		
+								array_push($itemIDs,$paramsItem[1]);
 							}
 						}
-					if($searchExistence==0)
-						echo 'No result for your search';
-					if($searchExistence==1)
-						//should print correspondent images
-						echo 'Succes';
+					$_SESSION["itemIDs"]=$itemIDs;
+					$_SESSION["message"]="searchAfterU";
+					$this->view('Catalog');
     			}
 			}
 		}

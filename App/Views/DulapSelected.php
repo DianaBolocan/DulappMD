@@ -70,6 +70,7 @@
 					echo 'The current wardrobe has no drawers';
 				else{
 					$nrOfIDs=sizeof($_SESSION["drawerIDs"]);
+					$_SESSION["message"]="drawerList";
 					for($i=0;$i<$nrOfIDs;$i++)
 					{
 						$count++;
@@ -109,6 +110,8 @@
 						$imgSrc="<img src=". $img .  " alt='Drawer' class='". $class . "'></a>";
 						echo "<a href='" . "http://localhost/DulappMD/Public/Catalog?drawerID=" .
 						 	$_SESSION["drawerIDs"][$i] . "'>" . $imgSrc ;
+						
+
 						//<div class="dulap">
 							//<div class="firstRow">';
 								//<a href="Catalog"><img src="CSS Files/Drawer2_1.png" alt="Drawer" class="drawer1"></a>

@@ -21,7 +21,7 @@
 						{
 							$itemId = (int)$row[0];
 							array_push($ids, $itemId);
-							echo " itemId: " . $itemId . ",";
+							/*echo " itemId: " . $itemId . ",";
 
 							$color = (string)$row[2];
 							echo " ItemColor: " . $color . ",";
@@ -29,7 +29,7 @@
 							$createdAt = (string)$row[9];
 							echo " CreatedAt: " . $createdAt . "<br>";	
 
-							echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
+							echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";*/
 							$sessionKey=$sessionKey+1;
 							
 						}
