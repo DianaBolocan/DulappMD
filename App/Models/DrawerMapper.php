@@ -68,45 +68,57 @@
 								echo "Number of drawers: " . $row[0] . "<br>";
 								if ($row[0] < 6)
 								{
-									if($this->db->query("INSERT INTO drawer (drawerKey,createdAt) VALUES (NULL,CURRENT_TIMESTAMP)"))
+									if($stmtDrawer = $this->db->prepare("INSERT INTO drawer (drawerKey,createdAt) VALUES (?,CURRENT_TIMESTAMP)"))
 									{
-										if($resultId = $this->db->query("SELECT drawerId FROM drawer ORDER BY createdAt DESC"))
+										if($stmtDrawer->bind_param("s",$drawer->getDrawerKey()))
 										{
-											if($rowId = $resultId->fetch_row())
+											if($stmtDrawer->execute())
 											{
-												$drawer->setDrawerID((int)$rowId[0]);
-												echo "DrawerId fetched: " . $drawer->getDrawerID() . "<br>";
-												if ($stmtLink = $this->db->prepare("INSERT INTO wd (wardrobeId,drawerId) VALUES (?,?)"))
+												if($resultId = $this->db->query("SELECT drawerId FROM drawer ORDER BY createdAt DESC"))
 												{
-													if($stmtLink->bind_param("ii",$wardrobeID,$drawer->getDrawerID()))
+													if($rowId = $resultId->fetch_row())
 													{
-														if($stmtLink->execute()) {
-															echo "Successfully added new drawer. <br>";
-															return true;
-															$stmtLink->close();
+														$drawer->setDrawerID((int)$rowId[0]);
+														echo "DrawerId fetched: " . $drawer->getDrawerID() . "<br>";
+														if ($stmtLink = $this->db->prepare("INSERT INTO wd (wardrobeId,drawerId) VALUES (?,?)"))
+														{
+															if($stmtLink->bind_param("ii",$wardrobeID,$drawer->getDrawerID()))
+															{
+																if($stmtLink->execute()) {
+																	echo "Successfully added new drawer. <br>";
+																	return true;
+																	$stmtLink->close();
+																} else 
+																{
+																	error_log("Couldn't insert new link: " . $stmtLink->error);
+																}
+															} else
+															{
+																error_log("Couldn't bind param for link: " . $stmtLink->error);
+															}
 														} else 
 														{
-															error_log("Couldn't insert new link: " . $stmtLink->error);
+															error_log("Couldn't prepare wd statement: " . $this->db->error);
 														}
 													} else
 													{
-														error_log("Couldn't bind param for link: " . $stmtLink->error);
+														error_log("No rows to be fetched for id.");
 													}
-												} else 
+												}else 
 												{
-													error_log("Couldn't prepare wd statement: " . $this->db->error);
+													error_log("Failed to get resultId: " . $this->db->error);
 												}
 											} else
 											{
-												error_log("No rows to be fetched for id.");
+												error_log("Couldn't execute stmtDrawer:" . $stmtDrawer->error,3,'errors.txt');
 											}
-										}else 
+										} else
 										{
-											error_log("Failed to get resultId: " . $this->db->error);
+											error_log("Couldn't bind params for stmtDrawer:" . $stmtDrawer->error,3,'errors.txt');
 										}
 									} else
 									{
-										error_log("Couldn't execute query: " . $this->db->error);
+										error_log("Couldn't prepare stmtDrawer: " . $stmtDrawer->error,3,'errors.txt');
 									}
 								} else 
 								{
@@ -118,20 +130,20 @@
 							}
 						} else 
 						{
-							error_log("Failed to get results: " . $stmt->error);
+							error_log("Failed to get results: " . $stmt->error,3,'errors.txt');
 						}
 					} else 
 					{
-						error_log("Failed to execute: " . $stmt->error);
+						error_log("Failed to execute: " . $stmt->error,3,'errors.txt');
 					}
 				} else {
-					error_log("Couldn't bind params: " . $stmt->error);
+					error_log("Couldn't bind params: " . $stmt->error,3,'errors.txt');
 				} 
 			} else
 			{
-				error_log("Failed to prepare statement: " . $this->db->error); 
+				error_log("Failed to prepare statement: " . $this->db->error,3,'errors.txt'); 
 			}
-
+			$stmtDrawer->close();
 			$stmt->close();
 			return false;
 		}

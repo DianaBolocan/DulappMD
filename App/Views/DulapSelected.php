@@ -144,8 +144,8 @@
 					<img src="CSS Files/plusLock.png" alt="addLockedDrawer" id="addLockedDrawer">
 					<form class="drawerLockForm" action="DulapSelected/save" method="post" id="mc-embedded-drawerLockForm" name="mc-embedded-drawerLockForm">
 					    <fieldset>
-					        <input type="text" name="drawerLock" placeholder="Set password for drawer" required pattern="(?=.*\d)(?=.*[a-zA-Z]).{1,}" title="Must be filled up."/> 
-					        <input type="submit" value="Submit" id="submit"/>
+					        <input type="text" name="drawerLock" placeholder="Set password for drawer" required pattern="(?=.*\d)(?=.*[a-zA-Z]).{2,}" title="Must have at least a digit and a letter."/> 
+					        <input type="submit" value="Submit" id="submit" name="saveSubmit"/>
 					    </fieldset>
 					</form>
 					<img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer" name="saveSubmit">

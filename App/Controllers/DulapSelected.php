@@ -19,7 +19,10 @@
 		public function save(){
 			$drawer = $this->model('Drawer');
 			$drawerMapper = $this->mapper('DrawerMapper');
-			$drawerMapper->save($drawer,$_SESSION['userID']);
+			if(isset($_POST['saveSubmit'])){
+				$drawer->setDrawerKey($_POST['drawerLock']);
+			}
+			$drawerMapper->save($drawer,$_SESSION['userID']);	
 			header('Location: http://localhost/DulappMD/Public/DulapSelected');
 		}
 
@@ -32,7 +35,7 @@
 					$item = $this->model('Item');
 					$itemMapper = $this->mapper('ItemMapper');
 					$drawerMapper->delete($drawer,$item,$itemMapper);
-					//header('Location: http://localhost/DulappMD/Public/DulapSelected');
+					header('Location: http://localhost/DulappMD/Public/DulapSelected');
 				}	
 			}
 		}
