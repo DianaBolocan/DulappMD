@@ -24,7 +24,11 @@
 				<script>
 					$(function() {
 						$("#deleteWardrobe").click(function() {
-				    		$("#mc-embedded-wardrobeForm").show();
+				    		$("#mc-embedded-wardrobeDeleteForm").show();
+						});
+
+						$("#addWardrobe").click(function() {
+				    		$("#mc-embedded-wardrobeSaveForm").show();
 						});
 					});
 				</script>
@@ -67,18 +71,26 @@
 				<img src="CSS Files/leftArrow.png" alt="switchWardrobeLeft" id="leftArrow" class="arrow">
 				<img src="CSS Files/rightArrow.png" alt="switchWardrobeRight" id="rightArrow" class="arrow">
 				<div class="buttons">
-					<a href="save"><img src="CSS Files/plus(new).png" alt="addWardrobe" id="addWardrobe"></a>
-					    <img src="CSS Files/minus(new).png" alt="deleteWardrobe" id="deleteWardrobe">
-					    <form class="wardrobeForm" action="DulappList/delete" method="post" id="mc-embedded-wardrobeForm" name="mc-embedded-wardrobeForm">
-					        <fieldset>
-					            <input type="text" name="wardrobeID" placeholder="WardrobeName to delete" required pattern=".{3,20}" title="Must contain beetwen 3 and 20 characters."/> 
-					            <input type="submit" value="Submit" />
-					        </fieldset>
-					    </form>
+					<img src="CSS Files/plus(new).png" alt="addWardrobe" id="addWardrobe">
+					<form class="wardrobeSaveForm" action="DulappList/save" method="post" id="mc-embedded-wardrobeSaveForm" name="mc-embedded-wardrobeSaveForm">
+					    <fieldset>
+					        <input type="text" name="wardrobeName" placeholder="Name for the new wardrobe" required pattern=".{3,20}" title="Must contain characters beetwen 3 and 20 characters."/> <br>
+					        <input type="text" name="wardrobeTags" placeholder="Tags for the new wardrobe" required pattern=".{1,}" title="Must be filled in."/>
+					        <input type="submit" value="Submit" class="submit" name="saveSubmit"/>
+					    </fieldset>
+					</form>
+
+					<img src="CSS Files/minus(new).png" alt="deleteWardrobe" id="deleteWardrobe">
+					<form class="wardrobeDeleteForm" action="DulappList/delete" method="post" id="mc-embedded-wardrobeDeleteForm" name="mc-embedded-wardrobeDeleteForm">
+					    <fieldset>
+					        <input type="text" name="wardrobeName" placeholder="WardrobeName to delete" required pattern=".{3,20}" title="Must contain characters beetwen 3 and 20 characters."/> 
+					        <input type="submit" value="Submit" class="submit" name="deleteSubmit"/>
+					    </fieldset>
+					</form>
 
 				</div>';
 				if(sizeof($_SESSION["wardrobeIDs"])==0)
-					echo 'The current user has no wardrobe';
+					echo 'The current user has no wardrobe.';
 				else{
 					for($i=0;$i<sizeof($_SESSION["wardrobeIDs"]);$i++)
 					{
@@ -92,8 +104,7 @@
 						echo "<p class='wardrobeName'> $wardrobeName </p>";
 					}
 				}
-	echo '
-				
+	echo '	
 			</body>
 		</html>';
 ?>

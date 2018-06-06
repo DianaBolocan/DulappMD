@@ -79,6 +79,63 @@ class WardrobeMapper {
 		else
 			error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
 	}
-	
+
+	public function save($wardrobe,$userID){
+		if($stmt = $conn->prepare("INSERT INTO wardrobe (name,tag,createdAt) VALUES (?,?,CURRENT_TIMESTAMP)"))
+		{
+			if($stmt->bind_param("ss",$wardrobe->getName(),$wardrobe->getTag()))
+			{
+				if($stmt->execute())
+				{
+					if($resultId = $this->db->query("SELECT wardrobeID FROM wardrobe ORDER BY createdAt DESC"))
+					{
+						if($rowId = $resultId->fetch_row())
+						{
+							$wardrobe->setWardrobeID((int)$rowId[0]);
+							echo "WardrobeId: " . $wardrobe->getWardrobeID() . "<br>";
+							if($stmtLink = $this->db->prepare("INSERT INTO uw (userID,wardrobeID) VALUES (?,?)"))
+							{
+								if($stmtLink->bind_param("ii",$userID,$wardrobe->getWardrobeID()))
+								{
+									if($stmtLink->execute())
+									{
+										echo "successfully inserted new wardrobe.<br>";
+										$stmtLink->close();
+										return true;
+									} else
+									{
+										error_log("Couldn't execute stmtLink: " . $stmtLink->error,3,'erorrs.txt');
+									}
+								} else
+								{
+									error_log("Couldn't bind params for stmtLink: " . $stmtLink->error,3,'errors.txt');
+								}
+							} else
+							{
+								error_log("Couldn't prepare stmtLink: " . $this->db->error,3,'errors.txt');
+							}
+						} else 
+						{
+							echo "No rows to fetch. <br>";
+						}
+					} else
+					{
+						error_log("Couldn't execute query for wardrobeId: " . $this->db->error,3,'errors.txt');
+					}
+				} else
+				{
+					error_log("Couldn't execute stmt: " . $stmt->error,3,'errors.txt');
+				}
+			} else
+			{
+				error_log("Couldn't bind param for stmt: " . $stmt->error,3,'errors.txt');
+			}
+		} else 
+		{
+			error_log("Couldn't prepare stmt: " . $stmt->error,3,'errors.txt');
+		}
+		return false;
+		$stmt->close();
+	}
 }
 ?>
