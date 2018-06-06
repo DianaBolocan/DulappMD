@@ -69,7 +69,8 @@
 				if(sizeof($_SESSION["drawerIDs"])==0)
 					echo 'The current wardrobe has no drawers';
 				else{
-					for($i=0;$i<sizeof($_SESSION["drawerIDs"]);$i++)
+					$nrOfIDs=sizeof($_SESSION["drawerIDs"]);
+					for($i=0;$i<$nrOfIDs;$i++)
 					{
 						$count++;
 						if($count<4)
@@ -82,7 +83,12 @@
 							$img="'CSS Files/Drawer2_" . $count . ".png' ";
 							//echo $img;
 							$class="drawer" . $count;
-							//echo $class;	
+							if($nrOfIDs==1)
+							{
+								//format the first image in a special way
+								$class=$class . "special";
+							}	
+							//echo $class;
 						}
 						else 
 						{
@@ -94,6 +100,11 @@
 							$img="'CSS Files/Drawer2_" . $count . ".png' ";
 							$classCount=$count-3;
 							$class="drawer" . $classCount;
+							if($nrOfIDs==4)
+							{
+								//format the first image from the second row in a special way
+								$class=$class . "special";
+							}
 						}
 						$imgSrc="<img src=". $img .  " alt='Drawer' class='". $class . "'></a>";
 						echo "<a href='" . "http://localhost/DulappMD/Public/Catalog?drawerID=" .
