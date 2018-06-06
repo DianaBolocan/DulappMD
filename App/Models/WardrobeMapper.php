@@ -138,16 +138,56 @@ class WardrobeMapper {
 		return false;
 	}
 
-	public function delete($wardrobe,$userID){
-		if($stmtLink = $this->db->prepare("SELECT wardrobeID FROM wardrobe JOIN uw ON wardrobe.wardrobeID = uw.wardrobeID JOIN user ON user.userID = uw.userID WHERE name = ?"))
+	public function delete($wardrobe,$drawer,$drawerMapper,$item,$itemMapper){
+		if($stmtLink = $this->db->prepare("SELECT drawerID FROM wd JOIN wardrobe ON wardrobe.wardrobeID = wd.wardrobeID WHERE wardrobe.name = ?"))
 		{
-			
+			if($stmtLink->bind_param("s",$wardrobe->getName()))
+			{
+				if($result = $stmtLink->execute())
+				{
+					$result = $stmtLink->get_result();
+					if($result->num_rows > 0){
+						while($row = $result->fetch_row()){
+							$drawer->setDrawerID((int)$row[0]);
+							$drawerMapper->delete($drawer,$item,$itemMapper);
+						}
+						echo "Finished deleting drawers.<br>";
+					}
+					if($stmt = $this->db->prepare("DELETE FROM wardrobe WHERE name = ?"))
+					{
+						if($stmt->bind_param("s",$wardrobe->getName()))
+						{
+							if($stmt->execute())
+							{
+								echo "Successfully deleted wardorbe.<br>";
+								$stmt->close();
+								return true;
+							} else
+							{
+								error_log("Couldn't execute stmt: " . $stmt->error,3,'errors.txt');
+							}
+						} else
+						{
+							error_log("Couldn't bind params for stmt: " . $stmt->error,3,'errors.txt');
+						}
+					} else
+					{
+						error_log("Couldn't prepare stmt: " . $this->db->error,3,'errors.txt');
+					}
+				} else
+				{
+					error_log("Couldn't execute stmtLink: " . $stmtLink->error,3,'errors.txt');
+				}
+			} else
+			{
+				error_log("Couldn't bind params for stmtLink: " . $stmtLink->error,3,'errors.txt');
+			}
 		} else 
 		{
 			error_log("Couldn't prepare the stmtLink: " . $this->db->error,3,'errors.txt');
 		}
-
 		$stmtLink->close();
+		return false;
 	}
 }
 ?>

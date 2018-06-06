@@ -86,8 +86,12 @@
 					$wardrobe = $this->model('Wardrobe');
 					$wardrobe->setName($_POST['wardrobeName']);
 					$wardrobeMapper = $this->mapper('WardrobeMapper');
-
-					//header('Location: http://localhost/DulappMD/Public/DulappList');
+					$drawer = $this->model('Drawer');
+					$drawerMapper = $this->mapper('DrawerMapper');
+					$item = $this->model('Item');
+					$itemMapper = $this->mapper('ItemMapper');
+					$wardrobeMapper->delete($wardrobe,$drawer,$drawerMapper,$item,$itemMapper);
+					header('Location: http://localhost/DulappMD/Public/DulappList');
 				}
 			}
 		}
