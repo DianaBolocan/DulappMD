@@ -27,8 +27,8 @@
                                  if (!file_exists('CSS Files/Uploads/' . $userID)) {
                                     mkdir('CSS Files/Uploads/'. $userID, 0777, true);
                                 }
-                                 //header('Location: '.' http://localhost/DulappMD/Public/Login');
-                                 //die();
+                                header('Location: '.' http://localhost/DulappMD/Public/Login');
+                                //die();
                              }
                 		}
                 		else

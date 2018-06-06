@@ -17,21 +17,24 @@
 		}
 
 		public function save(){
-			if(isset($_SESSION['userID'])){
-				$drawer = $this->model('Drawer');
-				$drawerMapper = $this->mapper('DrawerMapper');
-				$drawerMapper->save($drawer,$_SESSION['userID']);
-				header('Location: http://localhost/DulappMD/Public/DulapSelected');
-			} else {
-				error_log("There was no userID.",3,'errors.txt');
-			}
+			$drawer = $this->model('Drawer');
+			$drawerMapper = $this->mapper('DrawerMapper');
+			$drawerMapper->save($drawer,$_SESSION['userID']);
+			header('Location: http://localhost/DulappMD/Public/DulapSelected');
 		}
 
 		public function delete(){
-			$drawer = $this->model('Drawer');
-			$drawerMapper = $this->mapper('DrawerMapper');
-			//$drawerMapper->delete($drawer);
-			//header('Location: http://localhost/DulappMD/Public/DulapSelected');
+			if($_POST){
+				if(isset($_POST['deleteSubmit'])){
+					$drawer = $this->model('Drawer');
+					$drawer->setDrawerID((int)$_POST['drawerID']);
+					$drawerMapper = $this->mapper('DrawerMapper');
+					$item = $this->model('Item');
+					$itemMapper = $this->mapper('ItemMapper');
+					$drawerMapper->delete($drawer,$item,$itemMapper);
+					//header('Location: http://localhost/DulappMD/Public/DulapSelected');
+				}	
+			}
 		}
 
 		

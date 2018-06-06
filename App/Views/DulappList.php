@@ -67,9 +67,6 @@
 
 				</header>
 				<br>
-				
-				<img src="CSS Files/leftArrow.png" alt="switchWardrobeLeft" id="leftArrow" class="arrow">
-				<img src="CSS Files/rightArrow.png" alt="switchWardrobeRight" id="rightArrow" class="arrow">
 				<div class="buttons">
 					<img src="CSS Files/plus(new).png" alt="addWardrobe" id="addWardrobe">
 					<form class="wardrobeSaveForm" action="DulappList/save" method="post" id="mc-embedded-wardrobeSaveForm" name="mc-embedded-wardrobeSaveForm">

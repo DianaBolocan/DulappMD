@@ -19,7 +19,7 @@
 		public function delete(){
 			$item = $this->model('Item');
 			$itemMapper = $this->model('ItemMapper');
-			$item->setItemID(7); //$_SESSION["itemID"]
+			$item->setItemID(3); //$_SESSION["itemID"]
 			$itemMapper->delete($item);
 			header('Location: http://localhost/DulappMD/Public/Catalog');
 		}

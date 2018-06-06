@@ -81,7 +81,7 @@ class WardrobeMapper {
 	}
 
 	public function save($wardrobe,$userID){
-		if($stmt = $conn->prepare("INSERT INTO wardrobe (name,tag,createdAt) VALUES (?,?,CURRENT_TIMESTAMP)"))
+		if($stmt = $this->db->prepare("INSERT INTO wardrobe (name,tag,createdAt) VALUES (?,?,CURRENT_TIMESTAMP)"))
 		{
 			if($stmt->bind_param("ss",$wardrobe->getName(),$wardrobe->getTag()))
 			{
@@ -134,8 +134,20 @@ class WardrobeMapper {
 		{
 			error_log("Couldn't prepare stmt: " . $stmt->error,3,'errors.txt');
 		}
-		return false;
 		$stmt->close();
+		return false;
+	}
+
+	public function delete($wardrobe,$userID){
+		if($stmtLink = $this->db->prepare("SELECT wardrobeID FROM wardrobe JOIN uw ON wardrobe.wardrobeID = uw.wardrobeID JOIN user ON user.userID = uw.userID WHERE name = ?"))
+		{
+			
+		} else 
+		{
+			error_log("Couldn't prepare the stmtLink: " . $this->db->error,3,'errors.txt');
+		}
+
+		$stmtLink->close();
 	}
 }
 ?>

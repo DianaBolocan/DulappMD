@@ -68,13 +68,26 @@
 		public function save(){
 			$userID = $_SESSION['userID'];
 			if($_POST){
-				if(isset($_POST['save'])){
+				if(isset($_POST['saveSubmit'])){
 					$wardrobe = $this->model('Wardrobe');
 					$wardrobe->setName($_POST['wardrobeName']);
 					$wardrobe->setTag($_POST['wardrobeTags']);
 					$wardrobeMapper = $this->mapper('WardrobeMapper');
 					$wardrobeMapper->save($wardrobe,$userID);
-					//header('Location: http://localhost/DulappMD/Public/DulappList')
+					header('Location: http://localhost/DulappMD/Public/DulappList');
+				}
+			}
+		}
+
+		public function delete(){
+			$userID = $_SESSION['userID'];
+			if($_POST){
+				if(isset($_POST['deleteSubmit'])){
+					$wardrobe = $this->model('Wardrobe');
+					$wardrobe->setName($_POST['wardrobeName']);
+					$wardrobeMapper = $this->mapper('WardrobeMapper');
+
+					//header('Location: http://localhost/DulappMD/Public/DulappList');
 				}
 			}
 		}

@@ -145,14 +145,14 @@
 					<form class="drawerLockForm" action="DulapSelected/save" method="post" id="mc-embedded-drawerLockForm" name="mc-embedded-drawerLockForm">
 					    <fieldset>
 					        <input type="text" name="drawerLock" placeholder="Set password for drawer" required pattern="(?=.*\d)(?=.*[a-zA-Z]).{1,}" title="Must be filled up."/> 
-					        <input type="lockSubmit" value="Submit" id="submit"/>
+					        <input type="submit" value="Submit" id="submit"/>
 					    </fieldset>
 					</form>
-					<img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer">
+					<img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer" name="saveSubmit">
 					<form class="drawerForm" action="DulapSelected/delete" method="post" id="mc-embedded-drawerForm" name="mc-embedded-drawerForm">
 					    <fieldset>
 					        <input type="text" name="drawerID" placeholder="DrawerID to delete" required pattern="(?=.*\d).{1,}" title="Must be only digits."/> 
-					        <input type="deleteSubmit" value="Submit" id="submit"/>
+					        <input type="submit" value="Submit" id="submit" name="deleteSubmit"/>
 					    </fieldset>
 					</form>
 				</div>

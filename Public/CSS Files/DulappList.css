@@ -99,26 +99,6 @@ p{
 	margin-left: 24%;	
 }
 
-#leftArrow{
-	position: absolute;
-	width: 8%;
-	height: 10%;
-	left: 1%;
-	top: 45%;
-	min-width: 50px;
-	min-height: 50px;
-}
-
-#rightArrow{
-	position: absolute;
-	width: 8%;
-	height: 10%;
-	right: 1%;
-	top: 45%;
-	min-width: 50px;
-	min-height: 50px;
-}
-
 .loginbox input[type=text]{
 	font-size:13px;
 	padding:6px;

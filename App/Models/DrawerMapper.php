@@ -136,7 +136,55 @@
 			return false;
 		}
 
-		public function delete($drawer){
+		public function delete($drawer,$item,$itemMapper){
+			if($stmtLink = $this->db->prepare("SELECT itemID FROM di WHERE drawerId = ?"))
+			{
+				if($stmtLink->bind_param("i",$drawer->getDrawerID()))
+				{
+					if($stmtLink->execute())
+					{
+						$result = $stmtLink->get_result();
+						if($result->num_rows > 0){
+							while($row = $result->fetch_row()){
+								$item->setItemID((int)$row[0]);
+								$itemMapper->delete($item);
+							}
+							echo "Finished deleting items.<br>";
+						}
+						if($stmt = $this->db->prepare("DELETE FROM drawer WHERE drawerID = ?"))
+						{
+							if($stmt->bind_param("i",$drawer->getDrawerID()))
+							{
+								if($stmt->execute())
+								{
+									echo "Successfully delete drawer.<br>";
+									$stmt->close();
+									return true;
+								} else
+								{
+									error_log("Couldn't execute stmt: " . $stmt->error,3,'errors.txt');
+								}
+							} else
+							{
+								error_log("Couldn't bind params for stmt: " . $stmt->error,3,'errors.txt');
+							}
+						} else
+						{
+							error_log("Couldn't prepare stmt: " . $this->db->error,3,'errors.txt');
+						}
+					} else
+					{
+						error_log("Couldn't execute stmtLink: " . $stmtLink->error,3,'errors.txt');
+					}
+				} else
+				{
+					error_log("Couldn't bind params for stmtLink: " . $stmtLink->error,3,'errors.txt');
+				}
+			} else
+			{
+				error_log("Couldn't prepare stmtLink: " . $this->db->error,3,'errors.txt');
+			}
+			$stmtLink->close();
 			return false;
 		}
 	}
