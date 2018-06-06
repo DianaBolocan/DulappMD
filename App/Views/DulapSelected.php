@@ -151,7 +151,8 @@
 					<img src="CSS Files/minus(new).png" alt="deleteDrawer" id="deleteDrawer" name="saveSubmit">
 					<form class="drawerForm" action="DulapSelected/delete" method="post" id="mc-embedded-drawerForm" name="mc-embedded-drawerForm">
 					    <fieldset>
-					        <input type="text" name="drawerID" placeholder="DrawerID to delete" required pattern="(?=.*\d).{1,}" title="Must be only digits."/> 
+					        <input type="text" name="drawerID" placeholder="DrawerID to delete" required pattern="(?=.*\d).{1,}" title="Must be only digits."/> <br>
+					        <input type="text" name="drawerKey" placeholder="Only if necessary"/>
 					        <input type="submit" value="Submit" id="submit" name="deleteSubmit"/>
 					    </fieldset>
 					</form>

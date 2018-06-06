@@ -31,11 +31,14 @@
 				if(isset($_POST['deleteSubmit'])){
 					$drawer = $this->model('Drawer');
 					$drawer->setDrawerID((int)$_POST['drawerID']);
+					if($_POST['drawerKey'] != ''){
+						$drawer->setDrawerKey($_POST['drawerKey']);
+					}
 					$drawerMapper = $this->mapper('DrawerMapper');
 					$item = $this->model('Item');
 					$itemMapper = $this->mapper('ItemMapper');
 					$drawerMapper->delete($drawer,$item,$itemMapper);
-					header('Location: http://localhost/DulappMD/Public/DulapSelected');
+					//header('Location: http://localhost/DulappMD/Public/DulapSelected');
 				}	
 			}
 		}

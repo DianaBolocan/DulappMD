@@ -149,6 +149,65 @@
 		}
 
 		public function delete($drawer,$item,$itemMapper){
+			if($drawer->getDrawerKey() == NULL){
+				echo "drawerKey e null";
+				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND drawerKey = NULL"))
+				{
+					if($stmtCheck->bind_param("i",$drawer->getDrawerID()))
+					{
+						if($stmtCheck->execute())
+						{
+							$result = $stmtCheck->get_result();
+							if($result->num_rows == 0)
+							{
+								return true;
+							}
+						} else 
+						{
+							error_log("Couldn't execute stmtCheck: " . $stmtCheck->error,3,'errors.txt');
+							return false;
+						}
+					} else 
+					{
+						error_log("Couldn't bind params for stmtCheck: " . $stmtCheck->error,3,'errors.txt');
+						return false;
+					}
+				} else 
+				{
+					error_log("Couldn't prepare stmtCheck: " . $this->db->error,3,'errors.txt');
+					return false;
+				}
+			} else {
+				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND drawerKey = ?"))
+				{
+					if($stmtCheck->bind_param("is",$drawer->getDrawerID(),$drawer->getDrawerKey()))
+					{
+						if($stmtCheck->execute())
+						{
+							$result = $stmtCheck->get_result();
+							if($result->num_rows == 0)
+							{
+								return true;
+							}
+						} else 
+						{
+							error_log("Couldn't execute stmtCheck: " . $stmtCheck->error,3,'errors.txt');
+							return false;
+						}
+					} else 
+					{
+						error_log("Couldn't bind params for stmtCheck: " . $stmtCheck->error,3,'errors.txt');
+						return false;
+					}
+				} else 
+				{
+					error_log("Couldn't prepare stmtCheck: " . $this->db->error,3,'errors.txt');
+					return false;
+				}
+			}
+			
+			$stmtCheck->close();
+
 			if($stmtLink = $this->db->prepare("SELECT itemID FROM di WHERE drawerId = ?"))
 			{
 				if($stmtLink->bind_param("i",$drawer->getDrawerID()))
