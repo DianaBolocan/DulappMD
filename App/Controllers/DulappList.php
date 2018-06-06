@@ -63,6 +63,21 @@
     			}
 			}
 		}
+
+
+		public function save(){
+			$userID = $_SESSION['userID'];
+			if($_POST){
+				if(isset($_POST['save'])){
+					$wardrobe = $this->model('Wardrobe');
+					$wardrobe->setName($_POST['wardrobeName']);
+					$wardrobe->setTag($_POST['wardrobeTags']);
+					$wardrobeMapper = $this->mapper('WardrobeMapper');
+					$wardrobeMapper->save($wardrobe,$userID);
+					//header('Location: http://localhost/DulappMD/Public/DulappList')
+				}
+			}
+		}
 	}
 	
 ?>
