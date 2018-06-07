@@ -94,12 +94,12 @@
 						echo '<div class="item">';
 						$currentItemID=$_SESSION["itemIDs"][$i];
 						echo $currentItemID . "<br>";
-						$img="'CSS Files/uploads/" . $userID . "/". $currentItemID . ".png' ";
+						$img= $currentItemID ;
 						$class="tShirt";
 						//prints the image of items whose id was received through session
-						$imgSrc="<img src=". $img .  " alt='Drawer' class='". $class . "'></a>";
+						$imgSrc="<img src='". $img .  "' alt='Drawer' class='". $class . "'></a>";
 						echo $imgSrc;
-						echo '	<p class="name"> Tricou1 Verde </p>
+						echo '	<p class="name"> Item </p>
 								<a href="Form" class="linkForm">Modify</a><a href="Catalog/delete" class="linkForm">Delete/</a>	
 								</div>';
 					}

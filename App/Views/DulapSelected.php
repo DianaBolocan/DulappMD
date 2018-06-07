@@ -29,6 +29,30 @@
 						$("#addLockedDrawer").click(function() {
 				    		$("#mc-embedded-drawerLockForm").show();
 						});
+
+						$("#1").click(function() {
+				    		$("#mc-embedded-enterDrawerForm1").show();
+						});
+
+						$("#2").click(function() {
+				    		$("#mc-embedded-enterDrawerForm2").show();
+						});
+
+						$("#3").click(function() {
+				    		$("#mc-embedded-enterDrawerForm3").show();
+						});
+
+						$("#4").click(function() {
+				    		$("#mc-embedded-enterDrawerForm4").show();
+						});
+
+						$("#5").click(function() {
+				    		$("#mc-embedded-enterDrawerForm5").show();
+						});
+
+						$("#6").click(function() {
+				    		$("#mc-embedded-enterDrawerForm6").show();
+						});
 					});
 				</script>
 			</head>
@@ -109,9 +133,19 @@
 								$class=$class . "special";
 							}
 						}
-						$imgSrc="<img src=". $img .  " alt='Drawer' class='". $class . "'></a>";
-						echo "<a href='" . "http://localhost/DulappMD/Public/Catalog?drawerID=" .
-						 	$_SESSION["drawerIDs"][$i] . "'>" . $imgSrc ;
+						$imgSrc="<img src=". $img .  " alt='Drawer' class='". $class . "' id='" . $count . "'>";
+						/*echo "<a href='" . "http://localhost/DulappMD/Public/Catalog?drawerID=" .
+						 	$_SESSION["drawerIDs"][$i] . "'>" . $imgSrc ;*/
+						 //DulapSelected/check?
+						echo $imgSrc;
+						echo $_SESSION["drawerIDs"][$i];
+						echo '<form class="enterDrawerForm" action="Catalog?drawerID=' . $_SESSION["drawerIDs"][$i] . '" method="post" id="mc-embedded-enterDrawerForm' . $count . '" name="mc-embedded-enterDrawerForm">
+							    <fieldset>
+							        <input type="text" name="drawerKey" placeholder="Only if necessary"/>
+							        <input type="submit" value="Submit" id="submit" name="enterDrawerSubmit"/>
+							    </fieldset>
+							</form>';
+					
 						//if(!($_SESSION["whereAmI"]))
 						//	$_SESSION["whereAmI"]="selectedDrawer";
 

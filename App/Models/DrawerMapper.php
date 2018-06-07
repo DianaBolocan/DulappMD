@@ -177,7 +177,7 @@
 					return false;
 				}
 			} else {
-				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND drawerKey = ?"))
+				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND (drawerKey = ? OR drawerKey is NULL)"))
 				{
 					if($stmtCheck->bind_param("is",$drawer->getDrawerID(),$drawer->getDrawerKey()))
 					{

@@ -16,7 +16,7 @@ body{
     right: 0;
 }
 
-.drawerForm #submit, .drawerLockForm #submit{
+.drawerForm #submit, .drawerLockForm #submit, .enterDrawerForm #submit{
 	width : 50;
 }
 
@@ -25,6 +25,13 @@ body{
     position: absolute;
     top: 90;
     right: 0;
+}
+
+.enterDrawerForm {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: -300;
 }
 
 .header{

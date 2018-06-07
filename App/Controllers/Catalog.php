@@ -47,7 +47,9 @@
 							$searchExistence=1;
 							//echo $allItems[$i] . "<br>";
 							$paramsItem = explode("!", $allItems[$i]);
-							//echo $paramsItem[1] . "<br>"; 		
+							//for($r=0;$r<sizeof($paramsItem);$r++)
+							//	echo $paramsItem[$r] . "<br>";
+							//echo "<br>" . $paramsItem[1] . "<br>"; 		
 							array_push($itemIDs,$paramsItem[1]);
 						}
 					}

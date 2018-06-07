@@ -22,8 +22,9 @@
 			if(isset($_POST['saveSubmit'])){
 				$drawer->setDrawerKey($_POST['drawerLock']);
 			}
-			$drawerMapper->save($drawer,$_SESSION['userID']);	
-			header('Location: http://localhost/DulappMD/Public/DulapSelected');
+			$wardrobeID = $_SESSION['wardrobeID'];
+			$drawerMapper->save($drawer,$wardrobeID);
+			header('Location: http://localhost/DulappMD/Public/DulapSelected?wardrobeID=' . $wardrobeID);
 		}
 
 		public function delete(){
@@ -38,7 +39,8 @@
 					$item = $this->model('Item');
 					$itemMapper = $this->mapper('ItemMapper');
 					$drawerMapper->delete($drawer,$item,$itemMapper);
-					header('Location: http://localhost/DulappMD/Public/DulapSelected');
+					$wardrobeID= $_SESSION['wardrobeID'];
+					header('Location: http://localhost/DulappMD/Public/DulapSelected?wardrobeID=' . $wardrobeID);
 				}	
 			}
 		}
