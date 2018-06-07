@@ -81,7 +81,7 @@
 							</nav>
 				</div>';
 				if(sizeof($_SESSION["itemIDs"])==0){
-					if($_SESSION["message"]=="searchAfterU")
+					if($_SESSION["message"]=="searchAfterU" || $_SESSION["message"]=="searchAfterW")
 						echo 'No result for your search';
 					else
 						echo 'This is an empty drawer';

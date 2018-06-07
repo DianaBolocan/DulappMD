@@ -59,9 +59,11 @@
 					<img src="CSS Files/more.png" id="more">
 					</a>
 					
-					<form  class="searchBar" action="DulapSelected/main" method="post" role="search">
-							<input type="text" name="searchParams" placeholder="Enter your search">
-							<input type="submit" name="searchAfterW" value="">
+					<form  class="searchBar" action="Catalog" method="post" role="search">
+							<input type="text" name="searchParams" placeholder="Search in your current wardrobe">
+							<input type="submit" name="searchAfterW" value="">';
+					$_SESSION["whereAmI"]="searchAfterW";
+			echo'
 					</form>
 				</header>
 				<br>';
@@ -108,10 +110,10 @@
 							}
 						}
 						$imgSrc="<img src=". $img .  " alt='Drawer' class='". $class . "'></a>";
-						$_SESSION["whereAmI"]="selectedDrawer";
 						echo "<a href='" . "http://localhost/DulappMD/Public/Catalog?drawerID=" .
 						 	$_SESSION["drawerIDs"][$i] . "'>" . $imgSrc ;
-						
+						//if(!($_SESSION["whereAmI"]))
+						//	$_SESSION["whereAmI"]="selectedDrawer";
 
 						//<div class="dulap">
 							//<div class="firstRow">';
