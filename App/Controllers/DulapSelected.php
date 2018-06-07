@@ -38,7 +38,7 @@
 					$item = $this->model('Item');
 					$itemMapper = $this->mapper('ItemMapper');
 					$drawerMapper->delete($drawer,$item,$itemMapper);
-					//header('Location: http://localhost/DulappMD/Public/DulapSelected');
+					header('Location: http://localhost/DulappMD/Public/DulapSelected');
 				}	
 			}
 		}
