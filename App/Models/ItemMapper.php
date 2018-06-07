@@ -54,9 +54,9 @@
 	}
 	
 		public function save($item,$drawerID){
-			if($stmt = $this->db->prepare("INSERT INTO item (type,color,size,material,value,itemKey,brand,state,season,extras,createdAt,updatedAt) VALUES (?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)"))
+			if($stmt = $this->db->prepare("INSERT INTO item (type,color,size,material,path,value,itemKey,brand,state,season,extras,createdAt,updatedAt) VALUES (?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)"))
 			{
-				if($stmt->bind_param("ssssssssss",$item->getType(),$item->getColor(),$item->getSize(),$item->getMaterial(),$item->getValue(),$item->getItemKey(),$item->getBrand(),$item->getState(),$item->getSeason(),$item->getExtras()))
+				if($stmt->bind_param("sssssssssss",$item->getType(),$item->getColor(),$item->getSize(),$item->getMaterial(),$item->getPath(),$item->getValue(),$item->getItemKey(),$item->getBrand(),$item->getState(),$item->getSeason(),$item->getExtras()))
 				{
 					if($stmt->execute())
 					{

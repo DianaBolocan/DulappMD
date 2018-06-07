@@ -7,6 +7,7 @@
 		public $itemID;
 		private $itemKey;
 		private $material;
+		private $path;
 		private $season;
 		private $size;
 		private $state;
@@ -76,6 +77,14 @@
 
 		public function setMaterial($material){
 			$this->material = $material;
+		}
+
+		public function getPath(){
+			return $this->path;
+		}
+
+		public function setPath($path){
+			$this->path = $path;
 		}
 
 		public function getSeason(){

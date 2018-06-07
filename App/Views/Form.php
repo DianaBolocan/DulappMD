@@ -48,12 +48,14 @@
 				<br>
 				
 				
-				<form class="question" name="quiz" action="Form/save" method="POST">
+				<form class="question" name="quiz" action="Form/save" method="POST" enctype="multipart/form-data">
 					DrawerID:
 					<select name="drawerID">
 						<option value="19"> 19 </option>
 						<option value="20"> 20 </option>
 					</select><br>
+					Photo:
+					<input type="file" name="fileToUpload" id="fileToUpload">
 					Type:
 					<select name="type">
 						<option value="Outdoor"> Outdoor </option>
