@@ -80,7 +80,6 @@
 								</ul>
 							</nav>
 				</div>';
-
 				if(sizeof($_SESSION["itemIDs"])==0){
 					if($_SESSION["message"]=="searchAfterU")
 						echo 'No result for your search';

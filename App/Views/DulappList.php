@@ -60,9 +60,11 @@
 					</a>
 					<img id="more" src="CSS Files/more.png">
 					
-					<form  class="loginbox" action="DulappList/main" method="post" role="search">
+					<form  class="loginbox" action="Catalog" method="post" role="search">
 							<input type="text" name="searchParams" placeholder="Enter your search">
-							<input type="submit" name="searchAfterU" value="">
+							<input type="submit" name="searchAfterU" value="">';
+					$_SESSION["whereAmI"]="searchAfterU";
+					echo'
 					</form>
 
 				</header>

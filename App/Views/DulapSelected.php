@@ -108,6 +108,7 @@
 							}
 						}
 						$imgSrc="<img src=". $img .  " alt='Drawer' class='". $class . "'></a>";
+						$_SESSION["whereAmI"]="selectedDrawer";
 						echo "<a href='" . "http://localhost/DulappMD/Public/Catalog?drawerID=" .
 						 	$_SESSION["drawerIDs"][$i] . "'>" . $imgSrc ;
 						
