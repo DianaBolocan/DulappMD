@@ -150,8 +150,7 @@
 
 		public function delete($drawer,$item,$itemMapper){
 			if($drawer->getDrawerKey() == NULL){
-				echo "drawerKey e null";
-				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND drawerKey = NULL"))
+				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND drawerKey is NULL"))
 				{
 					if($stmtCheck->bind_param("i",$drawer->getDrawerID()))
 					{
