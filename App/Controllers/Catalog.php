@@ -29,7 +29,7 @@
 				for($j=0;$j<sizeof($params);$j++)
 					$params[$j]='!'. $params[$j] . '!';
 				$searchExistence=0;
-				$itemIDs=array();
+				$itemPaths=array();
 				for($i=0;$i<sizeof($allItems);$i++)
 					{
 						$currentSearchExistence=1;
@@ -49,11 +49,11 @@
 							$paramsItem = explode("!", $allItems[$i]);
 							//for($r=0;$r<sizeof($paramsItem);$r++)
 							//	echo $paramsItem[$r] . "<br>";
-							//echo "<br>" . $paramsItem[1] . "<br>"; 		
-							array_push($itemIDs,$paramsItem[1]);
+							echo "<br> path:" . $paramsItem[1] . "<br>"; 		
+							array_push($itemPaths,$paramsItem[1]);
 						}
 					}
-				$_SESSION["itemIDs"]=$itemIDs;
+				$_SESSION["itemPaths"]=$itemPaths;
 				$_SESSION["message"]="searchAfterU";
 			}
 			else if($_SESSION["whereAmI"]=="searchAfterW")
@@ -67,9 +67,10 @@
 				for($j=0;$j<sizeof($params);$j++)
 					$params[$j]='!'. $params[$j] . '!';
 				$searchExistence=0;
-				$itemIDs=array();
+				$itemPaths=array();
 				for($i=0;$i<sizeof($allItems);$i++)
 					{
+						//echo $allItems[$i] . "<br>";
 						$currentSearchExistence=1;
 						for($j=0;$j<sizeof($params);$j++)
 						{
@@ -83,13 +84,12 @@
 						{
 							//add the current item to the matching ones
 							$searchExistence=1;
-							//echo $allItems[$i] . "<br>";
-							$paramsItem = explode("!", $allItems[$i]);
-							//echo $paramsItem[1] . "<br>"; 		
-							array_push($itemIDs,$paramsItem[1]);
+							$paramsItem = explode("!", $allItems[$i]);	
+							//it will put the path	
+							array_push($itemPaths,$paramsItem[1]);
 						}
 					}
-				$_SESSION["itemIDs"]=$itemIDs;
+				$_SESSION["itemPaths"]=$itemPaths;
 				$_SESSION["message"]="searchAfterW";
 			}
 		}

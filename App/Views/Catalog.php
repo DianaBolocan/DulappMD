@@ -80,7 +80,8 @@
 								</ul>
 							</nav>
 				</div>';
-				if(sizeof($_SESSION["itemIDs"])==0){
+				
+				if(sizeof($_SESSION["itemPaths"])==0){
 					if($_SESSION["message"]=="searchAfterU" || $_SESSION["message"]=="searchAfterW")
 						echo 'No result for your search';
 					else
@@ -89,12 +90,12 @@
 				else{
 					echo '<div id="centerSection">';
 					$userID=$_SESSION["userID"];
-					for($i=0;$i<sizeof($_SESSION["itemIDs"]);$i++)
+					for($i=0;$i<sizeof($_SESSION["itemPaths"]);$i++)
 					{
 						echo '<div class="item">';
-						$currentItemID=$_SESSION["itemIDs"][$i];
-						echo $currentItemID . "<br>";
-						$img= $currentItemID ;
+						$currentItemPath=$_SESSION["itemPaths"][$i];
+					//	echo $currentItemPath . "<br>";
+						$img= $currentItemPath ;
 						$class="tShirt";
 						//prints the image of items whose id was received through session
 						$imgSrc="<img src='". $img .  "' alt='Drawer' class='". $class . "'></a>";

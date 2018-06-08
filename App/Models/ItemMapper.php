@@ -140,7 +140,7 @@
 
 		//search in the specified wardrobe
 		public function searchAfterW($wardrobeID){
-			if($stmt = $this->db->prepare("SELECT i.itemID,type, color, size, material, value, brand, extras, season, state
+			if($stmt = $this->db->prepare("SELECT i.path,i.itemID,type, color, size, material, value, brand, extras, season, state
 																FROM item i join di on i.itemID=di.itemID
 																join drawer d on di.drawerID=d.drawerID
 																join wd on d.drawerID=wd.drawerID
