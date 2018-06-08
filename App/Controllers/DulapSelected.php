@@ -45,7 +45,36 @@
 			}
 		}
 
-		
+		public function check(){
+			if($_POST){
+				if(isset($_POST['enterDrawerSubmit'])){
+					//get drawerID from URL
+					$drawerID= $_GET['drawerID'];
+					$drawer = $this->model('Drawer');
+					$drawer->setDrawerID($drawerID);
+					if($_POST['drawerKey'] != ''){
+						$drawer->setDrawerKey($_POST['drawerKey']);
+					}
+					$drawerMapper = $this->mapper('DrawerMapper');
+					//$item = $this->model('Item');
+					//$itemMapper = $this->mapper('ItemMapper');
+					if($drawerMapper->check($drawer))
+						{
+							echo 's-a returnat true';
+							$_SESSION['drawerID']=$drawerID;
+							echo '<br> Current drawer(received through URL): ' . $drawerID . "<br>";
+							echo 'Current wardrobe(received through session):' . $_SESSION['wardrobeID'];
+							$itemMapper = $this->mapper('ItemMapper');
+							//echo $drawerID;
+							$selectResult=$itemMapper->selectFromDrawer($drawerID);
+							$_SESSION["message"]="enterDrawer";
+							header('Location: http://localhost/DulappMD/Public/Catalog?drawerID=' . $drawerID);
+						}
+					else
+						echo 's-a returnat false';
+				}	
+			}
+		}
 		public function main(){
 			$wardrobeID=$_SESSION['wardrobeID'];
 			if($_POST){

@@ -21,16 +21,6 @@
 						{
 							$drawerId = (int)$row[0];
 							array_push($ids, $drawerId);
-							/*echo " DrawerId: " . $drawerId . ",";
-
-							$drawerKey = (string)$row[1];
-							echo " DrawerKey: " . $drawerKey . ",";
-							
-							$createdAt = (string)$row[2];
-							echo " DrawerCreatedAt: " . $createdAt . "<br>";	
-
-							echo "<a href='".'http://localhost/DulappMD/Public/Catalog?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
-							*/
 							$sessionKey=$sessionKey+1;
 							
 						}
@@ -54,6 +44,70 @@
 		return false;
 	}
 	
+		public function check($drawer){
+			if($drawer->getDrawerKey() == NULL){
+				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND drawerKey is NULL"))
+				{
+					$drawerID=(int)$drawer->getDrawerID();
+					if($stmtCheck->bind_param("i",$drawerID))
+					{
+						if($stmtCheck->execute())
+						{
+							$result = $stmtCheck->get_result();
+							if($result->num_rows == 1)
+							{
+								echo 'returnez true, fara cheie';
+								return true;
+							}
+						} else 
+						{
+							error_log("Couldn't execute stmtCheck: " . $stmtCheck->error,3,'errors.txt');
+							return false;
+						}
+					} else 
+					{
+						error_log("Couldn't bind params for stmtCheck: " . $stmtCheck->error,3,'errors.txt');
+						return false;
+					}
+				} else 
+				{
+					error_log("Couldn't prepare stmtCheck: " . $this->db->error,3,'errors.txt');
+					return false;
+				}
+			}
+			else {
+				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND (drawerKey = ? OR drawerKey is NULL)"))
+				{
+					$drawerKey=$drawer->getDrawerKey();
+					$drawerID=$drawer->getDrawerID();
+					if($stmtCheck->bind_param("is",$drawerID,$drawerKey))
+					{
+						if($stmtCheck->execute())
+						{
+							$result = $stmtCheck->get_result();
+							if($result->num_rows == 1)
+							{
+								echo 'returnez true, cheia se potriveste sau drawer fara key';
+								return true;
+							}
+						} else 
+						{
+							error_log("Couldn't execute stmtCheck: " . $stmtCheck->error,3,'errors.txt');
+							return false;
+						}
+					} else 
+					{
+						error_log("Couldn't bind params for stmtCheck: " . $stmtCheck->error,3,'errors.txt');
+						return false;
+					}
+				} else 
+				{
+					error_log("Couldn't prepare stmtCheck: " . $this->db->error,3,'errors.txt');
+					return false;
+				}
+			}
+		}
+
 		public function save($drawer,$wardrobeID){
 			if($stmt = $this->db->prepare("SELECT COUNT(drawerId) FROM wd WHERE wardrobeId = ?"))
 			{

@@ -6,18 +6,7 @@
 
 	class Catalog extends Controller{
 		public function print(){
-			//echo $_SESSION["whereAmI"];
-			if (empty($_POST))
-			{
-					$drawerID = $_GET["drawerID"];
-					$_SESSION['drawerID']=$drawerID;
-					//echo 'Current drawer(received through URL): ' . $drawerID . "<br>";
-					//echo 'Current wardrobe(received through session):' . $_SESSION['wardrobeID'];
-					$itemMapper = $this->mapper('ItemMapper');
-					$selectResult=$itemMapper->selectFromDrawer($drawerID);
-				
-			}
-			else{
+			if(!empty($_POST)){
 			 if($_SESSION["whereAmI"]=="searchAfterU")
 			{
 				$userID=$_SESSION['userID'];

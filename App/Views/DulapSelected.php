@@ -137,9 +137,10 @@
 						/*echo "<a href='" . "http://localhost/DulappMD/Public/Catalog?drawerID=" .
 						 	$_SESSION["drawerIDs"][$i] . "'>" . $imgSrc ;*/
 						 //DulapSelected/check?
+						 	//Catalog?drawerID=
 						echo $imgSrc;
 						echo $_SESSION["drawerIDs"][$i];
-						echo '<form class="enterDrawerForm" action="Catalog?drawerID=' . $_SESSION["drawerIDs"][$i] . '" method="post" id="mc-embedded-enterDrawerForm' . $count . '" name="mc-embedded-enterDrawerForm">
+						echo '<form class="enterDrawerForm" action="DulapSelected/check?drawerID=' . $_SESSION["drawerIDs"][$i] . '" method="post" id="mc-embedded-enterDrawerForm' . $count . '" name="mc-embedded-enterDrawerForm">
 							    <fieldset>
 							        <input type="text" name="drawerKey" placeholder="Only if necessary"/>
 							        <input type="submit" value="Submit" id="submit" name="enterDrawerSubmit"/>

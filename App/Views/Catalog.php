@@ -94,10 +94,10 @@
 					{
 						echo '<div class="item">';
 						$currentItemPath=$_SESSION["itemPaths"][$i];
-					//	echo $currentItemPath . "<br>";
+						echo $currentItemPath . "<br>";
 						$img= $currentItemPath ;
 						$class="tShirt";
-						//prints the image of items whose id was received through session
+						//prints the image of items whose path was received through session
 						$imgSrc="<img src='". $img .  "' alt='Drawer' class='". $class . "'></a>";
 						echo $imgSrc;
 						echo '	<p class="name"> Item </p>
