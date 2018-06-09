@@ -15,6 +15,14 @@
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 				<link href="CSS Files/catalog.css" rel="stylesheet" type="text/css">
 				<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+				<script src="jquery-3.3.1.js"></script>
+				<script>
+					$(function() {
+						$("#moveItem").click(function() {
+				    		$("#mc-embedded-moveItemForm").show();
+						});
+					});
+				</script>
 			</head>
 			 <body>
 			 <header class="header">
@@ -46,39 +54,15 @@
 				<div id="leftSection">
 					<h1 class="subtitle"> Searched after: </h1>
 					<p id="searchedAfter"> "tricouri verzi si pantaloni negri " </p>
+					<h1 class="subtitle" id="moveItem"> Move Item </h1>
 					
-					<nav class="navigation">
-								<ul>
-									<li class="items-active-links">
-										<a href="Catalog" id="allItems"> All Items </a>
-										<div class="subsection-items">
-											<ul>
-												<li class="subitem"><a href="Catalog"> Clothes </a></li>
-												<li class="subitem"><a href="Catalog"> Accessories </a></li>
-												<li class="subitem"><a href="Catalog"> Shoes </a></li>
-											</ul>
-									</li>
-									<li class="items-active-links">
-										<a href="Catalog.php" id="allItems"> Brand </a>
-										<div class="subsection-items">
-											<ul>
-												<li class="subitem"><a href="Catalog"> H&M </a></li>
-												<li class="subitem"><a href="Catalog"> Zara </a></li>
-												<li class="subitem"><a href="Catalog"> Stradivarius </a></li>
-												<li class="subitem"><a href="Catalog"> Nike </a></li>
-											</ul>
-									</li>
-									<li class="items-active-links">
-										<a href="Catalog.php" id="allItems"> Color </a>
-										<div class="subsection-items">
-											<ul>
-												<li class="subitem"><a href="Catalog"> Red </a></li>
-												<li class="subitem"><a href="Catalog"> Yellow </a></li>
-												<li class="subitem"><a href="Catalog"> Green </a></li>
-											</ul>
-									</li>
-								</ul>
-							</nav>
+					<form class="moveItemForm" action="Catalog/move" method="post" id="mc-embedded-moveItemForm" name="mc-embedded-moveItemForm">
+					    <fieldset>
+					        <input type="text" name="itemID" placeholder="ItemID to move" required pattern="(?=.*\d).{1,}" title="Must contain only digits."/>
+					        <input type="text" name="drawerID" placeholder="DrawerId to move into" required pattern="(?=.*\d).{1,}" title="Must contain only digits"/>
+					        <input type="submit" value="Submit" class="submit" name="moveSubmit"/>
+					    </fieldset>
+					</form>
 				</div>';
 				
 				if(sizeof($_SESSION["itemPaths"])==0){

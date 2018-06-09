@@ -93,9 +93,32 @@
 		public function delete(){
 			$item = $this->model('Item');
 			$itemMapper = $this->model('ItemMapper');
-			$item->setItemID(3); //$_SESSION["itemID"]
+			$item->setItemID(3); //$_GET["itemID"]
 			$itemMapper->delete($item);
-			header('Location: http://localhost/DulappMD/Public/Catalog');
+			if(isset($_GET['drawerID'])){
+				$drawerID = $_GET['drawerID'];
+				header('Location: http://localhost/DulappMD/Public/Catalog?drawerID=' . $drawerID);
+			} else if (isset($_GET['searcedAfter'])){
+				$searcedAfter = $_GET['searcedAfter'];
+				header('Location: http://localhost/DulappMD/Public/Catalog?searchedAfter=' . $searchedAfter);
+			}
+		}
+
+		public function move(){
+			
+				//$drawerID = (int)$_GET['drawerID'];
+				if($_POST){
+					if(isset($_POST["moveSubmit"])){
+						echo 'aici';
+						$item = $this->model("Item");
+						$DIMapper = $this->mapper("DIMapper");
+						echo $_POST['itemID'];
+						$item->setItemID((int)$_POST["itemID"]);
+						$drawerID = (int)$_POST["drawerID"];
+						$DIMapper->update($item,$drawerID);
+						//header('Location: hhtps://localhost/DulappMD/Catalog?drawerID=' . $drawerID);
+					}
+				}
 		}
 	}
 ?>

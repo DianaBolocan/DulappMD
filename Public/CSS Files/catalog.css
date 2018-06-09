@@ -9,6 +9,14 @@ body{
 	font-family: 'Pacifico', cursive;
 }
 
+.moveItemForm {
+    display: none;
+}
+
+.moveItemForm #submit{
+	width : 50;
+}
+
 .header{
 	background-color:white;
 	width:100%;
@@ -132,43 +140,8 @@ span:hover + .description {
 	margin-left: 1%;
 }
 
-.subitem a:hover{
-	color: #ff3c00;
-	transition: color .2s 0s ease-in-out;
-}
-
 a {
 	text-decoration: none;
-}
-
-.navigation{
-	display: block;
-	margin-top: 10%;
-	margin-left: 10%;
-}
-
-
-nav ul{
-	list-style: none;
-    list-style-image: none;
-    margin: 0;
-    padding: 0;
-}
-
-#allItems{
-	color: #ff3c00;
-	font-size: 125%;
-}
-
-.subitem{
-	padding: 0 10%;
-    border-left: 1px solid rgba(36,38,40,.15);
-}
-
-.subitem a{
-	display: block;
-    padding: 6px 0;
-    color: #242628;
 }
 
 #more {
