@@ -174,7 +174,10 @@
 				<form class="update" action="DulapSelected/main" method="post">
 					<input type="text"  name="newName" placeholder="New name" required pattern=".{3,20}" title="Must contain beetwen 3 and 20 characters."><br />
 					<input type="submit" id="updateButton" name="Update" value="Update wardrobe name">
+					<br>
+					<input type="submit" id="exportJSONButton" name="exportJSON" value="Export JSON">
 				</form> 
+
 				<br>
 				<div class="buttons">	
 					<a href="Form"><img src="CSS Files/umeras.png" alt="addItem" id="addItem"></a>

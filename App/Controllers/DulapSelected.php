@@ -84,10 +84,39 @@
 					$selectResult=$wardrobeMapper->updateWardrobeName($wardrobeID,$newName);
     				//header('Location: '.' http://localhost/DulappMD/Public/DulapSelected');
     			}
-    		
-    				
-    			
-			}
+    			if(isset($_POST['exportJSON'])){
+
+    				$itemMapper = $this->mapper('ItemMapper');
+					$selectResult=$itemMapper->searchAfterW($wardrobeID);
+					$posts = array();
+					for($i=0;$i<sizeof($selectResult);$i++){
+						$currentItem=$selectResult[$i];
+						$posts[] = array('val1'=> $currentItem, 'val2'=> $currentItem);
+					}
+					$response['posts'] = $posts;
+
+					//unlink('results.json');
+					$fp = fopen('results.json', 'w');
+					fwrite($fp, json_encode($response));
+					fclose($fp);
+
+					$filename = 'results.json'; // of course find the exact filename....        
+					header('Pragma: public');
+					header('Expires: 0');
+					header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+					header('Cache-Control: private', false); // required for certain browsers 
+					header('Content-Type: application/json');
+
+					header('Content-Disposition: attachment; filename="'. basename($filename) . '";');
+					header('Content-Transfer-Encoding: binary');
+					header('Content-Length: ' . filesize($filename));
+
+					readfile($filename);
+
+					exit;
+
+				}
 		}
 	}
+}
 ?>
