@@ -53,13 +53,36 @@
 				<br>
 				<div id="leftSection">
 					<h1 class="subtitle"> Searched after: </h1>
-					<p id="searchedAfter"> "tricouri verzi si pantaloni negri " </p>
+					<p id="searchedAfter"> ';
+					if(isset($_GET['searchAfterU']))
+						{
+							$searchType = 'searchAfterW';
+							$search=$_GET["searchAfterU"];
+						}
+					else if(isset($_GET['searchAfterW']))
+						{
+							$searchType = 'searchAfterW';
+							$search=$_GET['searchAfterW'];
+						}
+					else {
+						$searchType = 'drawerID';
+						$search = $_GET['drawerID'];
+					}
+
+					echo $search . '</p>
 					<h1 class="subtitle" id="moveItem"> Move Item </h1>
 					
-					<form class="moveItemForm" action="Catalog/move" method="post" id="mc-embedded-moveItemForm" name="mc-embedded-moveItemForm">
+					<form class="moveItemForm" action="Catalog/move?' . $searchType . '=' . $search . '" method="post" id="mc-embedded-moveItemForm" name="mc-embedded-moveItemForm">
 					    <fieldset>
 					        <input type="text" name="itemID" placeholder="ItemID to move" required pattern="(?=.*\d).{1,}" title="Must contain only digits."/>
-					        <input type="text" name="drawerID" placeholder="DrawerId to move into" required pattern="(?=.*\d).{1,}" title="Must contain only digits"/>
+					        <select name="drawerID">';
+
+					for($i=0;$i<sizeof($_SESSION['nameids']);$i++){
+						$string = $_SESSION['nameids'][$i];
+						$pieces = explode("-", $string);
+						echo '<option value="' . $pieces[1] .'"> '. $string .'</option>';}
+					        	
+					echo '</select>
 					        <input type="submit" value="Submit" class="submit" name="moveSubmit"/>
 					    </fieldset>
 					</form>
@@ -76,6 +99,7 @@
 					$userID=$_SESSION["userID"];
 					for($i=0;$i<sizeof($_SESSION["itemPaths"]);$i++)
 					{
+						//echo $_SESSION["itemIDs"][$i]."<br>";
 						echo '<div class="item">';
 						$currentItemPath=$_SESSION["itemPaths"][$i];
 						echo $currentItemPath . "<br>";
@@ -84,8 +108,8 @@
 						//prints the image of items whose path was received through session
 						$imgSrc="<img src='". $img .  "' alt='Drawer' class='". $class . "'></a>";
 						echo $imgSrc;
-						echo '	<p class="name"> Item </p>
-								<a href="Form" class="linkForm">Modify</a><a href="Catalog/delete" class="linkForm">Delete/</a>	
+						echo '	<p class="name"> Item ' . $_SESSION["itemIDs"][$i] . '</p>
+								<a href="Catalog/delete?itemID=' . $_SESSION["itemIDs"][$i] . '&' . $searchType . '=' . $search . '" class="linkForm">Delete</a>	
 								</div>';
 					}
 				}

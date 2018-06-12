@@ -10,21 +10,24 @@
 
 		public function selectFromDrawer($drawerID){
 		$sessionKey=0;
-		if($stmt = $this->db->prepare("select i.path from item i join di on di.itemID=i.itemID where di.drawerID=?"))
+		if($stmt = $this->db->prepare("select i.path,i.itemID from item i join di on di.itemID=i.itemID where di.drawerID=?"))
 		{
 			if($stmt->bind_param("i", $drawerID))
 				{
 					if($stmt->execute()){
 						$result = $stmt->get_result();
 						$itemPaths= array();
+						$itemIDs = array();
 						while($row = $result->fetch_row())
 						{
 							$itemPath = $row[0];
 							array_push($itemPaths, $itemPath);
+							array_push($itemIDs, $row[1]);
 							$sessionKey=$sessionKey+1;
 							
 						}
-						$_SESSION["itemPaths"]=$itemPaths;	
+						$_SESSION["itemPaths"]=$itemPaths;
+						$_SESSION["itemIDs"] = $itemIDs;	
 					}
 					else
 						error_log("Couldn't execute statement: " . $stmt->error,3,"errors.txt");

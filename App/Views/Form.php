@@ -2,12 +2,15 @@
 	// This php only prints the form
 	// It can remain like this, with no other additions, or we could keep the information of the item if the client wants to update it
 	// Should be linked with the Controller
-	session_start();
+	if(!isset($_SESSION)) 
+    { 
+		session_start();
+	}
 	/*if(isset($_SESSION['itemId']))
 	{
 		$itemId = $_SESSION['itemId'];
 	}*/
-
+	$wardrobeID = $_SESSION['wardrobeID'];
 	echo '<!DOCTYPE html>
 			<html>
 			<head>
@@ -47,13 +50,18 @@
 				</header >
 				<br>
 				
-				
-				<form class="question" name="quiz" action="Form/save" method="POST" enctype="multipart/form-data">
+				<form class="question" name="quiz" action="Form/save?wardrobeID="' . $wardrobeID . '" method="POST" enctype="multipart/form-data">
 					DrawerID:
-					<select name="drawerID">
-						<option value="19"> 19 </option>
-						<option value="20"> 20 </option>
-					</select><br>
+					<select name="drawerID">';
+
+				$ids=$_SESSION["drawerIDs"];
+				$nrOfIDs=sizeof($_SESSION["drawerIDs"]);
+				for($i=0;$i<$nrOfIDs;$i++)
+					//echo $ids[$i]. "<br>";
+						echo '<option value="'. $ids[$i] .'">'.$ids[$i].'</option>';
+						//<option value="19"> 19 </option>
+						//<option value="20"> 20 </option>
+			echo   '</select><br>
 					Photo:
 					<input type="file" name="fileToUpload" id="fileToUpload">
 					Type:

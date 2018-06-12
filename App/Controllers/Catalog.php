@@ -6,6 +6,10 @@
 
 	class Catalog extends Controller{
 		public function print(){
+			$wdMapper = $this->mapper('WDMapper');
+			$nameids=$wdMapper->getWardrobeNameDrawerIDs();
+			$_SESSION['nameids']=$nameids;
+			
 			if(!empty($_POST)){
 			 if($_SESSION["whereAmI"]=="searchAfterU")
 			{
@@ -19,6 +23,7 @@
 					$params[$j]='!'. $params[$j] . '!';
 				$searchExistence=0;
 				$itemPaths=array();
+				$itemIDs=array();
 				for($i=0;$i<sizeof($allItems);$i++)
 					{
 						$currentSearchExistence=1;
@@ -38,12 +43,15 @@
 							$paramsItem = explode("!", $allItems[$i]);
 							//for($r=0;$r<sizeof($paramsItem);$r++)
 							//	echo $paramsItem[$r] . "<br>";
-							echo "<br> path:" . $paramsItem[1] . "<br>"; 		
+							//echo "<br> ID:" . $paramsItem[3] . "<br>"; 
+							array_push($itemIDs,$paramsItem[3]);
 							array_push($itemPaths,$paramsItem[1]);
 						}
 					}
 				$_SESSION["itemPaths"]=$itemPaths;
+				$_SESSION["itemIDs"]=$itemIDs;
 				$_SESSION["message"]="searchAfterU";
+				header('Location: http://localhost/DulappMD/Public/Catalog?searchAfterU='.$searchParams);
 			}
 			else if($_SESSION["whereAmI"]=="searchAfterW")
 			{
@@ -57,6 +65,7 @@
 					$params[$j]='!'. $params[$j] . '!';
 				$searchExistence=0;
 				$itemPaths=array();
+				$itemIDs=array();
 				for($i=0;$i<sizeof($allItems);$i++)
 					{
 						//echo $allItems[$i] . "<br>";
@@ -75,14 +84,18 @@
 							$searchExistence=1;
 							$paramsItem = explode("!", $allItems[$i]);	
 							//it will put the path	
+							array_push($itemIDs,$paramsItem[3]);
 							array_push($itemPaths,$paramsItem[1]);
 						}
 					}
 				$_SESSION["itemPaths"]=$itemPaths;
+				$_SESSION["itemIDs"]=$itemIDs;
 				$_SESSION["message"]="searchAfterW";
+				header('Location: http://localhost/DulappMD/Public/Catalog?searchAfterW='.$searchParams);
 			}
 		}
 	        $this->view('Catalog');
+
 		}
 
 		public function main(){
@@ -93,15 +106,9 @@
 		public function delete(){
 			$item = $this->model('Item');
 			$itemMapper = $this->model('ItemMapper');
-			$item->setItemID(3); //$_GET["itemID"]
+			$item->setItemID($_GET["itemID"]);
 			$itemMapper->delete($item);
-			if(isset($_GET['drawerID'])){
-				$drawerID = $_GET['drawerID'];
-				header('Location: http://localhost/DulappMD/Public/Catalog?drawerID=' . $drawerID);
-			} else if (isset($_GET['searcedAfter'])){
-				$searcedAfter = $_GET['searcedAfter'];
-				header('Location: http://localhost/DulappMD/Public/Catalog?searchedAfter=' . $searchedAfter);
-			}
+				//header('Location:' . $_SERVER['HTTP_REFERER']);
 		}
 
 		public function move(){

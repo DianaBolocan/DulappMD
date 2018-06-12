@@ -179,8 +179,12 @@
 				</form> 
 
 				<br>
-				<div class="buttons">	
-					<a href="Form"><img src="CSS Files/umeras.png" alt="addItem" id="addItem"></a>
+				<div class="buttons">	';
+				$wardrobeid=$_SESSION['wardrobeID'];
+				echo $wardrobeid;
+				$redirect="Form?wardrobeID=".$wardrobeid;
+				echo'
+					<a href="'. $redirect . '"><img src="CSS Files/umeras.png" alt="addItem" id="addItem"></a>
 					<a href="DulapSelected/save"><img src="CSS Files/plus(new).png" alt="addDrawer" id="addDrawer"></a>
 					<img src="CSS Files/plusLock.png" alt="addLockedDrawer" id="addLockedDrawer">
 					<form class="drawerLockForm" action="DulapSelected/save" method="post" id="mc-embedded-drawerLockForm" name="mc-embedded-drawerLockForm">

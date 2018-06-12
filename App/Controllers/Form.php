@@ -56,6 +56,8 @@
 					    }
 					}
 
+					$wardrobeID = $_SESSION['wardrobeID'];
+					echo 'wardrobe:' .$wardrobeID;
 					$item = $this->model('Item');
 					$item->setBrand($_POST['brand']);
 					$item->setColor($_POST['color']);
@@ -70,15 +72,15 @@
 					$item->setValue($_POST['value']);
 					$itemMapper = $this->mapper('ItemMapper');
 					$drawerID = (int)$_POST['drawerID'];
-					echo $drawerID;
+					
 					if($itemMapper->save($item,$drawerID))
 					{
 						echo "true";
-						header("Location: http://localhost/DulappMD/Public/DulapSelected");
+						header("Location: http://localhost/DulappMD/Public/DulapSelected?wardrobeID=" . $wardrobeID);
 					}
 					else {
 						echo "false";
-						header("Location: http://localhost/DulappMD/Public/Form");
+						header("Location: http://localhost/DulappMD/Public/Form?wardrobeID=" . $wardrobeID);
 					}
 				}
 			}
