@@ -102,7 +102,6 @@ class UserMapper {
 			$username= $user->getUsername();
 			$password =  $user->getPassword();
 			$phash=sha1(sha1($password . "salt") . "salt");
-			//echo "Phash:" . $phash . "<br>";
 			$encyptedPass= substr($phash, 0, 20);
 			if($stmt->bind_param("ss", $username,$encyptedPass))
 			{
@@ -119,6 +118,7 @@ class UserMapper {
 								echo "No rows to fetch. <br>";
 							}
 						echo "Nr of records: ".mysqli_num_rows($result) . "<br>";
+						//in order to put it on session from Login Controller
 						if(mysqli_num_rows($result) == 1){
 							return $userID;
 						}

@@ -7,8 +7,6 @@
     { 
 		session_start();
 	}
-	//$userId = $_SESSION['userId'];
-	//$userId = 1;
 
 	echo '<html>
 			<head>

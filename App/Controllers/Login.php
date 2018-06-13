@@ -15,10 +15,10 @@
                 $loginUser ->setUsername($_POST['username']);
                 $loginUser ->setPassword($_POST['password']);
                 $userMapper = $this->mapper('UserMapper');
-
                 $loginResult=$userMapper ->isValidUser($loginUser);
                 if($loginResult=='false')
                 {
+                    //it will remain on the same page
                     header('Location: '.' http://localhost/DulappMD/Public/Login');
                     
                 }
