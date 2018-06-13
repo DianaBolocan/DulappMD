@@ -44,8 +44,8 @@ span:hover + div {
 }
 .loginbox{
 	min-width:350px;
-	min-height:500px;
-	height:65%;
+	min-height:450px;
+	height:40%;
 	width:30%;
 	
 	background: aliceblue;
@@ -226,7 +226,7 @@ h1{
 
 @media (min-height: 1000px){
 	.loginbox{
-		height:55%;
+		height:40%;
 	}
 }
 @media (min-width: 1000px){

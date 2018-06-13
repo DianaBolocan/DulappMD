@@ -21,7 +21,6 @@
                         {
                     		$loginUser ->setUsername($userName);
                     		$loginUser ->setPassword($password);
-                    		$loginUser ->setAdmin(0);
                     		$userMapper = $this->model('UserMapper');
                     		if(!($userMapper ->usernameExists($loginUser))){
                                 //returns userID who registered or false

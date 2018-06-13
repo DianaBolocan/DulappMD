@@ -13,17 +13,16 @@ class UserMapper {
 
 	//Saves a User into the database and returns his ID
 	public function save($user) {
-		if($stmt = $this->db->prepare("INSERT INTO user (username,password,admin) values (?,?,?)"))
+		if($stmt = $this->db->prepare("INSERT INTO user (username,password) values (?,?)"))
 		{
 			$username=$user->getUsername();
 			$password=$user->getPassword();
 			$phash=sha1(sha1($password . "salt") . "salt");
-			$admin=$user->getAdmin();
-			if($stmt->bind_param("ssi", $username,$phash,$admin))
+			if($stmt->bind_param("ss", $username,$phash))
 				{
 					if($stmt->execute()){
 						$result = $stmt->get_result();
-						//trying to return userID
+						//trying to return userID in order to create the new directory when the user regiters
 						if($stmtSelect = $this->db->prepare("Select userID from user where username=?"))
 						{
 							echo $username;
@@ -33,7 +32,6 @@ class UserMapper {
 									$resultSelect = $stmtSelect->get_result();
 									$row = $resultSelect->fetch_row();
 									$userID = (int)$row[0];
-									//echo $userID;
 									return $userID;
 								}
 								else

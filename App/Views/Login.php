@@ -50,11 +50,7 @@
 									<p> Password</p>
 										<input type="password" name="password" placeholder="Enter Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" 
 									title="Must contain at least 1 number, 1 uppercase character and it must have at least 8 characters and maximum 20.">
-									
-								
-									<input type="submit" name="Login" value="Login">
-									<a href="#"> Lost your password?</a> 
-								
+									<input type="submit" name="Login" value="Login">	
 							</form>
 				</section>
 			  </body>
