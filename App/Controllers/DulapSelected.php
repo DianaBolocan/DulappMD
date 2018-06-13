@@ -30,6 +30,8 @@
 		public function delete(){
 			if($_POST){
 				if(isset($_POST['deleteSubmit'])){
+					$wardrobeID= $_SESSION['wardrobeID'];
+					echo $wardrobeID;
 					$drawer = $this->model('Drawer');
 					$drawer->setDrawerID((int)$_POST['drawerID']);
 					if($_POST['drawerKey'] != ''){
@@ -38,8 +40,7 @@
 					$drawerMapper = $this->mapper('DrawerMapper');
 					$item = $this->model('Item');
 					$itemMapper = $this->mapper('ItemMapper');
-					$drawerMapper->delete($drawer,$item,$itemMapper);
-					$wardrobeID= $_SESSION['wardrobeID'];
+					$drawerMapper->delete($drawer,$item,$itemMapper,$wardrobeID);
 					header('Location: http://localhost/DulappMD/Public/DulapSelected?wardrobeID=' . $wardrobeID);
 				}	
 			}

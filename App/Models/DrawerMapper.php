@@ -1,5 +1,6 @@
 <?php
 	require_once(__DIR__."/../core/DatabaseConnection.php");
+	require_once(__DIR__."/ActionMapper.php");
 
 	class DrawerMapper{
 		private $db;
@@ -9,40 +10,40 @@
 		}
 
 		public function selectFromWardrobe($wardrobeID){
-		$sessionKey=0;
-		if($stmt = $this->db->prepare("select * from drawer d join wd on d.drawerID=wd.drawerID where wd.wardrobeID=?"))
-		{
-			if($stmt->bind_param("i", $wardrobeID))
-				{
-					if($stmt->execute()){
-						$result = $stmt->get_result();
-						$ids= array();
-						while($row = $result->fetch_row())
-						{
-							$drawerId = (int)$row[0];
-							array_push($ids, $drawerId);
-							$sessionKey=$sessionKey+1;
+			$sessionKey=0;
+			if($stmt = $this->db->prepare("select * from drawer d join wd on d.drawerID=wd.drawerID where wd.wardrobeID=?"))
+			{
+				if($stmt->bind_param("i", $wardrobeID))
+					{
+						if($stmt->execute()){
+							$result = $stmt->get_result();
+							$ids= array();
+							while($row = $result->fetch_row())
+							{
+								$drawerId = (int)$row[0];
+								array_push($ids, $drawerId);
+								$sessionKey=$sessionKey+1;
+								
+							}
+							$_SESSION["drawerIDs"]=$ids;
 							
 						}
-						$_SESSION["drawerIDs"]=$ids;
-						
+						else
+							error_log("Couldn't execute stmt: " .  $stmt->error,3,"errors.txt");
 					}
-					else
-						error_log("Couldn't execute stmt: " .  $stmt->error,3,"errors.txt");
-				}
+				else
+					{
+						error_log("Couldn't bind params for stmt: " . $stmt->error ,3,"errors.txt");
+					}
+			}
 			else
 				{
-					error_log("Couldn't bind params for stmt: " . $stmt->error ,3,"errors.txt");
+					error_log("Failed to prepare statement: " . $this->db->error); 
 				}
+			if($sessionKey>=1)
+				return true;
+			return false;
 		}
-		else
-			{
-				error_log("Failed to prepare statement: " . $this->db->error); 
-			}
-		if($sessionKey>=1)
-			return true;
-		return false;
-	}
 	
 		public function check($drawer){
 			if($drawer->getDrawerKey() == NULL){
@@ -142,8 +143,10 @@
 															{
 																if($stmtLink->execute()) {
 																	echo "Successfully added new drawer. <br>";
-																	return true;
-																	$stmtLink->close();
+																	$actionMapper = new ActionMapper();
+																	$action = 'Add new drawer';
+																	$description = 'Drawer ' . $drawer->getDrawerID() . ' has been added to wardrobe.';
+																	$actionMapper->save($wardrobeID,$action,$description);
 																} else 
 																{
 																	error_log("Couldn't insert new link: " . $stmtLink->error);
@@ -204,7 +207,7 @@
 			return false;
 		}
 
-		public function delete($drawer,$item,$itemMapper){
+		public function delete($drawer,$item,$itemMapper,$wardrobeID){
 			if($drawer->getDrawerKey() == NULL){
 				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND drawerKey is NULL"))
 				{
@@ -215,7 +218,10 @@
 							$result = $stmtCheck->get_result();
 							if($result->num_rows == 0)
 							{
-								return true;
+								$actionMapper = new ActionMapper();
+								$action = 'Delete drawer';
+								$description = 'Drawer ' . $drawer->getDrawerID() . ' has been removed from wardrobe.';
+								$actionMapper->save($wardrobeID,$action,$description);
 							}
 						} else 
 						{
@@ -242,7 +248,10 @@
 							$result = $stmtCheck->get_result();
 							if($result->num_rows == 0)
 							{
-								return true;
+								$actionMapper = new ActionMapper();
+								$action = 'Delete drawer';
+								$description = 'Drawer ' . $drawer->getDrawerID() . ' has been removed from wardrobe.';
+								$actionMapper->save($wardrobeID,$action,$description);
 							}
 						} else 
 						{

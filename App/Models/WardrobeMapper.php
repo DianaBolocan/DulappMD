@@ -8,12 +8,11 @@ class WardrobeMapper {
 
 	
 	private $db;
-	public function __construct() {
+	public function __construct(){
 		$this->db = DatabaseConnection::getInstance();
 	}
 
-	public function selectAllWardrobes($userID)
-	{
+	public function selectAllWardrobes($userID){
 		$sessionKey=0;
 		if($stmt = $this->db->prepare("select * from wardrobe w join uw on w.wardrobeID=uw.wardrobeID where uw.userID=?"))
 		{
@@ -54,8 +53,7 @@ class WardrobeMapper {
 		return false;
 	}
 
-	public function updateWardrobeName($wardrobeID,$wardrobeName)
-	{
+	public function updateWardrobeName($wardrobeID,$wardrobeName){
 		if($stmt = $this->db->prepare("UPDATE wardrobe SET name=? WHERE wardrobeID = ?")){
 			if($stmt->bind_param("si",$wardrobeName,$wardrobeID)){
 				if($stmt->execute())
@@ -64,7 +62,7 @@ class WardrobeMapper {
 					 	//the update was made so the current action should be inserted in "actions" table 
 					 	$actionMapper = new ActionMapper();
 					 	$action ='Update wardrobe name';
-					 	$description='wardrobe name was updated to ' . $wardrobeName;
+					 	$description='Wardrobe name was updated to ' . $wardrobeName . '.';
 					 	//saves the current action in actions table
 						return $actionMapper->save($wardrobeID,$action,$description);
 					 } 
@@ -77,8 +75,6 @@ class WardrobeMapper {
 		}
 		else
 			error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
-
-
 	}
 
 	public function save($wardrobe,$userID){
@@ -101,8 +97,11 @@ class WardrobeMapper {
 									if($stmtLink->execute())
 									{
 										echo "successfully inserted new wardrobe.<br>";
-										$stmtLink->close();
-										return true;
+										$actionMapper = new ActionMapper();
+										$action = "Create wardrobe";
+										$description = "The wardrobe was created.";
+
+										return $actionMapper->save($wardrobe->getWardrobeID(),$action,$description);
 									} else
 									{
 										error_log("Couldn't execute stmtLink: " . $stmtLink->error,3,'erorrs.txt');
