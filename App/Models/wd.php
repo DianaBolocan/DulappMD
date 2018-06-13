@@ -25,7 +25,4 @@
 			return $this->drawerID;
 		}
 	}
-
-	
-
 ?>
