@@ -1,7 +1,10 @@
 <?php
 	session_start();
-	//unset($_SESSION['userID']);
-	session_destroy();
+	// remove all session variables
+	session_unset(); 
+
+	// destroy the session 
+	session_destroy(); 
 	class Logout extends Controller{
 		public function print(){
 			$this->view('HomePage');
