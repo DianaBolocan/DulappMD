@@ -178,6 +178,9 @@
 				<form class="update" action="DulapSelected/main" method="post">
 					<input type="submit" id="exportJSONButton" name="exportJSON" value="Export JSON">
 				</form> 
+				<form class="update" action="DulapSelected/main" method="post">
+					<input type="submit" id="exportRSSButton" name="exportRSS" value="Export RSS">
+				</form> 
 				<br>
 				<div class="buttons">	';
 				$wardrobeid=$_SESSION['wardrobeID'];
