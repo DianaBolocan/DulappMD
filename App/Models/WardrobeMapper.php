@@ -28,16 +28,6 @@ class WardrobeMapper {
 						$wardrobeName = (string)$row[1];
 						array_push($ids, $wardrobeId);
 						array_push($names, $wardrobeName);
-						/*echo " WardrobeId: " . $wardrobeId . ",";
-
-						$name = (string)$row[1];
-						echo " WardrobeName: " . $name . ",";
-						
-						$tag = (string)$row[2];
-						echo " WardrobeTag: " . $tag . ",";	
-
-						echo "<a href='".'http://localhost/DulappMD/Public/DulapSelected?sessionKey='.$sessionKey."'>Link</a>" . "<br>";
-						*/
 						$sessionKey=$sessionKey+1;
 						
 					}
@@ -68,7 +58,26 @@ class WardrobeMapper {
 		if($stmt = $this->db->prepare("UPDATE wardrobe SET name=? WHERE wardrobeID = ?")){
 			if($stmt->bind_param("si",$wardrobeName,$wardrobeID)){
 				if($stmt->execute())
-					  echo "Successfully updated wardrobe name!" . "<br>";
+					 {
+					 	echo "Successfully updated wardrobe name!" . "<br>";
+					 	//the update was made so the current action should be inserted in "actions" table 
+					 	if($actionStmt = $this->db->prepare("INSERT INTO actions (wardrobeID,action) VALUES (?,'Updated wardrobe name')"))
+						{
+							if($actionStmt->bind_param("i",$wardrobeID))
+							{
+								if($actionStmt->execute())
+								{
+					 				return true;
+					 			}
+					 			else
+									error_log("Couldn't execute the stmt: " . $actionStmt->error,3,"errors.txt");
+							}
+							else
+								error_log("Couldn't bind params for stmt: " . $actionStmt->error,3,"errors.txt");
+						}
+						else
+							error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
+					 } 
 						
 				else
 						error_log("Couldn't execute the stmt: " . $stmt->error,3,"errors.txt");
@@ -78,6 +87,8 @@ class WardrobeMapper {
 		}
 		else
 			error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
+
+
 	}
 
 	public function save($wardrobe,$userID){

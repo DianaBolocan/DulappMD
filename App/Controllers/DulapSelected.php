@@ -86,22 +86,26 @@
     				//header('Location: '.' http://localhost/DulappMD/Public/DulapSelected');
     			}
     			if(isset($_POST['exportJSON'])){
-
-    				$itemMapper = $this->mapper('ItemMapper');
-					$selectResult=$itemMapper->searchAfterW($wardrobeID);
+					$actionMapper = $this->mapper('ActionMapper');
+					$selectResult= $actionMapper->selectActions($wardrobeID);
 					$posts = array();
 					for($i=0;$i<sizeof($selectResult);$i++){
+						//$currentItem looks like : "wardrobeID_action_momentofAction"
 						$currentItem=$selectResult[$i];
-						$posts[] = array('val1'=> $currentItem, 'val2'=> $currentItem);
+						$pieces = explode("_", $currentItem);
+						//echo $pieces[0]; // piece1
+						//echo $pieces[1]; // piece2
+						$posts[] = array('wardrobeID'=> $pieces[0], 'action'=> $pieces[1], 'moment of action'=> $pieces[2]);
 					}
 					$response['posts'] = $posts;
 
 					//unlink('results.json');
-					$fp = fopen('results.json', 'w');
+					$filename = 'wardrobeID'.$pieces[0].'.json'; 
+					$fp = fopen($filename, 'w');
 					fwrite($fp, json_encode($response));
 					fclose($fp);
 
-					$filename = 'results.json'; // of course find the exact filename....        
+					        
 					header('Pragma: public');
 					header('Expires: 0');
 					header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
