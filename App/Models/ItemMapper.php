@@ -1,5 +1,6 @@
 <?php
 	require_once(__DIR__."/../core/DatabaseConnection.php");
+	require_once(__DIR__."/ActionMapper.php");
 
 	class ItemMapper{
 		private $db;
@@ -9,42 +10,42 @@
 		}
 
 		public function selectFromDrawer($drawerID){
-		$sessionKey=0;
-		if($stmt = $this->db->prepare("select i.path,i.itemID from item i join di on di.itemID=i.itemID where di.drawerID=?"))
-		{
-			if($stmt->bind_param("i", $drawerID))
-				{
-					if($stmt->execute()){
-						$result = $stmt->get_result();
-						$itemPaths= array();
-						$itemIDs = array();
-						while($row = $result->fetch_row())
-						{
-							$itemPath = $row[0];
-							array_push($itemPaths, $itemPath);
-							array_push($itemIDs, $row[1]);
-							$sessionKey=$sessionKey+1;
-							
+			$sessionKey=0;
+			if($stmt = $this->db->prepare("select i.path,i.itemID from item i join di on di.itemID=i.itemID where di.drawerID=?"))
+			{
+				if($stmt->bind_param("i", $drawerID))
+					{
+						if($stmt->execute()){
+							$result = $stmt->get_result();
+							$itemPaths= array();
+							$itemIDs = array();
+							while($row = $result->fetch_row())
+							{
+								$itemPath = $row[0];
+								array_push($itemPaths, $itemPath);
+								array_push($itemIDs, $row[1]);
+								$sessionKey=$sessionKey+1;
+								
+							}
+							$_SESSION["itemPaths"]=$itemPaths;
+							$_SESSION["itemIDs"] = $itemIDs;	
 						}
-						$_SESSION["itemPaths"]=$itemPaths;
-						$_SESSION["itemIDs"] = $itemIDs;	
+						else
+							error_log("Couldn't execute statement: " . $stmt->error,3,"errors.txt");
 					}
-					else
-						error_log("Couldn't execute statement: " . $stmt->error,3,"errors.txt");
-				}
+				else
+					{
+						error_log("Couldn't bind params for stmt: " . $stmt->error,3,"errors.txt");
+					}
+			}
 			else
 				{
-					error_log("Couldn't bind params for stmt: " . $stmt->error,3,"errors.txt");
-				}
+					error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
+				}	
+			if($sessionKey>=1)
+				return 'true';
+			return 'false';
 		}
-		else
-			{
-				error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
-			}	
-		if($sessionKey>=1)
-			return 'true';
-		return 'false';
-	}
 	
 		public function save($item,$drawerID){
 			if($stmt = $this->db->prepare("INSERT INTO item (type,color,size,material,path,value,itemKey,brand,state,season,extras,createdAt,updatedAt) VALUES (?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)"))
@@ -67,8 +68,31 @@
 										if($stmtLink->execute())
 										{
 											echo "Successfully added new item. <br>";
+											if($stmtWardrobe = $this->db->prepare("SELECT wardrobeID FROM wd WHERE drawerID = ?")){
+												if($stmtWardrobe->bind_param("i",$drawerID)){
+													if($stmtWardrobe->execute()){
+														$result = $stmtWardrobe->get_result();
+														if($row = $result->fetch_array()){
+															$actionMapper = new ActionMapper();
+															$action = 'Add new item';
+															$description = 'Item ' . $item->getItemID() . ' has been added to wardrobe.';
+															$actionMapper->save($row[0],$action,$description);
+															return true;
+														} else {
+															error_log("Could't fetch row",3,'errors.txt');
+														}
+													}else{
+														error_log("Couldn't execute stmtWardrobe: " . $stmtWardrobe->error,3,'errors.txt');
+													}
+												}else
+												{
+													error_log("Couldn't prepare params for stmtWardrobe: " . $stmtWardrobe->error,3,'errors.txt');
+												}
+											}else{
+												error_log("Couldn't prepare stmtWardrobe: " . $this->db->error,3,'errors.txt');
+											}
+
 											$stmtLink->close();
-											return true;
 										} else
 										{
 											error_log("Couldn't execute stmtLink: " . $stmtLink->error,3,"errors.txt");
@@ -101,7 +125,6 @@
 			{
 				error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
 			}
-
 			$stmt->close();
 			return false;
 		}

@@ -147,6 +147,7 @@
 																	$action = 'Add new drawer';
 																	$description = 'Drawer ' . $drawer->getDrawerID() . ' has been added to wardrobe.';
 																	$actionMapper->save($wardrobeID,$action,$description);
+																	return true;
 																} else 
 																{
 																	error_log("Couldn't insert new link: " . $stmtLink->error);
@@ -222,6 +223,7 @@
 								$action = 'Delete drawer';
 								$description = 'Drawer ' . $drawer->getDrawerID() . ' has been removed from wardrobe.';
 								$actionMapper->save($wardrobeID,$action,$description);
+								return true;
 							}
 						} else 
 						{
@@ -252,6 +254,7 @@
 								$action = 'Delete drawer';
 								$description = 'Drawer ' . $drawer->getDrawerID() . ' has been removed from wardrobe.';
 								$actionMapper->save($wardrobeID,$action,$description);
+								return true;
 							}
 						} else 
 						{

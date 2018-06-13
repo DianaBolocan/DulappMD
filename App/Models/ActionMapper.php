@@ -46,6 +46,7 @@
 							{
 								if($actionStmt->execute())
 								{
+									echo "am ajuns la insert in actions <br>";
 					 				return true;
 					 			}
 					 			else
