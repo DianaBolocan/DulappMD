@@ -39,8 +39,8 @@
 			return $actions;
 		}
 
-		/*public function save($wardrobeID,$action,$description){
-			if($actionStmt = $this->db->prepare("INSERT INTO actions (wardrobeID,action) VALUES (?,?,?)"))
+		public function save($wardrobeID,$action,$description){
+			if($actionStmt = $this->db->prepare("INSERT INTO actions (wardrobeID,action,description) VALUES (?,?,?)"))
 						{
 							if($actionStmt->bind_param("iss",$wardrobeID,$action,$description))
 							{
@@ -56,5 +56,6 @@
 						}
 						else
 							error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
-		}*/
+			return false;
+		}
 	}

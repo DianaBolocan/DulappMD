@@ -83,7 +83,8 @@
     				$newName=($_POST['newName']);
     				$wardrobeMapper = $this->mapper('WardrobeMapper');
 					$selectResult=$wardrobeMapper->updateWardrobeName($wardrobeID,$newName);
-    				//header('Location: '.' http://localhost/DulappMD/Public/DulapSelected');
+					//in all situations redirect to DulappSelected
+    				header('Location: '.' http://localhost/DulappMD/Public/DulapSelected?wardrobeID='. $wardrobeID);
     			}
     			if(isset($_POST['exportJSON'])){
 					$actionMapper = $this->mapper('ActionMapper');
@@ -95,7 +96,7 @@
 						$pieces = explode("_", $currentItem);
 						//echo $pieces[0]; // piece1
 						//echo $pieces[1]; // piece2
-						$posts[] = array('action'=> $pieces[1], 'moment of action'=> $pieces[2]);
+						$posts[] = array('action'=> $pieces[1], 'moment of action'=> $pieces[2], 'description'=> $pieces[3]);
 					}
 					$response[$pieces[0]] = $posts;
 					//unlink('results.json');

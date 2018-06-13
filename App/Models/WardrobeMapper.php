@@ -2,6 +2,7 @@
 // file: model/UserMapper.php
 
 require_once(__DIR__."/../core/DatabaseConnection.php");
+require_once(__DIR__."/ActionMapper.php");
 
 class WardrobeMapper {
 
@@ -61,7 +62,11 @@ class WardrobeMapper {
 					 {
 					 	echo "Successfully updated wardrobe name!" . "<br>";
 					 	//the update was made so the current action should be inserted in "actions" table 
-					 	/**/
+					 	$actionMapper = new ActionMapper();
+					 	$action ='Update wardrobe name';
+					 	$description='wardrobe name was updated to ' . $wardrobeName;
+					 	//saves the current action in actions table
+						return $actionMapper->save($wardrobeID,$action,$description);
 					 } 
 						
 				else
