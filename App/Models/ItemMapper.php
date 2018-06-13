@@ -142,15 +142,19 @@
 								return false;
 						} else {
 							error_log("Couldn't find rows.",3,'errors.txt');
+							return false;
 						}
 					} else {
 						error_log("Couldn't execute stmtWardrobe: " . $stmtWardrobe->error,3,'errors.txt');
+						return false;
 					}
 				} else {
 					error_log("Couldn't bind params for stmtWardrobe: " . $stmtWardrobe->error,3,'errors.txt');
+					return false;
 				}
 			} else {
 				error_log("Couldn't prepare stmtWardrobe: " . $this->db->error,3,'errors.txt');
+				return false;
 			}
 
 			if($stmt = $this->db->prepare("DELETE FROM item WHERE itemID = ?"))

@@ -118,10 +118,8 @@
 				//$drawerID = (int)$_GET['drawerID'];
 				if($_POST){
 					if(isset($_POST["moveSubmit"])){
-						echo 'aici';
 						$item = $this->model("Item");
 						$DIMapper = $this->mapper("DIMapper");
-						echo $_POST['itemID'];
 						$item->setItemID((int)$_POST["itemID"]);
 						$drawerID = (int)$_POST["drawerID"];
 						$DIMapper->update($item,$drawerID);
