@@ -18,7 +18,7 @@
 							$actions= array();
 							while($row = $result->fetch_row())
 							{
-								$actionsString = $row[0] . '_' . $row[1] .'_'. $row[2];
+								$actionsString = $row[0] . '_' . $row[1] .'_'. $row[2] . '_' . $row[3];
 								array_push($actions, $actionsString);	
 							}
 							//$_SESSION["drawerIDs"]=$ids;
@@ -38,4 +38,23 @@
 				}
 			return $actions;
 		}
+
+		/*public function save($wardrobeID,$action,$description){
+			if($actionStmt = $this->db->prepare("INSERT INTO actions (wardrobeID,action) VALUES (?,?,?)"))
+						{
+							if($actionStmt->bind_param("iss",$wardrobeID,$action,$description))
+							{
+								if($actionStmt->execute())
+								{
+					 				return true;
+					 			}
+					 			else
+									error_log("Couldn't execute the stmt: " . $actionStmt->error,3,"errors.txt");
+							}
+							else
+								error_log("Couldn't bind params for stmt: " . $actionStmt->error,3,"errors.txt");
+						}
+						else
+							error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
+		}*/
 	}

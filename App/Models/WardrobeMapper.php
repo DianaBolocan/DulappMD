@@ -61,22 +61,7 @@ class WardrobeMapper {
 					 {
 					 	echo "Successfully updated wardrobe name!" . "<br>";
 					 	//the update was made so the current action should be inserted in "actions" table 
-					 	if($actionStmt = $this->db->prepare("INSERT INTO actions (wardrobeID,action) VALUES (?,'Updated wardrobe name')"))
-						{
-							if($actionStmt->bind_param("i",$wardrobeID))
-							{
-								if($actionStmt->execute())
-								{
-					 				return true;
-					 			}
-					 			else
-									error_log("Couldn't execute the stmt: " . $actionStmt->error,3,"errors.txt");
-							}
-							else
-								error_log("Couldn't bind params for stmt: " . $actionStmt->error,3,"errors.txt");
-						}
-						else
-							error_log("Couldn't prepare statement: " . $this->db->error,3,"errors.txt");
+					 	/**/
 					 } 
 						
 				else

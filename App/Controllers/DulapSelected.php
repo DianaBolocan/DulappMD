@@ -95,10 +95,9 @@
 						$pieces = explode("_", $currentItem);
 						//echo $pieces[0]; // piece1
 						//echo $pieces[1]; // piece2
-						$posts[] = array('wardrobeID'=> $pieces[0], 'action'=> $pieces[1], 'moment of action'=> $pieces[2]);
+						$posts[] = array('action'=> $pieces[1], 'moment of action'=> $pieces[2]);
 					}
-					$response['posts'] = $posts;
-
+					$response[$pieces[0]] = $posts;
 					//unlink('results.json');
 					$filename = 'wardrobeID'.$pieces[0].'.json'; 
 					$fp = fopen($filename, 'w');
