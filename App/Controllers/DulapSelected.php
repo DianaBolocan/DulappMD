@@ -98,15 +98,14 @@
 						$pieces = explode("_", $currentItem);
 						//echo $pieces[0]; // piece1
 						//echo $pieces[1]; // piece2
-						$posts[] = array('action'=> $pieces[1], 'moment of action'=> $pieces[2], 'description'=> $pieces[3]);
+						$posts[] = array('title'=> $pieces[1], 'pubDate'=> $pieces[2], 'description'=> $pieces[3]);
 					}
-					$response[$pieces[0]] = $posts;
-					//unlink('results.json');
+					$title ='Wardrobe '. $pieces[0] .' News';
+					$response[$title] = $posts;
 					$filename = 'wardrobeID'.$pieces[0].'.json'; 
 					$fp = fopen($filename, 'w');
 					fwrite($fp, json_encode($response));
 					fclose($fp);
-
 					        
 					header('Pragma: public');
 					header('Expires: 0');
@@ -119,8 +118,6 @@
 					header('Content-Length: ' . filesize($filename));
 
 					readfile($filename);
-
-					exit;
 				}
 				if(isset($_POST['exportRSS'])){
 					$results = '<rss version="2.0"><channel><title>Wardrobe ' . $wardrobeID . ' News</title><link>http://localhost/DulappMD/Public</link><description>Changes in wardrobe.</description><language>en-us</language>';
@@ -148,8 +145,6 @@
 					header('Content-Length: ' . filesize($filename));
 
 					readfile($filename);
-
-					exit;
 				}
 		}
 	}
