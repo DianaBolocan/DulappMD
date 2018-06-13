@@ -18,9 +18,9 @@
     			$allItems=$itemMapper->searchAfterU($userID);
     			$searchParams=($_POST['searchParams']);
     			$searchParams = strtolower($searchParams);
-    			$params = explode(" ", $searchParams); //parsing received params through post method
-				for($j=0;$j<sizeof($params);$j++)
-					$params[$j]='!'. $params[$j] . '!';
+    			$params = explode(",", $searchParams); //parsing received params through post method
+				//for($j=0;$j<sizeof($params);$j++)
+					//$params[$j]='!'. $params[$j] . '!';
 				$searchExistence=0;
 				$itemPaths=array();
 				$itemIDs=array();
@@ -29,6 +29,7 @@
 						$currentSearchExistence=1;
 						for($j=0;$j<sizeof($params);$j++)
 						{
+							//echo $allItems[$i] . " " .$params[$j]."<br>";
 							if(strstr($allItems[$i],$params[$j])==false)
 							{
 								$currentSearchExistence=0;
@@ -60,9 +61,9 @@
     			$allItems=$itemMapper->searchAfterW($wardrobeID);
     			$searchParams=($_POST['searchParams']);
     			$searchParams = strtolower($searchParams);
-    			$params = explode(" ", $searchParams); //parsing received params through post method
-				for($j=0;$j<sizeof($params);$j++)
-					$params[$j]='!'. $params[$j] . '!';
+    			$params = explode(",", $searchParams); //parsing received params through post method
+				//for($j=0;$j<sizeof($params);$j++)
+				//	$params[$j]='!'. $params[$j] . '!';
 				$searchExistence=0;
 				$itemPaths=array();
 				$itemIDs=array();
@@ -72,6 +73,7 @@
 						$currentSearchExistence=1;
 						for($j=0;$j<sizeof($params);$j++)
 						{
+							//echo $allItems[$i] . " " .$params[$j]."<br>";
 							if(strstr($allItems[$i],$params[$j])==false)
 							{
 								$currentSearchExistence=0;

@@ -61,7 +61,7 @@
 					<img id="more" src="CSS Files/more.png">
 					
 					<form  class="loginbox" action="Catalog" method="post" role="search">
-							<input type="text" name="searchParams" placeholder="Enter your search">
+							<input type="text" name="searchParams" placeholder="Enter your search (separate criterias only by commas)">
 							<input type="submit" name="searchAfterU" value="">';
 					$_SESSION["whereAmI"]="searchAfterU";
 					echo'

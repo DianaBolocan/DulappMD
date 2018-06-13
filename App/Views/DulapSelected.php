@@ -84,7 +84,7 @@
 					</a>
 					
 					<form  class="searchBar" action="Catalog" method="post" role="search">
-							<input type="text" name="searchParams" placeholder="Search in your current wardrobe">
+							<input type="text" name="searchParams" placeholder="Search in your current wardrobe(separate criterias only by commas)">
 							<input type="submit" name="searchAfterW" value="">';
 					$_SESSION["whereAmI"]="searchAfterW";
 			echo'
