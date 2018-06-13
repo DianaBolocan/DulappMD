@@ -73,13 +73,6 @@ span:hover + .description {
 	cursor:pointer;
 }
 
-.searchBar{
-	display: inline;
-	margin-right:1%;
-	margin-top:1%;
-	float:right;
-	
-}
 
 #leftSection {
 	position: absolute;
@@ -117,7 +110,7 @@ span:hover + .description {
 }
 
 .tShirt{
-	width: 100%;
+	width: 98%;
 	margin-left: 1%;
 	margin-top: 5%;
 }

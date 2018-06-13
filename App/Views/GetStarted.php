@@ -56,7 +56,7 @@
 									<input type="password" name="password" placeholder="Enter Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" 
 										title="Must contain at least 1 number, 1 uppercase character and it must have at least 8 characters and maximum 20.">
 									<p> Rewrite password: </p>
-									<input type="password" name="" placeholder="Rewrite Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" 
+									<input type="password" name="repeteadpassword" placeholder="Rewrite Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" 
 										title="Must contain at least 1 number, 1 uppercase character and it must have at least 8 characters and maximum 20.">
 									<!--check with JS if passwords match-->
 									<input type="submit" name="Register" value="Register" id="submit">

@@ -7,8 +7,8 @@
 	class Catalog extends Controller{
 		public function print(){
 			$wdMapper = $this->mapper('WDMapper');
-			$nameids=$wdMapper->getWardrobeNameDrawerIDs();
-			$_SESSION['nameids']=$nameids;
+			$WdNameDrIds=$wdMapper->getWardrobeNameDrawerIDs();
+			$_SESSION['WdNameDrIds']=$WdNameDrIds;
 			
 			if(!empty($_POST)){
 			 if($_SESSION["whereAmI"]=="searchAfterU")

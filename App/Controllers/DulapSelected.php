@@ -56,11 +56,8 @@
 						$drawer->setDrawerKey($_POST['drawerKey']);
 					}
 					$drawerMapper = $this->mapper('DrawerMapper');
-					//$item = $this->model('Item');
-					//$itemMapper = $this->mapper('ItemMapper');
 					if($drawerMapper->check($drawer))
 						{
-							echo 's-a returnat true';
 							$_SESSION['drawerID']=$drawerID;
 							echo '<br> Current drawer(received through URL): ' . $drawerID . "<br>";
 							echo 'Current wardrobe(received through session):' . $_SESSION['wardrobeID'];
@@ -71,7 +68,11 @@
 							header('Location: http://localhost/DulappMD/Public/Catalog?drawerID=' . $drawerID);
 						}
 					else
-						echo 's-a returnat false';
+						{
+							//the key doen't match so the user will be redirected to DulapSelected
+							$wardrobeID=$_SESSION["wardrobeID"];
+							header('Location: http://localhost/DulappMD/Public/DulapSelected?wardrobeID=' . $wardrobeID);
+						}
 				}	
 			}
 		}

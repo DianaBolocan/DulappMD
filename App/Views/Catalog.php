@@ -45,10 +45,6 @@
 					<h1 class="hcomp"> Log Out </h1> 
 				</a>
 				<img src="CSS Files/more.png" id="more">
-				<form  class="searchBar" action="#" role="search">
-								<input type="text" name="" placeholder="Enter your search">
-								<input type="submit" name value="">
-				</form>
 				</header >
 				<br>
 				<div id="leftSection">
@@ -77,8 +73,8 @@
 					        <input type="text" name="itemID" placeholder="ItemID to move" required pattern="(?=.*\d).{1,}" title="Must contain only digits."/>
 					        <select name="drawerID">';
 
-					for($i=0;$i<sizeof($_SESSION['nameids']);$i++){
-						$string = $_SESSION['nameids'][$i];
+					for($i=0;$i<sizeof($_SESSION['WdNameDrIds']);$i++){
+						$string = $_SESSION['WdNameDrIds'][$i];
 						$pieces = explode("-", $string);
 						echo '<option value="' . $pieces[1] .'"> '. $string .'</option>';}
 					        	

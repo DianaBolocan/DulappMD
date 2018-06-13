@@ -46,6 +46,7 @@
 	
 		public function check($drawer){
 			if($drawer->getDrawerKey() == NULL){
+				//userul nu a introdus key
 				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND drawerKey is NULL"))
 				{
 					$drawerID=(int)$drawer->getDrawerID();
@@ -56,7 +57,7 @@
 							$result = $stmtCheck->get_result();
 							if($result->num_rows == 1)
 							{
-								echo 'returnez true, fara cheie';
+								//returnez true, fara cheie';
 								return true;
 							}
 						} else 
@@ -76,6 +77,7 @@
 				}
 			}
 			else {
+				//userul a introdus key
 				if($stmtCheck = $this->db->prepare("SELECT drawerID FROM drawer WHERE drawerID = ? AND (drawerKey = ? OR drawerKey is NULL)"))
 				{
 					$drawerKey=$drawer->getDrawerKey();
@@ -87,7 +89,7 @@
 							$result = $stmtCheck->get_result();
 							if($result->num_rows == 1)
 							{
-								echo 'returnez true, cheia se potriveste sau drawer fara key';
+								//returnez true, cheia se potriveste sau drawer fara key';
 								return true;
 							}
 						} else 
