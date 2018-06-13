@@ -219,11 +219,7 @@
 							$result = $stmtCheck->get_result();
 							if($result->num_rows == 0)
 							{
-								$actionMapper = new ActionMapper();
-								$action = 'Delete drawer';
-								$description = 'Drawer ' . $drawer->getDrawerID() . ' has been removed from wardrobe.';
-								$actionMapper->save($wardrobeID,$action,$description);
-								return true;
+								return false;
 							}
 						} else 
 						{
@@ -250,11 +246,7 @@
 							$result = $stmtCheck->get_result();
 							if($result->num_rows == 0)
 							{
-								$actionMapper = new ActionMapper();
-								$action = 'Delete drawer';
-								$description = 'Drawer ' . $drawer->getDrawerID() . ' has been removed from wardrobe.';
-								$actionMapper->save($wardrobeID,$action,$description);
-								return true;
+								return false;
 							}
 						} else 
 						{
@@ -296,6 +288,10 @@
 								if($stmt->execute())
 								{
 									echo "Successfully delete drawer.<br>";
+									$actionMapper = new ActionMapper();
+									$action = 'Delete drawer';
+									$description = 'Drawer ' . $drawer->getDrawerID() . ' has been removed from wardrobe.';
+									$actionMapper->save($wardrobeID,$action,$description);
 									$stmt->close();
 									return true;
 								} else

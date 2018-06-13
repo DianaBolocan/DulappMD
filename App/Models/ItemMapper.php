@@ -130,6 +130,29 @@
 		}
 
 		public function delete($item){
+			if($stmtWardrobe = $this->db->prepare("SELECT wardrobeID FROM wd JOIN di on wd.drawerID = di.drawerID WHERE itemID = ?")){
+				if($stmtWardrobe->bind_param("i",$item->getItemID())){
+					if($stmtWardrobe->execute()){
+						$result = $stmtWardrobe->get_result();
+						if($row = $result->fetch_array()){
+							$actionMapper = new ActionMapper();
+							$action = 'Delete item';
+							$description = 'Item ' . $item->getItemID() . ' has been removed from wardrobe.';
+							if(!($actionMapper->save($row[0],$action,$description)))
+								return false;
+						} else {
+							error_log("Couldn't find rows.",3,'errors.txt');
+						}
+					} else {
+						error_log("Couldn't execute stmtWardrobe: " . $stmtWardrobe->error,3,'errors.txt');
+					}
+				} else {
+					error_log("Couldn't bind params for stmtWardrobe: " . $stmtWardrobe->error,3,'errors.txt');
+				}
+			} else {
+				error_log("Couldn't prepare stmtWardrobe: " . $this->db->error,3,'errors.txt');
+			}
+
 			if($stmt = $this->db->prepare("DELETE FROM item WHERE itemID = ?"))
 			{
 				if($stmt->bind_param("i",$item->getItemID()))
