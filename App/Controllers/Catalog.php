@@ -109,25 +109,16 @@
 		}
 
 		public function move(){
-				//$drawerID = (int)$_GET['drawerID'];
-				if($_POST){
-					if(isset($_POST["moveSubmit"])){
-						$item = $this->model("Item");
-						$DIMapper = $this->mapper("DIMapper");
-						$item->setItemID((int)$_POST["itemID"]);
-						$drawerID = (int)$_POST["drawerID"];
-						$DIMapper->update($item,$drawerID);
-						header('Location: http://localhost/DulappMD/Public/DulappList');
-
-						/*if(isset($_GET['drawerID'])){
-							header('Location: hhtps://localhost/DulappMD/Catalog?drawerID=' . $_GET['drawerID']); //nu vrea sa faca refresh cum trebuie
-						} else if(isset($_GET['searchAfterW'])){
-							echo $_GET['searchAfterW'] . '<br>';
-						} else if(isset($_GET['searchAfterU'])){
-							echo $_GET['searchAfterU'] . '<br>';
-						}*/
-					}
+			if($_POST){
+				if(isset($_POST["moveSubmit"])){
+					$item = $this->model("Item");
+					$DIMapper = $this->mapper("DIMapper");
+					$item->setItemID((int)$_POST["itemID"]);
+					$drawerID = (int)$_POST["drawerID"];
+					$DIMapper->update($item,$drawerID);
+					header('Location: http://localhost/DulappMD/Public/DulappList');
 				}
+			}
 		}
 	}
 ?>
