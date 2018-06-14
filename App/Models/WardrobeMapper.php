@@ -133,6 +133,30 @@ class WardrobeMapper {
 	}
 
 	public function delete($wardrobe,$drawer,$drawerMapper,$item,$itemMapper){
+		if($stmtWardrobe = $this->db->prepare("SELECT wardrobeID from wardrobe WHERE name = ?")){
+			if($stmtWardrobe->bind_param("s",$wardrobe->getName())){
+				if($stmtWardrobe->execute()){
+					$resultWardrobe = $stmtWardrobe->get_result();
+					if($rowW = $resultWardrobe->fetch_array()){
+						$wardrobe->setWardrobeID((int)$rowW[0]);
+						echo $wardrobe->getWardrobeID();
+					} else {
+						error_log("Couldn't fetch row.",3,'erros.txt');
+						return false;
+					}
+				} else {
+					error_log("Couldn't execute stmtWardrobe: " . $stmtWardrobe->error,3,'errors.txt');
+					return false;
+				}
+			} else {
+				error_log("Couldn't bind params for stmtWardrobe: " . $stmtWardrobe->error,3,'errors.txt');
+				return false;
+			}
+		} else {
+			error_log("Couldn't prepare stmtWardrobe: " . $this->db->error,3,'errors.txt');
+			return false;
+		}
+
 		if($stmtLink = $this->db->prepare("SELECT drawerID FROM wd JOIN wardrobe ON wardrobe.wardrobeID = wd.wardrobeID WHERE wardrobe.name = ?"))
 		{
 			if($stmtLink->bind_param("s",$wardrobe->getName()))
@@ -143,7 +167,7 @@ class WardrobeMapper {
 					if($result->num_rows > 0){
 						while($row = $result->fetch_row()){
 							$drawer->setDrawerID((int)$row[0]);
-							$drawerMapper->delete($drawer,$item,$itemMapper);
+							$drawerMapper->delete($drawer,$item,$itemMapper,$wardrobe->getWardrobeID());
 						}
 						echo "Finished deleting drawers.<br>";
 					}

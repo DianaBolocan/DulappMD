@@ -31,7 +31,7 @@
 		<span><h1 class="hcomp"> Help </h1></span>
 		<div class="desc">
 			Hi! Welcome to our website DULAPP MD! If you want to design your wardrobe and indirectly your entire life, join our comunity.
-			First of all you have to Register and than you have to Login. Enjoy!
+			First of all you have to Register and then you have to Login. Enjoy!
 		</div>
 		</header >
 				
