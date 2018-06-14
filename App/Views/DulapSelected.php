@@ -135,12 +135,9 @@
 							}
 						}
 						$imgSrc="<img src=". $img .  " alt='Drawer' class='". $class . "' id='" . $count . "'>";
-						/*echo "<a href='" . "http://localhost/DulappMD/Public/Catalog?drawerID=" .
-						 	$_SESSION["drawerIDs"][$i] . "'>" . $imgSrc ;*/
-						 //DulapSelected/check?
-						 	//Catalog?drawerID=
 						echo $imgSrc;
-						echo $_SESSION["drawerIDs"][$i];
+						echo '<p class="' . $class. '">' .  $_SESSION["drawerIDs"][$i] . '</p>';
+						//each img is associated with it's drawerID
 						echo '<form class="enterDrawerForm" action="DulapSelected/check?drawerID=' . $_SESSION["drawerIDs"][$i] . '" method="post" id="mc-embedded-enterDrawerForm' . $count . '" name="mc-embedded-enterDrawerForm">
 							    <fieldset>
 							        <input type="text" name="drawerKey" placeholder="Only if necessary"/>
@@ -182,7 +179,7 @@
 				<br>
 				<div class="buttons">	';
 				$wardrobeid=$_SESSION['wardrobeID'];
-				echo $wardrobeid;
+				//echo $wardrobeid;
 				$redirect="Form?wardrobeID=".$wardrobeid;
 				echo'
 					<a href="'. $redirect . '"><img src="CSS Files/umeras.png" alt="addItem" id="addItem"></a>

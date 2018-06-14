@@ -9,6 +9,10 @@ body{
 	font-family: 'Pacifico', cursive;
 }
 
+p {
+	position: absolute;
+}
+
 .drawerForm {
     display: none;
     position: absolute;
