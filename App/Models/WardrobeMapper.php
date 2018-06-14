@@ -28,16 +28,11 @@ class WardrobeMapper {
 						$wardrobeName = (string)$row[1];
 						array_push($ids, $wardrobeId);
 						array_push($names, $wardrobeName);
-						$sessionKey=$sessionKey+1;
+						//$sessionKey=$sessionKey+1;
 						
 					}
 					$_SESSION["wardrobeIDs"]=$ids;
 					$_SESSION["wardrobeNames"]=$names;
-					//else 
-					//{
-					//		echo "No rows to fetch. <br>";
-					//}
-					//return 'true';
 				}
 				else
 					error_log("Couldn't execute the stmt: " . $stmt->error,3,"errors.txt");
@@ -47,7 +42,6 @@ class WardrobeMapper {
 				error_log("Couldn't bind params for stmt: " . $stmt->error,3,"errors.txt");
 			}
 		}
-			//daca are un singur dulap returneaza false?
 		if($sessionKey>=1)
 			return true;
 		return false;

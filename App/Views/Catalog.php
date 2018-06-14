@@ -87,7 +87,7 @@
 				if(sizeof($_SESSION["itemPaths"])==0){
 					if($_SESSION["message"]=="searchAfterU" || $_SESSION["message"]=="searchAfterW")
 						echo 'No result for your search';
-					else
+					else //$_SESSION["message"]="drawerList";
 						echo 'This is an empty drawer';
 				}
 				else{
@@ -100,7 +100,7 @@
 						$currentItemPath=$_SESSION["itemPaths"][$i];
 						echo $currentItemPath . "<br>";
 						$img= $currentItemPath ;
-						$class="tShirt";
+						$class="itemImage";
 						//prints the image of items whose path was received through session
 						$imgSrc="<img src='". $img .  "' alt='Drawer' class='". $class . "'></a>";
 						echo $imgSrc;
@@ -111,17 +111,17 @@
 				}
 				/*<div id="centerSection">
 				<div class="item">
-						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="tShirt">
+						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="itemImage">
 						<p class="name"> Tricou1 Verde </p>
 						<a href="Form" class="linkForm">Modify</a><a href="Catalog/delete" class="linkForm">Delete/</a>	
 					</div>
 					<div class="item">
-						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="tShirt">
+						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="itemImage">
 						<p class="name"> Tricou2 Verde </p>
 						<a href="Form" class="linkForm">Modify</a><a href="Catalog/delete" class="linkForm">Delete/</a>	
 					</div>
 					<div class="item">
-						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="tShirt">
+						<img src="CSS Files/greenTShirt.png" alt="greenTShirt" class="itemImage">
 						<p class="name"> Tricou3 Verde </p>
 						<a href="Form" class="linkForm">Modify</a><a href="Catalog/delete" class="linkForm">Delete/</a>	
 					</div>

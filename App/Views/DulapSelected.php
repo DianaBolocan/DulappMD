@@ -96,6 +96,7 @@
 					echo 'The current wardrobe has no drawers';
 				else{
 					$nrOfIDs=sizeof($_SESSION["drawerIDs"]);
+					//message is a way to know if the user entered a drawer, searched in all wardrobes or searched in a specified one-all of them redirect to Catalog controller
 					$_SESSION["message"]="drawerList";
 					for($i=0;$i<$nrOfIDs;$i++)
 					{
@@ -147,9 +148,6 @@
 							    </fieldset>
 							</form>';
 					
-						//if(!($_SESSION["whereAmI"]))
-						//	$_SESSION["whereAmI"]="selectedDrawer";
-
 						//<div class="dulap">
 							//<div class="firstRow">';
 								//<a href="Catalog"><img src="CSS Files/Drawer2_1.png" alt="Drawer" class="drawer1"></a>

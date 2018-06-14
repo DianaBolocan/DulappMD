@@ -58,7 +58,7 @@
 							$result = $stmtCheck->get_result();
 							if($result->num_rows == 1)
 							{
-								//returnez true, fara cheie';
+								//returnez true, fara cheie;
 								return true;
 							}
 						} else 

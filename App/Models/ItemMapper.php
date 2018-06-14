@@ -27,6 +27,7 @@
 								$sessionKey=$sessionKey+1;
 								
 							}
+							//as to show corresponding images on view
 							$_SESSION["itemPaths"]=$itemPaths;
 							$_SESSION["itemIDs"] = $itemIDs;	
 						}

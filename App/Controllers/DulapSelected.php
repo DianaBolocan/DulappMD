@@ -51,7 +51,8 @@
 				if(isset($_POST['enterDrawerSubmit'])){
 					//get drawerID from URL
 					$drawerID= $_GET['drawerID'];
-					$drawer = $this->model('Drawer');
+					//the drawer will be given as parameter
+					$drawer = $this->model('drawer');
 					$drawer->setDrawerID($drawerID);
 					if($_POST['drawerKey'] != ''){
 						$drawer->setDrawerKey($_POST['drawerKey']);
@@ -60,12 +61,11 @@
 					if($drawerMapper->check($drawer))
 						{
 							$_SESSION['drawerID']=$drawerID;
-							echo '<br> Current drawer(received through URL): ' . $drawerID . "<br>";
-							echo 'Current wardrobe(received through session):' . $_SESSION['wardrobeID'];
+							//echo '<br> Current drawer(received through URL): ' . $drawerID . "<br>";
+							//echo 'Current wardrobe(received through session):' . $_SESSION['wardrobeID'];
 							$itemMapper = $this->mapper('ItemMapper');
-							//echo $drawerID;
 							$selectResult=$itemMapper->selectFromDrawer($drawerID);
-							$_SESSION["message"]="enterDrawer";
+							//$_SESSION["message"]="enterDrawer";
 							header('Location: http://localhost/DulappMD/Public/Catalog?drawerID=' . $drawerID);
 						}
 					else
@@ -93,7 +93,7 @@
     			}
     			if(isset($_POST['exportJSON'])){
 					for($i=0;$i<sizeof($selectResult);$i++){
-						//$currentItem looks like : "wardrobeID_action_momentofAction"
+						//$currentItem looks like : "wardrobeID_action_momentofAction_description"
 						$currentItem=$selectResult[$i];
 						$pieces = explode("_", $currentItem);
 						//echo $pieces[0]; // piece1

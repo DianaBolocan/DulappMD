@@ -81,6 +81,7 @@ span:hover + .description {
 	width: 20%;
 	min-width: 100px;
 	z-index: -2;
+	top: 25%;
 }
 
 #searchedAfter{
@@ -109,7 +110,7 @@ span:hover + .description {
 	min-width: 200px;
 }
 
-.tShirt{
+.itemImage{
 	width: 98%;
 	margin-left: 1%;
 	margin-top: 5%;
