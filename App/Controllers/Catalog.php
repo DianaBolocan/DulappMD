@@ -7,11 +7,13 @@
 	class Catalog extends Controller{
 		public function print(){
 			$wdMapper = $this->mapper('WDMapper');
+			//in order to show options when moving an item
 			$WdNameDrIds=$wdMapper->getWardrobeNameDrawerIDs();
 			$_SESSION['WdNameDrIds']=$WdNameDrIds;
 			
 			if(!empty($_POST)){
-			 if($_SESSION["whereAmI"]=="searchAfterU")
+			 //if($_SESSION["whereAmI"]=="searchAfterU")
+				if(isset($_POST['searchAfterU']))
 			{
 				$userID=$_SESSION['userID'];
 				$itemMapper = $this->mapper('ItemMapper');
@@ -54,7 +56,8 @@
 				$_SESSION["message"]="searchAfterU";
 				header('Location: http://localhost/DulappMD/Public/Catalog?searchAfterU='.$searchParams);
 			}
-			else if($_SESSION["whereAmI"]=="searchAfterW")
+			//else if($_SESSION["whereAmI"]=="searchAfterW")
+			else if(isset($_POST['searchAfterW']))
 			{
 				$wardrobeID=$_SESSION['wardrobeID'];
 				$itemMapper = $this->mapper('ItemMapper');

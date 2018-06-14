@@ -10,6 +10,7 @@
 			if(isset($_SESSION["userID"])){
 				$userID=$_SESSION["userID"] ;
 				$wardrobeMapper = $this->mapper('WardrobeMapper');
+				//selects all wardrobeIDs for the user
 				$selectResult=$wardrobeMapper->selectAllWardrobes($userID);
 		        if($selectResult==false)
 		        {

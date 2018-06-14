@@ -31,6 +31,7 @@ class WardrobeMapper {
 						//$sessionKey=$sessionKey+1;
 						
 					}
+					//for DulappList view
 					$_SESSION["wardrobeIDs"]=$ids;
 					$_SESSION["wardrobeNames"]=$names;
 				}
